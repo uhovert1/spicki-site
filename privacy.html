@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Политика конфиденциальности и cookies — Spički</title>
-<meta name="description" content="Как сайт Spički обрабатывает данные: cookies, данные в браузере, сторонние сервисы, бронирование.">
+<title>Политика конфиденциальности — Spički</title>
+<meta name="description" content="Как сайт Spički обрабатывает данные: что хранится в браузере, какие запросы отправляет сайт, хостинг, бронирование.">
 <link rel="canonical" href="https://spickibg.com/privacy.html">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="articles/article.css">
 <link rel="stylesheet" href="consent.css">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="theme-color" content="#1a1714">
+<style>.pv-table-wrap{overflow-x:auto;margin:6px 0 18px}.body table.pv-table{min-width:560px;font-size:.88rem}.body .pv-table th{text-align:left;font-weight:600;padding:10px 12px 10px 0;border-bottom:1px solid var(--char-3);color:var(--cream)}.body .pv-table td{padding:10px 12px 10px 0;color:#e2d8c7;text-align:left!important;white-space:normal!important;font-weight:400!important}.body .pv-table td:first-child{font-family:ui-monospace,Menlo,monospace;color:var(--flame)!important;white-space:nowrap!important}</style>
 </head>
 <body>
 <svg width="1" height="1" style="position:absolute;left:-9999px" aria-hidden="true"><defs><linearGradient id="logoFlame" gradientUnits="userSpaceOnUse" x1="0" y1="442" x2="0" y2="332"><stop offset="0" stop-color="#9e140c"/><stop offset=".45" stop-color="#e0301c"/><stop offset=".8" stop-color="#ff5a2e"/><stop offset="1" stop-color="#ff8a4a"/></linearGradient></defs></svg>
@@ -21,71 +21,89 @@
 </div></header>
 <main><div data-l="ru" lang="ru"><article class="wrap narrow">
 <p class="crumbs"><a href="index.html#ru">Spički</a></p>
-<h1>Политика конфиденциальности и cookies</h1><p class="lead">Обновлено: 19 октября 2026</p>
+<h1>Политика конфиденциальности</h1><p class="lead">Обновлено: 19 октября 2026</p>
 <div class="body">
-<h2>Кто управляет сайтом</h2>
+<h2>Кто отвечает за сайт</h2>
 <p>Сайт spickibg.com принадлежит компании <strong>MANUYLOV AND PARTNERS DOO BEOGRAD (VRAČAR)</strong>, ПИБ 114447111. Заведение: кальянный лаунж Spički, Mačvanska 10, Beograd.</p>
-<h2>Cookies и данные в браузере</h2>
-<p>Сайт не использует рекламные и аналитические cookies и не устанавливает собственные cookies. В памяти вашего браузера (localStorage) сохраняются только:</p>
-<ul><li>выбранный язык сайта;</li><li>подтверждение, что вам есть 18 лет;</li><li>отметка, что вы закрыли уведомление о cookies.</li></ul>
-<p>Эти данные остаются на вашем устройстве и не передаются нам. Удалить их можно, очистив данные сайта в настройках браузера.</p>
-<h2>Сторонние сервисы</h2>
-<p>Шрифты сайта загружаются с Google Fonts: при загрузке страницы Google получает IP-адрес вашего устройства. Ссылки ведут на внешние сервисы — Restoplace (онлайн-бронь), Instagram, Qastio (меню), Wolt (доставка), Google Maps. Когда вы переходите на них, действуют их собственные правила обработки данных.</p>
+<h2>Что сайт хранит на вашем устройстве</h2>
+<p>Сайт <strong>не устанавливает cookies</strong> и не использует sessionStorage. Аналитики, рекламы и пикселей соцсетей на сайте нет. В localStorage браузера могут сохраняться только две записи:</p>
+<div class="pv-table-wrap"><table class="pv-table"><tr><th>Запись</th><th>Зачем</th><th>Когда появляется</th><th>Срок</th><th>Кто получает</th></tr>
+<tr><td>spicki-age-18</td><td>Помнить, что вы подтвердили возраст 18+, чтобы не спрашивать на каждой странице</td><td>После ответа «Да, мне есть 18»</td><td>30 дней</td><td>Только ваш браузер</td></tr>
+<tr><td>spicki-lang</td><td>Помнить выбранный язык сайта</td><td>Только если вы сами нажали RU / SR / EN</td><td>12 месяцев</td><td>Только ваш браузер</td></tr></table></div>
+<p>Обе записи нужны для работы функций, которые вы сами используете: ограничения доступа 18+ и выбора языка. Поэтому сайт не запрашивает отдельного согласия, а сообщает о них здесь, в окне проверки возраста и в «Настройках приватности». Там же записи можно удалить; их также удаляет очистка данных сайта в браузере.</p>
+<h2>Какие запросы отправляет сайт</h2>
+<p>Все файлы сайта — страницы, фото и шрифты — загружаются с адреса spickibg.com. Шрифты Manrope и Cormorant размещены на сайте, Google Fonts не используется.</p>
+<p>Сайт размещён на хостинге <strong>GitHub Pages</strong> (GitHub, Inc., США). Как любой веб-сервер, он получает IP-адрес вашего устройства и технические данные запроса (браузер, время, запрошенная страница) и может хранить их в журналах безопасности. GitHub обрабатывает эти данные по своей политике конфиденциальности.</p>
+<h2>Переходы на другие сервисы</h2>
+<p>Ссылки на Restoplace (онлайн-бронь), Instagram и Threads, Qastio (меню), Wolt (доставка) и Google Maps ничего не загружают, пока вы на них не нажмёте. После перехода действуют правила этих сервисов.</p>
+<p>Кнопка «Скопировать и открыть Instagram» копирует текст брони в буфер обмена вашего устройства; сайт этот текст никуда не отправляет.</p>
 <h2>Бронирование</h2>
-<p>При бронировании через Restoplace, Instagram или по телефону мы получаем данные, которые вы сообщаете (имя, контакт, дату, время, число гостей), и используем их только для обработки брони.</p>
+<p>Если вы бронируете стол через Restoplace, Instagram или по телефону, мы получаем данные, которые вы сообщаете: имя, контакт, дату, время, число гостей и пожелания. Они используются только для брони и связи с вами по ней.</p>
+<h2>Ваши права</h2>
+<p>Вы можете запросить сведения о ваших данных, их исправление или удаление. Напишите нам в Instagram <a href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">@spicki_bg</a> или позвоните +381 62 893-95-50.</p>
 <h2>Возраст</h2>
-<p>Сайт и заведение предназначены для гостей старше 18 лет.</p>
-<h2>Связь</h2>
-<p>По вопросам о данных пишите нам в Instagram <a href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">@spicki_bg</a> или звоните +381 62 893-95-50.</p></div></article></div><div data-l="sr" lang="sr-Latn" hidden><article class="wrap narrow">
+<p>Сайт и заведение предназначены для гостей старше 18 лет.</p></div></article></div><div data-l="sr" lang="sr-Latn" hidden><article class="wrap narrow">
 <p class="crumbs"><a href="index.html#sr">Spički</a></p>
-<h1>Politika privatnosti i kolačića</h1><p class="lead">Ažurirano: 19. oktobar 2026</p>
+<h1>Politika privatnosti</h1><p class="lead">Ažurirano: 19. oktobar 2026</p>
 <div class="body">
-<h2>Ko upravlja sajtom</h2>
+<h2>Ko je odgovoran za sajt</h2>
 <p>Sajt spickibg.com pripada kompaniji <strong>MANUYLOV AND PARTNERS DOO BEOGRAD (VRAČAR)</strong>, PIB 114447111. Lokal: nargila lounge Spički, Mačvanska 10, Beograd.</p>
-<h2>Kolačići i podaci u pretraživaču</h2>
-<p>Sajt ne koristi reklamne i analitičke kolačiće i ne postavlja sopstvene kolačiće. U memoriji vašeg pretraživača (localStorage) čuvaju se samo:</p>
-<ul><li>izabrani jezik sajta;</li><li>potvrda da imate 18 godina;</li><li>oznaka da ste zatvorili obaveštenje o kolačićima.</li></ul>
-<p>Ovi podaci ostaju na vašem uređaju i ne šalju se nama. Možete ih obrisati brisanjem podataka sajta u podešavanjima pretraživača.</p>
-<h2>Usluge trećih strana</h2>
-<p>Fontovi sajta se učitavaju sa Google Fonts: prilikom učitavanja stranice Google dobija IP adresu vašeg uređaja. Linkovi vode ka spoljnim uslugama — Restoplace (onlajn rezervacija), Instagram, Qastio (meni), Wolt (dostava), Google Maps. Kada ih otvorite, važe njihova pravila obrade podataka.</p>
+<h2>Šta sajt čuva na vašem uređaju</h2>
+<p>Sajt <strong>ne postavlja kolačiće</strong> i ne koristi sessionStorage. Na sajtu nema analitike, reklama ni piksela društvenih mreža. U localStorage pretraživača mogu se sačuvati samo dva zapisa:</p>
+<div class="pv-table-wrap"><table class="pv-table"><tr><th>Zapis</th><th>Svrha</th><th>Kada nastaje</th><th>Rok</th><th>Ko dobija</th></tr>
+<tr><td>spicki-age-18</td><td>Da zapamtimo da ste potvrdili 18+, kako vas ne bismo pitali na svakoj stranici</td><td>Posle odgovora „Da, imam 18”</td><td>30 dana</td><td>Samo vaš pretraživač</td></tr>
+<tr><td>spicki-lang</td><td>Da zapamtimo izabrani jezik sajta</td><td>Samo ako ste sami kliknuli RU / SR / EN</td><td>12 meseci</td><td>Samo vaš pretraživač</td></tr></table></div>
+<p>Oba zapisa su potrebna za funkcije koje sami koristite: ograničenje pristupa 18+ i izbor jezika. Zato sajt ne traži posebnu saglasnost, već vas o njima obaveštava ovde, u prozoru za proveru godina i u „Podešavanjima privatnosti”. Tamo ih možete obrisati; briše ih i brisanje podataka sajta u pretraživaču.</p>
+<h2>Koje zahteve sajt šalje</h2>
+<p>Svi fajlovi sajta — stranice, fotografije i fontovi — učitavaju se sa adrese spickibg.com. Fontovi Manrope i Cormorant nalaze se na sajtu, Google Fonts se ne koristi.</p>
+<p>Sajt je hostovan na <strong>GitHub Pages</strong> (GitHub, Inc., SAD). Kao svaki veb-server, on dobija IP adresu vašeg uređaja i tehničke podatke zahteva (pretraživač, vreme, tražena stranica) i može ih čuvati u bezbednosnim zapisima. GitHub obrađuje ove podatke prema svojoj politici privatnosti.</p>
+<h2>Prelazak na druge usluge</h2>
+<p>Linkovi ka Restoplace-u (onlajn rezervacija), Instagramu i Threads-u, Qastio-u (meni), Wolt-u (dostava) i Google Maps-u ne učitavaju ništa dok ih ne kliknete. Posle prelaska važe pravila tih usluga.</p>
+<p>Dugme „Kopiraj i otvori Instagram” kopira tekst rezervacije u međuspremnik vašeg uređaja; sajt taj tekst nikome ne šalje.</p>
 <h2>Rezervacije</h2>
-<p>Kada rezervišete preko Restoplace-a, Instagrama ili telefonom, dobijamo podatke koje nam date (ime, kontakt, datum, vreme, broj gostiju) i koristimo ih samo za obradu rezervacije.</p>
+<p>Kada rezervišete sto preko Restoplace-a, Instagrama ili telefonom, dobijamo podatke koje nam date: ime, kontakt, datum, vreme, broj gostiju i želje. Koristimo ih samo za rezervaciju i komunikaciju o njoj.</p>
+<h2>Vaša prava</h2>
+<p>Možete zatražiti informacije o svojim podacima, njihovu ispravku ili brisanje. Pišite nam na Instagramu <a href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">@spicki_bg</a> ili pozovite +381 62 893-95-50.</p>
 <h2>Uzrast</h2>
-<p>Sajt i lokal su namenjeni gostima starijim od 18 godina.</p>
-<h2>Kontakt</h2>
-<p>Za pitanja o podacima pišite nam na Instagramu <a href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">@spicki_bg</a> ili pozovite +381 62 893-95-50.</p></div></article></div><div data-l="en" lang="en" hidden><article class="wrap narrow">
+<p>Sajt i lokal su namenjeni gostima starijim od 18 godina.</p></div></article></div><div data-l="en" lang="en" hidden><article class="wrap narrow">
 <p class="crumbs"><a href="index.html#en">Spički</a></p>
-<h1>Privacy and cookie policy</h1><p class="lead">Updated: 19 October 2026</p>
+<h1>Privacy policy</h1><p class="lead">Updated: 19 October 2026</p>
 <div class="body">
-<h2>Who runs this website</h2>
+<h2>Who is responsible for this site</h2>
 <p>spickibg.com is owned by <strong>MANUYLOV AND PARTNERS DOO BEOGRAD (VRAČAR)</strong>, tax ID (PIB) 114447111. Venue: Spički hookah lounge, Mačvanska 10, Belgrade.</p>
-<h2>Cookies and browser storage</h2>
-<p>This website does not use advertising or analytics cookies and sets no cookies of its own. Your browser's storage (localStorage) keeps only:</p>
-<ul><li>your chosen site language;</li><li>your confirmation that you are 18 or older;</li><li>a note that you closed the cookie notice.</li></ul>
-<p>This data stays on your device and is not sent to us. You can delete it by clearing site data in your browser settings.</p>
-<h2>Third-party services</h2>
-<p>The site's fonts load from Google Fonts, so Google receives your device's IP address when a page loads. Links lead to external services — Restoplace (online booking), Instagram, Qastio (menu), Wolt (delivery), Google Maps. Their own data policies apply once you open them.</p>
+<h2>What the site stores on your device</h2>
+<p>The site <strong>sets no cookies</strong> and does not use sessionStorage. There are no analytics, ads or social media pixels. Your browser's localStorage may hold only two entries:</p>
+<div class="pv-table-wrap"><table class="pv-table"><tr><th>Entry</th><th>Purpose</th><th>When it appears</th><th>Kept for</th><th>Who receives it</th></tr>
+<tr><td>spicki-age-18</td><td>Remembers that you confirmed you're 18+, so we don't ask on every page</td><td>After you answer “Yes, I'm 18+”</td><td>30 days</td><td>Only your browser</td></tr>
+<tr><td>spicki-lang</td><td>Remembers your chosen site language</td><td>Only if you tapped RU / SR / EN yourself</td><td>12 months</td><td>Only your browser</td></tr></table></div>
+<p>Both entries are needed for features you use yourself: the 18+ access restriction and language choice. So the site doesn't ask for separate consent; it tells you about them here, in the age check and in “Privacy settings”, where you can delete them. Clearing site data in your browser also removes them.</p>
+<h2>What requests the site makes</h2>
+<p>All site files — pages, photos and fonts — load from spickibg.com. The Manrope and Cormorant fonts are hosted on the site; Google Fonts is not used.</p>
+<p>The site is hosted on <strong>GitHub Pages</strong> (GitHub, Inc., USA). Like any web server, it receives your device's IP address and technical request data (browser, time, page requested) and may keep them in security logs. GitHub processes this data under its own privacy statement.</p>
+<h2>Links to other services</h2>
+<p>Links to Restoplace (online booking), Instagram and Threads, Qastio (menu), Wolt (delivery) and Google Maps load nothing until you tap them. Their own policies apply once you open them.</p>
+<p>The “Copy and open Instagram” button copies your booking text to your device's clipboard; the site doesn't send that text anywhere.</p>
 <h2>Bookings</h2>
-<p>When you book via Restoplace, Instagram or by phone, we receive the details you provide (name, contact, date, time, number of guests) and use them only to handle your booking.</p>
+<p>When you book via Restoplace, Instagram or by phone, we receive the details you give us: name, contact, date, time, number of guests and requests. We use them only for the booking and to contact you about it.</p>
+<h2>Your rights</h2>
+<p>You can ask what data we hold about you, or ask us to correct or delete it. Message us on Instagram <a href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">@spicki_bg</a> or call +381 62 893-95-50.</p>
 <h2>Age</h2>
-<p>The website and venue are intended for guests aged 18 and over.</p>
-<h2>Contact</h2>
-<p>For questions about your data, message us on Instagram <a href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">@spicki_bg</a> or call +381 62 893-95-50.</p></div></article></div></main>
-<footer><div class="wrap legal-foot">© 2026 Spički šibice · MANUYLOV AND PARTNERS DOO BEOGRAD (VRAČAR) · <span data-l="ru">ПИБ</span><span data-l="sr" hidden>PIB</span><span data-l="en" hidden>Tax ID (PIB)</span> 114447111</div></footer>
-<script>var TITLES={"ru": "Политика конфиденциальности и cookies — Spički", "sr": "Politika privatnosti i kolačića — Spički", "en": "Privacy and cookie policy — Spički"};var METAS={"ru": "", "sr": "", "en": ""};(function(){
+<p>The website and venue are intended for guests aged 18 and over.</p></div></article></div></main>
+<footer><div class="wrap legal-foot">© 2026 Spički šibice · MANUYLOV AND PARTNERS DOO BEOGRAD (VRAČAR) · <span data-l="ru">ПИБ</span><span data-l="sr" hidden>PIB</span><span data-l="en" hidden>Tax ID (PIB)</span> 114447111 · <a href="privacy.html" data-privacy-open>Настройки приватности</a></div></footer>
+<script>var TITLES={"ru": "Политика конфиденциальности — Spički", "sr": "Politika privatnosti — Spički", "en": "Privacy policy — Spički"};var METAS={"ru": "", "sr": "", "en": ""};(function(){
   var LANGS=["ru","sr","en"], HL={ru:"ru",sr:"sr-Latn",en:"en"};
-  function set(l){
+  function set(l, persist){
     if(LANGS.indexOf(l)<0) l="ru";
     document.querySelectorAll("[data-l]").forEach(function(el){ el.hidden = el.getAttribute("data-l")!==l; });
     document.querySelectorAll(".lang button").forEach(function(b){ b.setAttribute("aria-pressed", String(b.dataset.lang===l)); });
     document.documentElement.lang = HL[l];
     document.title = TITLES[l];
     
-    try{ localStorage.setItem("spicki-lang", l); }catch(e){}
+    if(persist){ try{ localStorage.setItem("spicki-lang", JSON.stringify({v:l, exp:Date.now()+365*864e5})); }catch(e){} }
   }
-  document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ set(b.dataset.lang); }); });
+  document.querySelectorAll(".lang button").forEach(function(b){ b.addEventListener("click", function(){ set(b.dataset.lang, true); }); });
   var h=(location.hash||"").slice(1), s="ru";
-  if(LANGS.indexOf(h)>=0) s=h; else { try{ var v=localStorage.getItem("spicki-lang"); if(LANGS.indexOf(v)>=0) s=v; }catch(e){} }
+  if(LANGS.indexOf(h)>=0) s=h; else { try{ var o=JSON.parse(localStorage.getItem("spicki-lang")); if(o && o.exp>Date.now() && LANGS.indexOf(o.v)>=0) s=o.v; }catch(e){} }
   set(s);
 })();
 </script>
