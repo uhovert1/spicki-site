@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Spički — страница не найдена</title>
 <meta name="robots" content="noindex">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Crect width=%2264%22 height=%2264%22 rx=%2214%22 fill=%22%231a1714%22/%3E%3Ccircle cx=%2232%22 cy=%2236%22 r=%2214%22 fill=%22%23e0301c%22/%3E%3C/svg%3E">
 <style>
 :root{color-scheme:dark}
 body{margin:0;min-height:100vh;display:grid;place-items:center;background:#1a1714;color:#efe6d6;font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;text-align:center;padding:24px}
@@ -18,7 +18,8 @@ a{display:inline-block;background:#d23a22;color:#fff6ea;text-decoration:none;pad
 <main>
 <h1>Спичка погасла</h1>
 <p>Такой страницы нет. Stranica ne postoji. Page not found.</p>
-<a href="/">Spički — на главную</a>
+<a href="/" id="home">Spički — на главную</a>
 </main>
+<script>var b=location.pathname.indexOf("/spicki-site/")===0?"/spicki-site/":"/";document.getElementById("home").href=b;</script>
 </body>
 </html>
