@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spički Белград — кальянный лаунж на Врачаре</title>
+<meta name="theme-color" content="#1a1714">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spički šibice">
+<meta property="og:title" content="Spički — кальянный лаунж на Врачаре, Белград">
+<meta property="og:description" content="Кальяны, кухня, бизнес-ланчи, бар и игры: столы с PS5 и Secret Room с пятью игровыми ПК. Mačvanska 10.">
+<meta property="og:image" content="img/og-cover.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="description" content="Spički — кальянный лаунж на Врачаре, Mačvanska 10, Белград. Кальяны, кухня, коктейли, столы с PS5 и Secret Room с игровыми ПК.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&family=Montserrat:wght@500;600&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BarOrPub", "name": "Spički šibice", "description": "Hookah lounge in Vračar, Belgrade: hookah, kitchen, cocktails, PS5 tables and a Secret Room with gaming PCs.", "address": {"@type": "PostalAddress", "streetAddress": "Mačvanska 10", "addressLocality": "Beograd", "postalCode": "11000", "addressCountry": "RS"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"], "opens": "12:00", "closes": "00:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "12:00", "closes": "01:00"}], "telephone": "+381 62 893-95-50", "sameAs": ["https://www.instagram.com/spicki_bg/", "https://www.threads.com/@spicki_bg"], "hasMenu": "https://qastio.app/rs/belgrade/spicki", "servesCuisine": ["International"]}</script>
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>
+/* Layout: «чиркнуть спичкой» — тёмный обугленный фон, одна горячая точка (красная головка) и янтарный свет; секции разной формы, тонкая «спичка» как разделитель */
+:root{
+  --char:#1a1714;      /* фон — обугленное дерево */
+  --char-2:#231e1a;    /* приподнятые поверхности */
+  --char-3:#2e2722;    /* линии, рамки */
+  --cream:#efe6d6;     /* основной текст */
+  --cream-dim:#b9ad9b; /* второстепенный текст */
+  --head:#d23a22;      /* головка спички */
+  --flame:#eaa847;     /* пламя */
+  --font-display:"Cormorant","Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --font-logo:"Montserrat","Gotham","Helvetica Neue",Arial,sans-serif;
+  --font-body:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --gutter-l:max(20px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(20px, env(safe-area-inset-right, 0px));
+  --wrap:1180px;
+  --bar-h:0px;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--char);color:var(--cream);font-family:var(--font-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;padding-bottom:var(--bar-h)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--char)}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:500;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:var(--gutter-l);padding-right:var(--gutter-r)}
+.eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--flame)}
+.lead{color:var(--cream-dim);max-width:34em}
+:focus-visible{outline:2px solid var(--flame);outline-offset:3px;border-radius:4px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Кнопки */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:48px;padding:0 1.5em;border-radius:999px;font:600 .95rem/1 var(--font-body);text-decoration:none;cursor:pointer;border:1px solid transparent;transition:background .25s,color .25s,border-color .25s,box-shadow .3s,transform .2s}
+.btn:active{transform:translateY(1px)}
+.btn-fire{background:var(--head);color:#fff6ea}
+.btn-fire:hover{box-shadow:0 0 0 6px rgba(234,168,71,.16),0 10px 40px -8px rgba(210,58,34,.7)}
+.btn-line{border-color:rgba(239,230,214,.35);color:var(--cream);background:transparent}
+.btn-line:hover{border-color:var(--flame);color:var(--flame)}
+.btn-big{min-height:58px;padding:0 2em;font-size:1.02rem}
+.arrow{font-family:var(--font-body);transition:transform .25s}
+.btn:hover .arrow{transform:translateX(3px)}
+
+/* Знак-спичка */
+.match{display:inline-block;position:relative;width:3px;height:1.1em;background:linear-gradient(#c79b6a,#8a6440);border-radius:2px;vertical-align:-.1em;margin-right:.45em}
+.match::before{content:"";position:absolute;left:50%;top:-.28em;width:.42em;height:.42em;transform:translateX(-50%);border-radius:50% 50% 45% 45%;background:var(--head)}
+.match::after{content:"";position:absolute;left:50%;top:-.95em;width:.36em;height:.62em;transform:translateX(-50%);border-radius:50% 50% 50% 50%/65% 65% 35% 35%;background:radial-gradient(circle at 50% 70%,#fff2c8 0,var(--flame) 45%,rgba(210,58,34,.0) 75%);filter:blur(.4px);animation:flick 2.4s ease-in-out infinite;transform-origin:50% 100%}
+@keyframes flick{0%,100%{transform:translateX(-50%) scale(1,1)}30%{transform:translateX(-52%) scale(.92,1.08)}60%{transform:translateX(-48%) scale(1.05,.94)}}
+
+/* Логотип: SPIČKI с пламенем над S, ŠIBICE разрядкой — воссоздан по аватару Instagram */
+.wm{display:inline-grid;justify-items:center;font-family:var(--font-logo);font-weight:600;line-height:1;color:var(--cream);text-decoration:none}
+.wm-main{position:relative;letter-spacing:.04em;white-space:nowrap}
+.wm-s{position:relative;display:inline-block}
+.wm-flame{position:absolute;left:44%;top:-.2em;width:.24em;height:.34em;transform:rotate(14deg);transform-origin:50% 100%;overflow:visible}
+.wm-flame path{fill:url(#flameGrad)}
+.wm-flame.live{animation:flame 2.6s ease-in-out infinite;filter:drop-shadow(0 0 .12em rgba(234,168,71,.65))}
+@keyframes flame{0%,100%{transform:rotate(14deg) scale(1)}35%{transform:rotate(9deg) scale(.94,1.07)}70%{transform:rotate(17deg) scale(1.04,.95)}}
+.wm-sub{font-weight:500;font-size:.2em;letter-spacing:.72em;margin-right:-.72em;margin-top:.55em;color:var(--cream)}
+
+/* Оригинальный логотип (вектор из Illustrator) */
+.logo{display:block;fill:currentColor;color:var(--cream);height:auto}
+.brand{display:block;text-decoration:none;color:var(--cream)}
+.brand .logo{width:118px}
+.logo-foot{width:150px}
+.logo .logo-flame{transform-box:fill-box;transform-origin:30% 100%;animation:burn 1.9s ease-in-out infinite,glowf 2.7s ease-in-out infinite}
+.logo-foot .logo-flame{animation-delay:-.8s,-1.3s}
+@keyframes burn{
+  0%,100%{transform:rotate(0) scale(1,1)}
+  18%{transform:rotate(-3deg) scale(.96,1.05)}
+  37%{transform:rotate(2deg) scale(1.03,.95)}
+  55%{transform:rotate(-1.5deg) scale(.97,1.07)}
+  72%{transform:rotate(2.5deg) scale(1.02,.97)}
+  88%{transform:rotate(-1deg) scale(.99,1.03)}}
+@keyframes glowf{0%,100%{filter:drop-shadow(0 0 6px rgba(224,48,28,.55))}50%{filter:drop-shadow(0 0 14px rgba(255,90,46,.8))}}
+footer .wrap{align-items:center}
+
+/* Шапка */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(26,23,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid rgba(239,230,214,.07)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px}
+.nav{display:flex;gap:26px;font-size:.9rem}
+.nav a{text-decoration:none;color:var(--cream-dim);transition:color .2s}
+.nav a:hover{color:var(--cream)}
+.top .btn{min-height:40px;padding:0 1.1em;font-size:.86rem}
+@media (max-width:860px){.nav{display:none}}
+@media (max-width:640px){.top .btn{display:none}}
+
+/* Первый экран */
+.hero{position:relative;overflow:hidden;isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(48% 70% at 72% 50%,rgba(226,96,40,.34),transparent 70%),radial-gradient(30% 40% at 88% 40%,rgba(234,168,71,.2),transparent 70%)}
+.hero .wrap{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(32px,5vw,72px);align-items:center;padding-block:56px 80px}
+.hero-copy{min-width:0;max-width:540px}
+.hero .aka{font-size:.8rem;letter-spacing:.32em;text-transform:uppercase;color:var(--flame)}
+.hero .slogan{margin-top:20px;font-family:var(--font-display);font-size:clamp(2.4rem,4.4vw,3.9rem);line-height:1.04;letter-spacing:-.01em;text-wrap:balance}
+.hero .slogan em{font-style:italic;color:var(--flame)}
+.hero .lead{margin-top:20px;font-size:1.05rem}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.status{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:28px;font-size:.88rem;color:var(--cream-dim)}
+.status .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cream-dim);margin-right:8px;vertical-align:1px}
+.status .dot.on{background:var(--flame);box-shadow:0 0 0 4px rgba(234,168,71,.18)}
+.hero-photo{margin:0;justify-self:end;width:min(100%,500px);position:relative}
+.hero-photo img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;border-radius:10px;box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 140px -20px rgba(226,96,40,.55);animation:warm 4s ease-in-out infinite}
+@keyframes warm{0%,100%{box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 140px -20px rgba(226,96,40,.55)}50%{box-shadow:0 40px 90px -30px rgba(0,0,0,.8),0 0 170px -14px rgba(234,140,50,.7)}}
+@media (max-width:860px){
+  .hero .wrap{grid-template-columns:1fr;padding-block:20px 60px;gap:32px}
+  .hero-photo{order:-1;justify-self:center;width:min(100%,440px)}
+}
+
+/* Разделитель-спичка */
+.divider{display:flex;justify-content:center;padding-block:8px}
+.divider span{width:1px;height:72px;background:linear-gradient(var(--char-3),#7d5c3e);position:relative}
+.divider span::before{content:"";position:absolute;left:50%;top:-5px;width:9px;height:9px;transform:translateX(-50%);border-radius:50%;background:var(--head);box-shadow:0 0 18px 2px rgba(210,58,34,.55)}
+
+section{padding-block:clamp(64px,9vw,120px)}
+.sec-head{display:grid;gap:14px;margin-bottom:clamp(36px,5vw,56px)}
+.sec-head h2{font-size:clamp(2.6rem,6vw,4.6rem)}
+
+/* О Spički + преимущества */
+.about-top{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(32px,6vw,88px);align-items:center}
+.about-img{position:relative;max-width:100%;isolation:isolate}
+.about-img img{border-radius:6px;width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:50% 0%}
+.about-img::after{content:"";position:absolute;inset:auto -14px -14px auto;width:56%;height:56%;border:1px solid rgba(234,168,71,.4);border-radius:6px;z-index:-1}
+.about h2{font-size:clamp(2.3rem,4.6vw,3.8rem)}
+.about-body{display:grid;gap:22px;justify-items:start;min-width:0}
+.about-body > p{font-size:1.06rem;max-width:36em;color:var(--cream-dim)}
+.perks{list-style:none;margin:clamp(56px,7vw,96px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--char-3)}
+.perks li{display:grid;grid-template-columns:36px 1fr;gap:14px;align-items:start;padding:26px 22px 26px 0;border-bottom:1px solid var(--char-3)}
+.perks li:not(:nth-child(4n)){border-right:1px solid var(--char-3)}
+.perks li:not(:nth-child(4n+1)){padding-left:22px}
+.perks h3{font-family:var(--font-body);font-size:1rem;font-weight:700;line-height:1.3;margin-bottom:6px}
+.perks p{font-size:.9rem;color:var(--cream-dim)}
+.ico{width:32px;height:32px;fill:none;stroke:var(--flame);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:1000px){.perks{grid-template-columns:1fr 1fr}.perks li{padding-left:0!important;border-right:0!important}.perks li:nth-child(odd){padding-right:22px!important;border-right:1px solid var(--char-3)!important}.perks li:nth-child(even){padding-left:22px!important}}
+@media (max-width:860px){.about-top{grid-template-columns:1fr}.about-img{max-width:440px}}
+@media (max-width:560px){.perks{grid-template-columns:1fr}.perks li:nth-child(n){padding:20px 0!important;border-right:0!important}}
+
+/* Зоны */
+.zone-list{display:grid;gap:0;border-top:1px solid var(--char-3)}
+.zone{display:grid;grid-template-columns:clamp(110px,16vw,200px) 1fr auto;gap:clamp(20px,4vw,56px);align-items:center;padding-block:clamp(28px,4vw,44px);border-bottom:1px solid var(--char-3)}
+.zone-num{font-family:var(--font-display);font-style:italic;font-size:clamp(5rem,11vw,9rem);line-height:.8;color:var(--cream);opacity:.9}
+.zone-num-word{font-size:clamp(3rem,6vw,5rem)}
+.zone-feature .zone-num{color:var(--head);text-shadow:0 0 50px rgba(210,58,34,.45)}
+.zone-body{min-width:0;display:grid;gap:10px;max-width:44em}
+.zone-kicker{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--flame)}
+.zone h3{font-size:clamp(2rem,3.6vw,2.9rem)}
+.zone-body > p:not(.zone-kicker){color:var(--cream-dim)}
+.zone-facts{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.zone-facts li{font-size:.82rem;padding:.4em .95em;border:1px solid var(--char-3);border-radius:999px;color:var(--cream)}
+.zone-photo{margin:0;width:100%;max-width:200px;aspect-ratio:1;border-radius:8px;overflow:hidden;box-shadow:0 20px 50px -24px rgba(0,0,0,.8),0 0 60px -20px rgba(140,90,255,.35)}
+.zone-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.zones-note{margin-top:22px;font-size:.86rem;color:var(--cream-dim)}
+@media (max-width:860px){.zone{grid-template-columns:auto 1fr;align-items:start}.zone .btn{grid-column:1/-1;justify-self:start}}
+@media (max-width:480px){.zone{grid-template-columns:1fr;gap:14px}.zone-num{font-size:4.4rem}.zone-photo{max-width:260px;aspect-ratio:1}}
+
+/* Кейтеринг и события */
+.catering{background:var(--char-2);position:relative;overflow:hidden}
+.cat-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:clamp(36px,6vw,88px);align-items:start}
+.cat-main{display:grid;gap:22px;justify-items:start;min-width:0}
+.cat-main h2{font-size:clamp(2.6rem,6vw,4.6rem)}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:12px;max-width:34em}
+.checks li{display:grid;grid-template-columns:22px 1fr;gap:10px}
+.checks li::before{content:"";width:10px;height:10px;margin-top:.5em;border-radius:50%;background:var(--head);box-shadow:0 0 12px rgba(210,58,34,.6)}
+.cat-side{display:grid;gap:14px;justify-items:start;padding:clamp(22px,3vw,32px);border:1px solid var(--char-3);border-radius:14px;background:var(--char);min-width:0}
+.cat-side h3{font-size:clamp(1.7rem,2.6vw,2.2rem);font-style:italic}
+.cat-side p:not(.eyebrow){color:var(--cream-dim);font-size:.94rem}
+@media (max-width:860px){.cat-grid{grid-template-columns:1fr}}
+
+.foot-nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+.foot-nav a{text-decoration:none;color:var(--cream-dim)}
+.foot-nav a:hover{color:var(--flame)}
+
+/* Меню — как бумажное меню */
+.menu{background:var(--char-2)}
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,88px)}
+.menu-col{min-width:0}
+.menu-col > header{display:flex;align-items:end;gap:18px;margin-bottom:26px}
+.menu-col > header img{width:96px;height:96px;object-fit:cover;border-radius:50%;flex:none;border:1px solid var(--char-3)}
+.menu-col h3{font-size:clamp(2rem,3.4vw,2.8rem);font-style:italic}
+.menu-col h3 small{display:block;font:600 .72rem/1.4 var(--font-body);letter-spacing:.18em;text-transform:uppercase;font-style:normal;color:var(--cream-dim);margin-bottom:6px}
+.dish{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding-block:16px;border-bottom:1px dashed rgba(239,230,214,.14)}
+.dish:first-of-type{border-top:1px dashed rgba(239,230,214,.14)}
+.dish .name{font-weight:600;font-size:1.02rem}
+.dish .price{font-variant-numeric:tabular-nums;font-weight:600;color:var(--flame);white-space:nowrap}
+.dish .desc{grid-column:1/-1;font-size:.9rem;color:var(--cream-dim);max-width:40em}
+.menu-cta{margin-top:clamp(40px,5vw,60px);display:flex;flex-wrap:wrap;align-items:center;gap:18px 28px;padding-top:32px;border-top:1px solid var(--char-3)}
+.menu-cta p{color:var(--cream-dim);font-size:.92rem;max-width:30em}
+@media (max-width:860px){.menu-cols{grid-template-columns:1fr}}
+
+/* Галерея — мозаика */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.gallery-grid figure{margin:0;position:relative;overflow:hidden;border-radius:6px;background:var(--char-2);aspect-ratio:3/4}
+.gallery-grid figure.wide{grid-column:span 2;aspect-ratio:auto}
+.gallery-grid button{all:unset;display:block;cursor:zoom-in;width:100%;height:100%}
+.gallery-grid button:focus-visible{outline:2px solid var(--flame);outline-offset:-2px}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .6s;filter:saturate(.95)}
+.gallery-grid figure:hover img{transform:scale(1.04);filter:saturate(1.08) brightness(1.05)}
+.gallery-grid figure::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 0 1px rgba(239,230,214,.06);border-radius:6px}
+@media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}}
+.lb{border:0;padding:0;margin:0;width:100vw;height:100dvh;max-width:none;max-height:none;background:rgba(14,11,9,.96);color:var(--cream)}
+.lb::backdrop{background:rgba(14,11,9,.9)}
+.lb[open]{display:grid;grid-template-rows:1fr auto;align-items:center;justify-items:center}
+.lb img{max-width:min(92vw,1100px);max-height:calc(100dvh - 120px);width:auto;height:auto;object-fit:contain;border-radius:6px;margin-top:max(24px,env(safe-area-inset-top,0px))}
+.lb-bar{display:flex;align-items:center;justify-content:center;gap:16px;padding:16px max(16px,env(safe-area-inset-right,0px)) calc(16px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));width:100%}
+.lb-bar p{min-width:0;flex:1;max-width:560px;text-align:center;font-size:.9rem;color:var(--cream-dim)}
+.lb-btn{width:48px;height:48px;border-radius:50%;border:1px solid rgba(239,230,214,.3);background:transparent;color:var(--cream);font:500 1.3rem/1 var(--font-body);cursor:pointer;flex:none}
+.lb-btn:hover{border-color:var(--flame);color:var(--flame)}
+.lb-close{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px))}
+.gallery-note{margin-top:18px;font-size:.84rem;color:var(--cream-dim)}
+
+/* Бронирование */
+.booking{position:relative;overflow:hidden}
+.booking::before{content:"";position:absolute;width:680px;height:680px;max-width:140%;right:-220px;top:-200px;border-radius:50%;background:radial-gradient(closest-side,rgba(210,58,34,.2),transparent);pointer-events:none}
+.book-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:clamp(36px,6vw,88px);align-items:start;position:relative}
+.book-grid > div{min-width:0}
+.online{margin-top:28px;padding:clamp(20px,3vw,28px);border:1px solid rgba(234,168,71,.35);border-radius:14px;background:linear-gradient(160deg,rgba(210,58,34,.14),rgba(26,23,20,0) 70%);display:grid;gap:12px;justify-items:start}
+.online-k,.ig-k{font-size:.74rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--flame)}
+.online-p{color:var(--cream-dim);max-width:30em}
+.online-phone{font-size:.95rem;color:var(--cream-dim);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+.phone{color:var(--cream);font-weight:600;font-variant-numeric:tabular-nums;text-decoration:none;white-space:nowrap;user-select:all}
+.phone:hover{color:var(--flame)}
+.ig-k{margin-top:30px}
+.steps{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:14px;counter-reset:s}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:baseline;color:var(--cream-dim)}
+.steps li::before{counter-increment:s;content:counter(s);font-family:var(--font-display);font-style:italic;font-size:1.6rem;color:var(--flame);line-height:1}
+.book-card{background:var(--char-2);border:1px solid var(--char-3);border-radius:14px;padding:clamp(22px,3.5vw,36px);display:grid;gap:18px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:grid;gap:6px;min-width:0}
+.field.full{grid-column:1/-1}
+.field label{font-size:.8rem;font-weight:600;letter-spacing:.04em;color:var(--cream-dim)}
+.field input,.field select{width:100%;min-height:48px;padding:0 14px;border-radius:10px;border:1px solid var(--char-3);background:var(--char);color:var(--cream);font:500 1rem var(--font-body)}
+.field input:focus,.field select:focus{outline:none;border-color:var(--flame);box-shadow:0 0 0 3px rgba(234,168,71,.18)}
+.preview{font-size:.9rem;line-height:1.55;padding:14px 16px;border-radius:10px;background:var(--char);border:1px dashed var(--char-3);white-space:pre-wrap;color:var(--cream);min-height:3em;user-select:all;overflow-wrap:anywhere}
+.book-actions{display:flex;flex-wrap:wrap;gap:10px}
+.book-actions .btn{flex:1 1 220px}
+.hint{font-size:.84rem;color:var(--cream-dim)}
+.hint[data-state="ok"]{color:var(--flame)}
+@media (max-width:860px){.book-grid{grid-template-columns:1fr}}
+@media (max-width:420px){.fields{grid-template-columns:1fr}}
+
+/* Контакты */
+.contacts{background:var(--char-2)}
+.contact-grid{display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:clamp(28px,4vw,56px)}
+.contact-grid > div{min-width:0}
+.contact-grid h3{font-family:var(--font-body);font-size:.74rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--flame);margin-bottom:14px}
+.addr{font-family:var(--font-display);font-size:clamp(1.9rem,3.4vw,2.6rem);line-height:1.05}
+.addr small{display:block;font-family:var(--font-body);font-size:.92rem;color:var(--cream-dim);margin-top:10px}
+.hours{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.hours td{padding:9px 0;border-bottom:1px solid var(--char-3)}
+.hours td:last-child{text-align:right}
+.hours tr.today td{color:var(--flame);font-weight:600}
+.links{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.links a{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--char-3);text-decoration:none;transition:color .2s}
+.links a:hover{color:var(--flame)}
+.links .k{color:var(--cream-dim);font-size:.86rem}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr 1fr}.contact-grid > div:first-child{grid-column:1/-1}}
+@media (max-width:560px){.contact-grid{grid-template-columns:1fr}}
+
+/* Отзывы */
+.review .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:32px;align-items:end}
+.review h2{font-size:clamp(2.4rem,5.2vw,4.2rem);font-style:italic}
+.review .side{display:grid;gap:16px;justify-items:start;min-width:0}
+@media (max-width:860px){.review .wrap{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--char-3);padding-block:30px;font-size:.84rem;color:var(--cream-dim)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+
+/* Мобильная кнопка брони */
+.mbar{display:none}
+@media (max-width:640px){
+  :root{--bar-h:calc(76px + env(safe-area-inset-bottom,0px))}
+  .mbar{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:55;padding:12px var(--gutter-r) calc(12px + env(safe-area-inset-bottom,0px)) var(--gutter-l);background:rgba(26,23,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid rgba(239,230,214,.08);transition:transform .3s}
+  .mbar .btn{flex:1;min-height:52px}
+  .mbar .btn-line{flex:0 0 auto;padding:0 1.1em}
+  .mbar.hide{transform:translateY(110%)}
+}
+
+/* Появление при прокрутке: элементы видимы по умолчанию, анимация — только поверх */
+.in{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+
+/* Переключатель языка, бургер */
+.top-right{display:flex;align-items:center;gap:14px}
+.lang{display:inline-flex;border:1px solid rgba(239,230,214,.18);border-radius:999px;padding:3px}
+.lang button{all:unset;cursor:pointer;font:600 .74rem/1 var(--font-body);letter-spacing:.1em;color:var(--cream-dim);padding:8px 10px;border-radius:999px;min-width:22px;text-align:center}
+.lang button[aria-pressed="true"]{background:var(--cream);color:var(--char)}
+.lang button:hover:not([aria-pressed="true"]){color:var(--cream)}
+.lang button:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
+.burger{all:unset;display:none;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid rgba(239,230,214,.25);position:relative;flex:none}
+.burger span{position:absolute;left:13px;right:13px;height:1.5px;background:var(--cream);transition:transform .3s,top .3s}
+.burger span:first-child{top:17px}.burger span:last-child{top:25px}
+.burger[aria-expanded="true"] span:first-child{top:21px;transform:rotate(45deg)}
+.burger[aria-expanded="true"] span:last-child{top:21px;transform:rotate(-45deg)}
+.burger:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
+@media (max-width:1180px){.nav{gap:18px}}
+@media (max-width:1060px){
+  .burger{display:block}
+  .nav{display:none;position:absolute;left:0;right:0;top:100%;height:calc(100dvh - 64px - env(safe-area-inset-top,0px));z-index:49;background:var(--char);flex-direction:column;gap:0;padding:12px var(--gutter-r) 40px var(--gutter-l);overflow-y:auto;font-size:1.6rem;font-family:var(--font-display)}
+  .nav.open{display:flex}
+  .nav a{color:var(--cream);padding:14px 0;border-bottom:1px solid var(--char-3)}
+  body.nav-open{overflow:hidden}
+  body.nav-open .mbar{display:none}
+}
+@media (max-width:640px){.top-book{display:none}.lang button{padding:8px 8px}}
+
+/* Статьи */
+.art-head{grid-template-columns:1fr 1fr;align-items:end;gap:14px 48px}
+.art-head .lead{max-width:30em}
+@media (max-width:860px){.art-head{grid-template-columns:1fr}}
+.art-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(18px,2.4vw,32px)}
+.art-card{display:grid;grid-template-rows:auto auto auto 1fr auto;gap:10px;text-decoration:none;color:var(--cream);min-width:0}
+.art-img{display:block;aspect-ratio:4/3;overflow:hidden;border-radius:6px;background:var(--char-2);margin-bottom:8px}
+.art-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.art-card:hover .art-img img{transform:scale(1.05)}
+.art-tag{font-size:.72rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--flame)}
+.art-title{font-family:var(--font-display);font-size:clamp(1.5rem,2.2vw,1.9rem);line-height:1.1;text-wrap:balance}
+.art-desc{font-size:.92rem;color:var(--cream-dim)}
+.art-more{font-size:.9rem;font-weight:600;color:var(--cream);margin-top:6px}
+.art-card:hover .art-title,.art-card:hover .art-more{color:var(--flame)}
+.art-card:focus-visible{outline:2px solid var(--flame);outline-offset:6px;border-radius:6px}
+@media (max-width:860px){.art-list{grid-template-columns:1fr}.art-card{grid-template-columns:120px 1fr;grid-template-rows:auto;column-gap:16px;row-gap:6px;align-items:start}.art-img{grid-row:1/span 4;margin:0;aspect-ratio:1}}
+</style>
+</head>
+<body>
+<svg width="1" height="1" style="position:absolute;left:-9999px" aria-hidden="true" focusable="false">
+  <defs><linearGradient id="logoFlame" gradientUnits="userSpaceOnUse" x1="0" y1="442" x2="0" y2="332"><stop offset="0" stop-color="#9e140c"/><stop offset=".45" stop-color="#e0301c"/><stop offset=".8" stop-color="#ff5a2e"/><stop offset="1" stop-color="#ff8a4a"/></linearGradient></defs>
+</svg>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" data-ta="aria-label:brand.aria" aria-label="Spički — наверх"><svg class="logo" viewBox="370 300 1180 308" aria-hidden="true" focusable="false"><path d="M 1148.851562 306.882812 L 1101.355469 356.984375 L 1055.160156 356.984375 L 1007.664062 306.882812 L 1056.136719 306.882812 L 1078.257812 329.332031 L 1100.378906 306.882812 Z M 1078.257812 560.3125 C 1092.570312 560.3125 1105.3125 556.570312 1116.484375 549.085938 C 1127.652344 541.605469 1136.050781 532.007812 1141.695312 520.296875 L 1184.636719 536.886719 C 1176.390625 555.324219 1162.84375 570.9375 1143.972656 583.734375 C 1125.105469 596.535156 1103.199219 602.929688 1078.257812 602.929688 C 1044.425781 602.929688 1016.007812 591.65625 993.023438 569.097656 C 970.03125 546.539062 958.539062 518.78125 958.539062 485.8125 C 958.539062 452.847656 970.03125 425.085938 993.023438 402.527344 C 1016.007812 379.972656 1044.425781 368.695312 1078.257812 368.695312 C 1103.199219 368.695312 1125.105469 375.09375 1143.972656 387.890625 C 1162.84375 400.6875 1176.390625 416.304688 1184.636719 434.734375 L 1141.695312 451.328125 C 1136.050781 439.617188 1127.652344 430.019531 1116.484375 422.535156 C 1105.3125 415.054688 1092.570312 411.3125 1078.257812 411.3125 C 1058.089844 411.3125 1041.113281 418.46875 1027.34375 432.785156 C 1013.570312 447.097656 1006.683594 464.777344 1006.683594 485.8125 C 1006.683594 506.851562 1013.570312 524.527344 1027.34375 538.839844 C 1041.113281 553.152344 1058.089844 560.3125 1078.257812 560.3125 "/><path d="M 663.476562 412.945312 L 663.476562 481.585938 L 713.25 481.585938 C 723.875 481.585938 732.441406 478.386719 738.949219 471.988281 C 745.457031 465.59375 748.710938 457.40625 748.710938 447.425781 C 748.710938 437.457031 745.457031 429.210938 738.949219 422.703125 C 732.441406 416.199219 723.875 412.945312 713.25 412.945312 Z M 663.476562 599.355469 L 616.953125 599.355469 L 616.953125 371.625 L 713.25 371.625 C 738.1875 371.625 758.359375 378.785156 773.761719 393.097656 C 789.15625 407.414062 796.859375 425.632812 796.859375 447.753906 C 796.859375 469.875 789.210938 487.929688 773.921875 501.917969 C 758.632812 515.910156 738.40625 522.902344 713.25 522.902344 L 663.476562 522.902344 Z M 663.476562 599.355469 "/><path d="M 897.378906 599.355469 L 850.859375 599.355469 L 850.859375 371.628906 L 897.378906 371.628906 Z M 897.378906 599.355469 "/><path d="M 1353.476562 464.34375 L 1446.519531 599.355469 L 1390.5625 599.355469 L 1321.917969 500.128906 L 1292.3125 533.636719 L 1292.3125 599.355469 L 1245.792969 599.355469 L 1245.792969 371.628906 L 1292.3125 371.628906 L 1292.3125 468.898438 L 1377.550781 371.628906 L 1435.457031 371.628906 Z M 1353.476562 464.34375 "/><path d="M 1543.785156 599.355469 L 1497.265625 599.355469 L 1497.265625 371.628906 L 1543.785156 371.628906 Z M 1543.785156 599.355469 "/><path d="M 528.304688 483.539062 C 521.035156 478.769531 513.011719 474.703125 504.230469 471.339844 C 495.445312 467.980469 486.714844 465.214844 478.039062 463.042969 C 469.363281 460.878906 461.394531 458.652344 454.128906 456.375 C 446.859375 454.097656 440.953125 451.0625 436.398438 447.265625 C 431.84375 443.472656 429.566406 438.757812 429.566406 433.113281 C 429.566406 425.957031 432.707031 420.050781 439 415.382812 C 445.289062 410.722656 453.421875 408.390625 463.402344 408.390625 C 468.710938 408.390625 473.542969 409.09375 477.925781 410.46875 C 477.554688 408.015625 477.359375 405.519531 477.359375 402.996094 C 477.359375 391.390625 481.585938 380.113281 489.359375 370.742188 C 481.800781 369.167969 473.691406 368.375 465.027344 368.375 C 441.605469 368.375 421.8125 374.828125 405.65625 387.730469 C 389.496094 400.636719 381.421875 416.632812 381.421875 435.714844 C 381.421875 447.214844 383.695312 457.136719 388.25 465.484375 C 392.804688 473.835938 398.710938 480.285156 405.980469 484.839844 C 413.246094 489.394531 421.269531 493.296875 430.054688 496.550781 C 438.839844 499.804688 447.566406 502.519531 456.242188 504.683594 C 464.914062 506.855469 472.886719 509.132812 480.15625 511.515625 C 487.417969 513.90625 493.332031 517.101562 497.886719 521.113281 C 502.441406 525.128906 504.71875 530.058594 504.71875 535.917969 C 504.71875 543.511719 501.191406 549.855469 494.144531 554.949219 C 487.09375 560.046875 478.039062 562.59375 466.980469 562.59375 C 454.617188 562.59375 444.695312 559.722656 437.210938 553.972656 C 429.730469 548.226562 425.117188 540.144531 423.386719 529.734375 L 376.214844 539.167969 C 379.25 558.476562 388.789062 573.871094 404.84375 585.367188 C 420.890625 596.863281 441.167969 602.605469 465.675781 602.605469 C 490.183594 602.605469 510.84375 596.101562 527.652344 583.085938 C 544.457031 570.074219 552.867188 553.921875 552.867188 534.617188 C 552.867188 522.691406 550.589844 512.386719 546.035156 503.707031 C 541.480469 495.035156 535.566406 488.3125 528.304688 483.539062 "/><path class="logo-flame" fill="url(#logoFlame)" d="M 527.183594 440.074219 C 547.453125 440.074219 564.261719 423.265625 564.261719 402.996094 C 564.261719 398.546875 563.277344 394.589844 561.792969 390.636719 C 549.433594 402.996094 542.015625 402.996094 537.074219 402.996094 C 566.734375 373.332031 551.90625 353.558594 522.242188 333.78125 C 524.714844 358.503906 508.398438 369.378906 501.972656 375.804688 C 494.554688 383.222656 490.105469 392.613281 490.105469 402.996094 C 490.105469 423.265625 506.917969 440.074219 527.183594 440.074219 "/></svg></a>
+    <nav class="nav" id="nav" data-ta="aria-label:nav.aria" aria-label="Разделы">
+      <a href="#about" data-t="nav.about">О Spički</a><a href="#zones" data-t="nav.zones">Зоны</a><a href="#menu" data-t="nav.menu">Меню</a><a href="#catering" data-t="nav.catering">Кейтеринг</a><a href="#gallery" data-t="nav.gallery">Галерея</a><a href="#articles" data-t="nav.articles">Статьи</a><a href="#contacts" data-t="nav.contacts">Контакты</a>
+    </nav>
+    <div class="top-right">
+      <div class="lang" role="group" data-ta="aria-label:lang.aria" aria-label="Язык сайта">
+        <button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="sr" aria-pressed="false">SR</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-fire top-book" href="#booking" data-t="cta.book">Забронировать стол</a>
+      <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" data-ta="aria-label:nav.open" aria-label="Открыть меню"><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-block:0" aria-labelledby="hero-title">
+    <div class="wrap">
+      <div class="hero-copy">
+        <h1 id="hero-title" class="sr-only" data-t="hero.h1">Spički — кальянный лаунж на Врачаре, Белград</h1>
+        <p class="aka" data-t="hero.aka">Кальянный лаунж · Врачар, Белград</p>
+        <p class="slogan" data-t="hero.slogan">В Спичках можно <em>никуда не спешить</em></p>
+        <p class="lead" data-t="hero.lead">Кальяны, кухня, бизнес-ланчи, бар и игры: столы с PS5 и закрытая Secret Room с пятью игровыми ПК. Mačvanska&nbsp;10.</p>
+        <div class="actions">
+          <a class="btn btn-fire btn-big" href="#booking"><span data-t="cta.book">Забронировать стол</span> <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-line btn-big" href="#menu" data-t="hero.menu">Посмотреть меню</a>
+        </div>
+        <p class="status"><span><span class="dot" id="status-dot" aria-hidden="true"></span><span id="status-text">Ежедневно с 12:00</span></span></p>
+      </div>
+      <figure class="hero-photo">
+        <img src="img/hero-photo.webp" width="1024" height="1024" data-ta="alt:hero.alt" alt="Логотип Spički šibice на фото: губы держат горящую спичку" fetchpriority="high">
+      </figure>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"><span></span></div>
+
+  <section class="about" id="about" aria-labelledby="about-title">
+    <div class="wrap">
+      <div class="about-top">
+        <figure class="about-img" style="margin:0">
+          <img src="img/about-hookah.webp" width="1100" height="1467" loading="lazy" data-ta="alt:about.alt" alt="Гостья выдыхает дым кальяна">
+        </figure>
+        <div class="about-body">
+          <p class="eyebrow" data-t="nav.about">О Spički</p>
+          <h2 id="about-title" data-t="about.h2">Всё, что редко помещается в одном месте</h2>
+          <p data-t="about.p">Открывая Spički, мы хотели соединить разнообразную кухню, сильный бар с винной картой, яркий интерьер, место для нетворкинга и игры. Получился кальянный лаунж на Врачаре, куда приходят на ужин, на матч и на долгий вечер с друзьями.</p>
+          <a class="btn btn-line" href="#zones"><span data-t="about.btn">Выбрать зону</span> <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <ul class="perks" id="perks" data-ta="aria-label:perks.aria" aria-label="Что есть в Spički"><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M16 3v5M13 8h6l-1 4h-4zM14 12v6M18 12v6M10 18h12l-1.5 8a3 3 0 0 1-3 2.5h-3a3 3 0 0 1-3-2.5z"/><path d="M22 20c3 0 5 1.5 6 4"/></svg><div><h3 data-t="p1.h">Кальяны</h3><p data-t="p1.p">Премиальный сервис: мастер подберёт табак и крепость под вашу компанию.</p></div></li><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><circle cx="16" cy="17" r="9"/><circle cx="16" cy="17" r="5"/><path d="M4 4v8M2 4v4a2 2 0 0 0 4 0V4M28 4c-2 2-2 6 0 8v14"/></svg><div><h3 data-t="p2.h">Своя кухня</h3><p data-t="p2.p">От тако и татаки до бефстроганова. По будням — бизнес-ланч из трёх блюд за 1.300&nbsp;RSD.</p></div></li><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M8 4h16l-8 11zM16 15v12M11 28h10M12 9h8"/></svg><div><h3 data-t="p3.h">Бар и винная карта</h3><p data-t="p3.p">Авторские и классические коктейли, вино, крафтовое пиво, чай в чайниках на весь стол.</p></div></li><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="5" y="5" width="22" height="22" rx="4"/><circle cx="11" cy="11" r="1.4"/><circle cx="21" cy="11" r="1.4"/><circle cx="16" cy="16" r="1.4"/><circle cx="11" cy="21" r="1.4"/><circle cx="21" cy="21" r="1.4"/></svg><div><h3 data-t="p4.h">Настольные игры</h3><p data-t="p4.p">Самый большой выбор настолок в Белграде — берите компанию и оставайтесь надолго.</p></div></li><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M9 10h14a6 6 0 0 1 6 6v3a4 4 0 0 1-7.2 2.4L20 19h-8l-1.8 2.4A4 4 0 0 1 3 19v-3a6 6 0 0 1 6-6z"/><path d="M10 13v5M7.5 15.5h5M21 14.5h.01M24 17h.01"/></svg><div><h3 data-t="p5.h">PS5 у столов</h3><p data-t="p5.p">Два VIP-стола с PlayStation&nbsp;5: кальян, коктейли и матч, не вставая с дивана.</p></div></li><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><rect x="3" y="5" width="26" height="17" rx="2"/><path d="M12 27h8M16 22v5M7 9h4"/></svg><div><h3 data-t="p6.h">Secret Room</h3><p data-t="p6.p">Закрытая зона с пятью игровыми ПК — для соло-игры и для всего сквада.</p></div></li><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M6 10h20l-1.5 17h-17zM11 10V8a5 5 0 0 1 10 0v2"/></svg><div><h3 data-t="p7.h">Доставка</h3><p data-t="p7.p">Кухню Spički можно заказать домой через Wolt.</p></div></li><li><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path d="M3 9h16v13H3zM19 13h6l4 5v4H19z"/><circle cx="9" cy="24" r="2.5"/><circle cx="24" cy="24" r="2.5"/></svg><div><h3 data-t="p8.h">Кейтеринг</h3><p data-t="p8.p">Привезём кальяны, бармена и шефа на вашу вечеринку или корпоратив.</p></div></li></ul>
+    </div>
+  </section>
+
+  <section class="zones" id="zones" aria-labelledby="zones-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-t="nav.zones">Зоны</p>
+        <h2 id="zones-title" data-t="zones.h2">Выберите, как провести вечер</h2>
+      </div>
+      <div class="zone-list">
+        <article class="zone zone-feature">
+          <figure class="zone-photo"><img src="img/zone-secret.webp" width="800" height="800" loading="lazy" data-ta="alt:z1.alt" alt="Secret Room: игровые ПК с изогнутыми мониторами и креслами"></figure>
+          <div class="zone-body">
+            <p class="zone-kicker" data-t="z1.kicker">Закрытая зона · игровые ПК</p>
+            <h3>Secret Room</h3>
+            <p data-t="z1.p">Полностью закрытое пространство с пятью игровыми компьютерами. Играйте во что угодно соло или всем сквадом, курите кальян, пейте коктейли и ужинайте под стримы любимых стримеров.</p>
+            <ul class="zone-facts"><li data-t="z1.f1">5 игровых ПК</li><li data-t="z1.f2">Кальян и бар прямо в комнате</li><li data-t="z1.f3">Отдельно от основного зала</li></ul>
+          </div>
+          <a class="btn btn-fire" href="#booking" data-zone="secret" data-t="z1.btn">Забронировать Secret Room</a>
+        </article>
+        <article class="zone">
+          <figure class="zone-photo"><img src="img/zone-play.webp" width="800" height="800" loading="lazy" data-ta="alt:z2.alt" alt="Гостья играет на PS5 за VIP-столом"></figure>
+          <div class="zone-body">
+            <p class="zone-kicker" data-t="z2.kicker">VIP-столы · PlayStation 5</p>
+            <h3 data-t="z2.h3">Столы с PS5</h3>
+            <p data-t="z2.p">Два VIP-стола с приставками: кальян, коктейли и матч на двоих или турнир на всю компанию.</p>
+          </div>
+          <a class="btn btn-line" href="#booking" data-zone="ps5" data-t="z2.btn">Забронировать стол с PS5</a>
+        </article>
+        <article class="zone">
+          <figure class="zone-photo"><img src="img/zone-bar.webp" width="800" height="800" loading="lazy" data-ta="alt:z3.alt" alt="Бар Spički под неоновой вывеской, гости у стойки"></figure>
+          <div class="zone-body">
+            <p class="zone-kicker" data-t="z3.kicker">Основной зал · бар</p>
+            <h3 data-t="z3.h3">Лаунж и бар</h3>
+            <p data-t="z3.p">Мягкие диваны, кальяны, бар и полки с настольными играми. Здесь ужинают, встречаются после работы и празднуют.</p>
+          </div>
+          <a class="btn btn-line" href="#booking" data-zone="main" data-t="z3.btn">Забронировать стол</a>
+        </article>
+      </div>
+      <p class="zones-note" data-t="zones.note">Вместимость и условия брони зон уточняйте при бронировании.</p>
+    </div>
+  </section>
+
+  <section class="menu" id="menu" aria-labelledby="menu-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-t="nav.menu">Меню</p>
+        <h2 id="menu-title" data-t="menu.h2">Немного из того, что подаём</h2>
+      </div>
+      <div class="menu-cols" id="menu-cols"></div>
+      <div class="menu-cta">
+        <a class="btn btn-fire btn-big" data-href="menu" href="https://qastio.app/rs/belgrade/spicki" target="_blank" rel="noopener"><span data-t="menu.full">Полное меню</span> <span class="arrow" aria-hidden="true">↗</span></a>
+        <p data-t="menu.note">Все блюда, напитки и актуальные цены — в нашем меню на Qastio.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="catering" id="catering" aria-labelledby="catering-title">
+    <div class="wrap cat-grid">
+      <div class="cat-main">
+        <p class="eyebrow" data-t="nav.catering">Кейтеринг</p>
+        <h2 id="catering-title" data-t="cat.h2">Spički приезжают к вам</h2>
+        <p class="lead" data-t="cat.lead">Кальянный кейтеринг под любое событие — от частной вечеринки до корпоратива.</p>
+        <ul class="checks">
+          <li data-t="cat.li1">Кальяны, которые перезабиваем сколько угодно раз за вечер.</li>
+          <li data-t="cat.li2">Напитки и еда по вашему запросу — с выездом барменов и шеф-поваров.</li>
+        </ul>
+        <a class="btn btn-fire" data-href="instagramDM" href="https://ig.me/m/spicki_bg" target="_blank" rel="noopener"><span data-t="cat.btn">Обсудить в Direct</span> <span class="arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <aside class="cat-side" aria-labelledby="events-title">
+        <p class="eyebrow" data-t="ev.eyebrow">Праздники</p>
+        <h3 id="events-title" data-t="ev.h3">26 марта — день рождения Spički</h3>
+        <p data-t="ev.p1">Каждую весну отмечаем вместе с гостями: DJ-сет, special-миксы, коктейли от бара и сюрпризы. Анонсы — в нашем Instagram.</p>
+        <p data-t="ev.p2">Свой праздник тоже можно провести у нас: забронируйте зону заранее и напишите пожелания в сообщении.</p>
+        <a class="btn btn-line" data-href="instagram" href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">Instagram @spicki_bg <span class="arrow" aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+  </section>
+
+  <section class="gallery" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow" data-t="nav.gallery">Галерея</p>
+        <h2 id="gallery-title" data-t="gal.h2">Как это выглядит</h2>
+        <p class="lead" data-t="gal.lead">Вечера в Spički: бар под неоновой вывеской, кальяны, PS5 и терраса.</p>
+      </div>
+      <div class="gallery-grid" id="gallery-grid"></div>
+    </div>
+  </section>
+  <dialog class="lb" id="lb" data-ta="aria-label:lb.aria" aria-label="Просмотр фото">
+    <button class="lb-btn lb-close" id="lb-close" type="button" data-ta="aria-label:lb.close" aria-label="Закрыть">×</button>
+    <img id="lb-img" alt="">
+    <div class="lb-bar">
+      <button class="lb-btn" id="lb-prev" type="button" data-ta="aria-label:lb.prev" aria-label="Предыдущее фото">←</button>
+      <p id="lb-cap" aria-live="polite"></p>
+      <button class="lb-btn" id="lb-next" type="button" data-ta="aria-label:lb.next" aria-label="Следующее фото">→</button>
+    </div>
+  </dialog>
+
+  <section class="articles" id="articles" aria-labelledby="articles-title">
+    <div class="wrap">
+      <div class="sec-head art-head">
+        <div>
+          <p class="eyebrow" data-t="nav.articles">Статьи</p>
+          <h2 id="articles-title" data-t="art.h2">Читать перед визитом</h2>
+        </div>
+        <p class="lead" data-t="art.lead">Как устроены игровые зоны, как заказать кальянный кейтеринг и что входит в бизнес-ланч.</p>
+      </div>
+      <div class="art-list" id="art-list"></div>
+    </div>
+  </section>
+
+  <section class="booking" id="booking" aria-labelledby="booking-title">
+    <div class="wrap book-grid">
+      <div>
+        <p class="eyebrow" data-t="book.eyebrow">Бронирование</p>
+        <h2 id="booking-title" style="font-size:clamp(2.6rem,6vw,4.6rem)" data-t="cta.book">Забронировать стол</h2>
+        <p class="lead" style="margin-top:18px" data-t="book.lead">Бронируйте онлайн, по телефону или через Instagram — как удобнее.</p>
+        <div class="online">
+          <p class="online-k" data-t="on.k">Онлайн-бронь</p>
+          <p class="online-p" data-t="on.p">Выберите дату, время и стол на схеме зала в системе бронирования Restoplace.</p>
+          <a class="btn btn-fire btn-big" data-href="booking" href="https://918913.restoplace.ws/?utm_source=website&utm_medium=site&utm_campaign=booking" target="_blank" rel="noopener"><span data-t="on.btn">Забронировать онлайн</span> <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+        <p class="ig-k" data-t="on.ig">Через Instagram</p>
+        <ol class="steps">
+          <li data-t="book.s1">Укажите дату, время и сколько вас будет.</li>
+          <li data-t="book.s2">Скопируйте готовое сообщение и откройте чат с нами.</li>
+          <li data-t="book.s3">Вставьте текст и отправьте. Мы ответим в директе.</li>
+        </ol>
+      </div>
+      <form class="book-card" id="book-form" novalidate>
+        <div class="fields">
+          <div class="field"><label for="b-date" data-t="f.date">Дата</label><input id="b-date" type="date" required></div>
+          <div class="field"><label for="b-time" data-t="f.time">Время</label><input id="b-time" type="time" step="1800" value="20:00" required></div>
+          <div class="field"><label for="b-guests" data-t="f.guests">Гостей</label>
+            <select id="b-guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option value="10+">10+</option></select>
+          </div>
+          <div class="field full"><label for="b-zone" data-t="f.zone">Зона</label><select id="b-zone"><option value="main" data-t="zone.main">Основной зал</option><option value="ps5" data-t="zone.ps5">VIP-стол с PS5</option><option value="secret" data-t="zone.secret">Secret Room (игровые ПК)</option></select></div>
+          <div class="field"><label for="b-name" data-t="f.name">Имя</label><input id="b-name" type="text" autocomplete="given-name" data-ta="placeholder:ph.name" placeholder="Как к вам обращаться"></div>
+          <div class="field"><label for="b-note" data-t="f.note">Пожелания <span style="font-weight:400">(необязательно)</span></label><input id="b-note" type="text" data-ta="placeholder:ph.note" placeholder="Например: день рождения"></div>
+        </div>
+        <div>
+          <p class="hint" id="preview-label" style="margin-bottom:8px" data-t="book.preview">Сообщение для Instagram:</p>
+          <div class="preview" id="b-preview" aria-labelledby="preview-label"></div>
+        </div>
+        <div class="book-actions">
+          <button class="btn btn-fire" type="submit" id="b-copy" data-t="book.copy">Скопировать и открыть Instagram</button>
+          <a class="btn btn-line" data-href="instagramDM" href="https://ig.me/m/spicki_bg" target="_blank" rel="noopener" data-t="book.just">Просто написать</a>
+        </div>
+        <p class="hint" id="b-hint" role="status" aria-live="polite" data-t="book.hint">Сообщение не отправляется автоматически — его нужно отправить в чате Instagram.</p>
+      </form>
+    </div>
+  </section>
+
+  <section class="contacts" id="contacts" aria-labelledby="contacts-title">
+    <div class="wrap">
+      <div class="sec-head"><p class="eyebrow" data-t="nav.contacts">Контакты</p><h2 id="contacts-title" data-t="c.h2">Как нас найти</h2></div>
+      <div class="contact-grid">
+        <div>
+          <h3 data-t="c.address">Адрес</h3>
+          <p class="addr"><span>Mačvanska 10</span><small data-t="c.district">Врачар, Белград</small></p>
+          <div class="contact-actions">
+            <a class="btn btn-fire" data-href="route" href="#" target="_blank" rel="noopener"><span data-t="c.route">Построить маршрут</span> <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="btn btn-line" data-href="mapCard" href="#" target="_blank" rel="noopener" data-t="c.maps">Открыть в Google Maps</a>
+          </div>
+        </div>
+        <div>
+          <h3 data-t="c.hours">Часы работы</h3>
+          <table class="hours"><caption class="sr-only" data-t="c.hours">Часы работы</caption><tbody id="hours-body"></tbody></table>
+        </div>
+        <div>
+          <h3 data-t="c.net">Мы в сети</h3>
+          <ul class="links" id="links"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="review" aria-labelledby="review-title">
+    <div class="wrap">
+      <div><p class="eyebrow" style="margin-bottom:14px" data-t="r.eyebrow">Отзывы</p><h2 id="review-title" data-t="r.h2">Были у нас? Расскажите, как всё прошло.</h2></div>
+      <div class="side">
+        <a class="btn btn-fire btn-big" data-href="review" href="#" target="_blank" rel="noopener"><span data-t="r.btn">Оставить отзыв в Google Maps</span> <span class="arrow" aria-hidden="true">↗</span></a>
+        <p class="hint" data-t="r.hint">Если форма не открылась, найдите Spički в Google Maps, откройте вкладку «Отзывы» и нажмите «Написать отзыв».</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><svg class="logo logo-foot" viewBox="370 300 1180 494" role="img" aria-label="Spički šibice"><path d="M 1148.851562 306.882812 L 1101.355469 356.984375 L 1055.160156 356.984375 L 1007.664062 306.882812 L 1056.136719 306.882812 L 1078.257812 329.332031 L 1100.378906 306.882812 Z M 1078.257812 560.3125 C 1092.570312 560.3125 1105.3125 556.570312 1116.484375 549.085938 C 1127.652344 541.605469 1136.050781 532.007812 1141.695312 520.296875 L 1184.636719 536.886719 C 1176.390625 555.324219 1162.84375 570.9375 1143.972656 583.734375 C 1125.105469 596.535156 1103.199219 602.929688 1078.257812 602.929688 C 1044.425781 602.929688 1016.007812 591.65625 993.023438 569.097656 C 970.03125 546.539062 958.539062 518.78125 958.539062 485.8125 C 958.539062 452.847656 970.03125 425.085938 993.023438 402.527344 C 1016.007812 379.972656 1044.425781 368.695312 1078.257812 368.695312 C 1103.199219 368.695312 1125.105469 375.09375 1143.972656 387.890625 C 1162.84375 400.6875 1176.390625 416.304688 1184.636719 434.734375 L 1141.695312 451.328125 C 1136.050781 439.617188 1127.652344 430.019531 1116.484375 422.535156 C 1105.3125 415.054688 1092.570312 411.3125 1078.257812 411.3125 C 1058.089844 411.3125 1041.113281 418.46875 1027.34375 432.785156 C 1013.570312 447.097656 1006.683594 464.777344 1006.683594 485.8125 C 1006.683594 506.851562 1013.570312 524.527344 1027.34375 538.839844 C 1041.113281 553.152344 1058.089844 560.3125 1078.257812 560.3125 "/><path d="M 663.476562 412.945312 L 663.476562 481.585938 L 713.25 481.585938 C 723.875 481.585938 732.441406 478.386719 738.949219 471.988281 C 745.457031 465.59375 748.710938 457.40625 748.710938 447.425781 C 748.710938 437.457031 745.457031 429.210938 738.949219 422.703125 C 732.441406 416.199219 723.875 412.945312 713.25 412.945312 Z M 663.476562 599.355469 L 616.953125 599.355469 L 616.953125 371.625 L 713.25 371.625 C 738.1875 371.625 758.359375 378.785156 773.761719 393.097656 C 789.15625 407.414062 796.859375 425.632812 796.859375 447.753906 C 796.859375 469.875 789.210938 487.929688 773.921875 501.917969 C 758.632812 515.910156 738.40625 522.902344 713.25 522.902344 L 663.476562 522.902344 Z M 663.476562 599.355469 "/><path d="M 897.378906 599.355469 L 850.859375 599.355469 L 850.859375 371.628906 L 897.378906 371.628906 Z M 897.378906 599.355469 "/><path d="M 1353.476562 464.34375 L 1446.519531 599.355469 L 1390.5625 599.355469 L 1321.917969 500.128906 L 1292.3125 533.636719 L 1292.3125 599.355469 L 1245.792969 599.355469 L 1245.792969 371.628906 L 1292.3125 371.628906 L 1292.3125 468.898438 L 1377.550781 371.628906 L 1435.457031 371.628906 Z M 1353.476562 464.34375 "/><path d="M 1543.785156 599.355469 L 1497.265625 599.355469 L 1497.265625 371.628906 L 1543.785156 371.628906 Z M 1543.785156 599.355469 "/><path d="M 528.304688 483.539062 C 521.035156 478.769531 513.011719 474.703125 504.230469 471.339844 C 495.445312 467.980469 486.714844 465.214844 478.039062 463.042969 C 469.363281 460.878906 461.394531 458.652344 454.128906 456.375 C 446.859375 454.097656 440.953125 451.0625 436.398438 447.265625 C 431.84375 443.472656 429.566406 438.757812 429.566406 433.113281 C 429.566406 425.957031 432.707031 420.050781 439 415.382812 C 445.289062 410.722656 453.421875 408.390625 463.402344 408.390625 C 468.710938 408.390625 473.542969 409.09375 477.925781 410.46875 C 477.554688 408.015625 477.359375 405.519531 477.359375 402.996094 C 477.359375 391.390625 481.585938 380.113281 489.359375 370.742188 C 481.800781 369.167969 473.691406 368.375 465.027344 368.375 C 441.605469 368.375 421.8125 374.828125 405.65625 387.730469 C 389.496094 400.636719 381.421875 416.632812 381.421875 435.714844 C 381.421875 447.214844 383.695312 457.136719 388.25 465.484375 C 392.804688 473.835938 398.710938 480.285156 405.980469 484.839844 C 413.246094 489.394531 421.269531 493.296875 430.054688 496.550781 C 438.839844 499.804688 447.566406 502.519531 456.242188 504.683594 C 464.914062 506.855469 472.886719 509.132812 480.15625 511.515625 C 487.417969 513.90625 493.332031 517.101562 497.886719 521.113281 C 502.441406 525.128906 504.71875 530.058594 504.71875 535.917969 C 504.71875 543.511719 501.191406 549.855469 494.144531 554.949219 C 487.09375 560.046875 478.039062 562.59375 466.980469 562.59375 C 454.617188 562.59375 444.695312 559.722656 437.210938 553.972656 C 429.730469 548.226562 425.117188 540.144531 423.386719 529.734375 L 376.214844 539.167969 C 379.25 558.476562 388.789062 573.871094 404.84375 585.367188 C 420.890625 596.863281 441.167969 602.605469 465.675781 602.605469 C 490.183594 602.605469 510.84375 596.101562 527.652344 583.085938 C 544.457031 570.074219 552.867188 553.921875 552.867188 534.617188 C 552.867188 522.691406 550.589844 512.386719 546.035156 503.707031 C 541.480469 495.035156 535.566406 488.3125 528.304688 483.539062 "/><path class="logo-flame" fill="url(#logoFlame)" d="M 527.183594 440.074219 C 547.453125 440.074219 564.261719 423.265625 564.261719 402.996094 C 564.261719 398.546875 563.277344 394.589844 561.792969 390.636719 C 549.433594 402.996094 542.015625 402.996094 537.074219 402.996094 C 566.734375 373.332031 551.90625 353.558594 522.242188 333.78125 C 524.714844 358.503906 508.398438 369.378906 501.972656 375.804688 C 494.554688 383.222656 490.105469 392.613281 490.105469 402.996094 C 490.105469 423.265625 506.917969 440.074219 527.183594 440.074219 "/><path d="M 662.066406 701.019531 L 648.167969 715.675781 L 634.65625 715.675781 L 620.757812 701.019531 L 634.941406 701.019531 L 641.410156 707.585938 L 647.882812 701.019531 Z M 631.039062 738.042969 C 631.039062 739.691406 631.703125 741.074219 633.035156 742.179688 C 634.371094 743.292969 636.097656 744.179688 638.222656 744.847656 C 640.347656 745.511719 642.679688 746.164062 645.21875 746.796875 C 647.753906 747.433594 650.308594 748.242188 652.878906 749.222656 C 655.449219 750.207031 657.796875 751.398438 659.921875 752.792969 C 662.046875 754.191406 663.777344 756.15625 665.109375 758.695312 C 666.441406 761.234375 667.109375 764.246094 667.109375 767.738281 C 667.109375 773.382812 664.648438 778.109375 659.734375 781.917969 C 654.816406 785.722656 648.773438 787.628906 641.601562 787.628906 C 634.429688 787.628906 628.5 785.949219 623.804688 782.582031 C 619.109375 779.21875 616.316406 774.714844 615.429688 769.070312 L 629.230469 766.308594 C 629.738281 769.355469 631.085938 771.71875 633.273438 773.398438 C 635.464844 775.082031 638.367188 775.921875 641.984375 775.921875 C 645.21875 775.921875 647.867188 775.175781 649.929688 773.683594 C 651.992188 772.195312 653.023438 770.339844 653.023438 768.117188 C 653.023438 766.402344 652.355469 764.960938 651.023438 763.785156 C 649.691406 762.613281 647.960938 761.675781 645.835938 760.976562 C 643.710938 760.28125 641.378906 759.617188 638.84375 758.980469 C 636.304688 758.347656 633.75 757.550781 631.179688 756.601562 C 628.609375 755.648438 626.261719 754.507812 624.136719 753.175781 C 622.011719 751.839844 620.285156 749.957031 618.949219 747.511719 C 617.617188 745.070312 616.953125 742.167969 616.953125 738.804688 C 616.953125 733.21875 619.316406 728.539062 624.042969 724.765625 C 628.769531 720.992188 634.558594 719.101562 641.410156 719.101562 C 648.328125 719.101562 654.039062 720.816406 658.542969 724.242188 C 663.046875 727.667969 665.710938 732.140625 666.539062 737.660156 L 652.738281 740.421875 C 652.230469 737.503906 650.945312 735.171875 648.882812 733.425781 C 646.820312 731.679688 644.171875 730.808594 640.9375 730.808594 C 638.015625 730.808594 635.636719 731.492188 633.796875 732.855469 C 631.957031 734.21875 631.039062 735.949219 631.039062 738.042969 "/><path d="M 767.992188 786.675781 L 754.382812 786.675781 L 754.382812 720.054688 L 767.992188 720.054688 Z M 767.992188 786.675781 "/><path d="M 869.542969 774.96875 L 885.816406 774.96875 C 888.480469 774.96875 890.605469 774.226562 892.195312 772.734375 C 893.777344 771.242188 894.574219 769.324219 894.574219 766.976562 C 894.574219 764.628906 893.777344 762.707031 892.195312 761.214844 C 890.605469 759.726562 888.480469 758.980469 885.816406 758.980469 L 869.542969 758.980469 Z M 884.007812 731.761719 L 869.542969 731.761719 L 869.542969 747.75 L 884.007812 747.75 C 886.671875 747.75 888.816406 746.988281 890.433594 745.464844 C 892.050781 743.941406 892.859375 742.007812 892.859375 739.660156 C 892.859375 737.3125 892.050781 735.410156 890.433594 733.949219 C 888.816406 732.492188 886.671875 731.761719 884.007812 731.761719 M 891.335938 753.078125 C 896.601562 753.714844 900.742188 755.492188 903.757812 758.410156 C 906.769531 761.328125 908.277344 764.976562 908.277344 769.355469 C 908.277344 774.300781 906.421875 778.429688 902.710938 781.726562 C 899 785.027344 894.160156 786.675781 888.195312 786.675781 L 856.3125 786.675781 L 856.3125 720.054688 L 885.339844 720.054688 C 891.304688 720.054688 896.144531 721.738281 899.855469 725.097656 C 903.566406 728.460938 905.421875 732.617188 905.421875 737.566406 C 905.421875 741.5625 904.183594 744.925781 901.710938 747.65625 C 899.238281 750.382812 895.777344 752.191406 891.335938 753.078125 "/><path d="M 1009.066406 786.675781 L 995.457031 786.675781 L 995.457031 720.054688 L 1009.066406 720.054688 Z M 1009.066406 786.675781 "/><path d="M 1105.574219 777.730469 C 1098.847656 771.128906 1095.484375 763.007812 1095.484375 753.367188 C 1095.484375 743.71875 1098.847656 735.601562 1105.574219 729 C 1112.296875 722.402344 1120.609375 719.101562 1130.507812 719.101562 C 1137.804688 719.101562 1144.214844 720.972656 1149.734375 724.71875 C 1155.253906 728.460938 1159.21875 733.03125 1161.628906 738.421875 L 1149.066406 743.277344 C 1147.417969 739.851562 1144.957031 737.042969 1141.691406 734.851562 C 1138.421875 732.664062 1134.695312 731.570312 1130.507812 731.570312 C 1124.605469 731.570312 1119.640625 733.664062 1115.613281 737.851562 C 1111.582031 742.039062 1109.570312 747.210938 1109.570312 753.367188 C 1109.570312 759.519531 1111.582031 764.691406 1115.613281 768.878906 C 1119.640625 773.066406 1124.605469 775.160156 1130.507812 775.160156 C 1134.695312 775.160156 1138.421875 774.066406 1141.691406 771.875 C 1144.957031 769.6875 1147.417969 766.878906 1149.066406 763.453125 L 1161.628906 768.308594 C 1159.21875 773.703125 1155.253906 778.269531 1149.734375 782.011719 C 1144.214844 785.757812 1137.804688 787.628906 1130.507812 787.628906 C 1120.609375 787.628906 1112.296875 784.328125 1105.574219 777.730469 "/><path d="M 1292.398438 786.675781 L 1248.046875 786.675781 L 1248.046875 720.054688 L 1292.398438 720.054688 L 1292.398438 732.140625 L 1261.65625 732.140625 L 1261.65625 747.367188 L 1291.445312 747.367188 L 1291.445312 759.363281 L 1261.65625 759.363281 L 1261.65625 774.589844 L 1292.398438 774.589844 Z M 1292.398438 786.675781 "/></svg><nav class="foot-nav" data-ta="aria-label:foot.aria" aria-label="Ссылки"><a href="#zones" data-t="nav.zones">Зоны</a><a href="#menu" data-t="nav.menu">Меню</a><a href="#catering" data-t="nav.catering">Кейтеринг</a><a href="#articles" data-t="nav.articles">Статьи</a><a href="#booking" data-t="foot.book">Бронь</a><a data-href="wolt" href="https://wolt.com/sr/srb/belgrade/restaurant/spicki" target="_blank" rel="noopener" data-t="foot.wolt">Доставка Wolt</a><a data-href="instagram" href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">Instagram</a></nav><span data-t="foot.note">Mačvanska&nbsp;10, Beograd · Меню и цены — по данным Qastio</span></div></footer>
+
+<div class="mbar" id="mbar">
+  <a class="btn btn-fire" href="#booking" data-t="cta.book">Забронировать стол</a>
+  <a class="btn btn-line" href="#menu" data-t="nav.menu">Меню</a>
+</div>
+
+<script>
+/* ============================================================
+   НАСТРОЙКИ САЙТА — контакты, часы, позиции меню, фото, статьи
+   ============================================================ */
+const SITE = {
+  placeId: "ChIJrSgzmz9xWkcRgNWZYvhEYXk",          // карточка Google Maps
+  links: {
+    booking: "https://918913.restoplace.ws/?utm_source=website&utm_medium=site&utm_campaign=booking",   // онлайн-бронь Restoplace
+    phone: "+381 62 893-95-50",
+    menu: "https://qastio.app/rs/belgrade/spicki",
+    instagram: "https://www.instagram.com/spicki_bg/",
+    instagramDM: "https://ig.me/m/spicki_bg",
+    threads: "https://www.threads.com/@spicki_bg",
+    wolt: "https://wolt.com/sr/srb/belgrade/restaurant/spicki"
+  },
+  // часы: [день недели 0=Вс…6=Сб] → [открытие, закрытие], "24:00"/"25:00" = после полуночи
+  hours: {1:["12:00","24:00"],2:["12:00","24:00"],3:["12:00","24:00"],4:["12:00","24:00"],5:["12:00","25:00"],6:["12:00","25:00"],0:["12:00","24:00"]},
+  menu: [
+    { title: {ru:"Кухня", sr:"Kuhinja", en:"Kitchen"}, kicker: {ru:"Горячее и закуски", sr:"Glavna jela i predjela", en:"Mains & starters"}, img: "img/tuna_steak.webp", items: [
+      { price: "1.600 RSD", name: {ru:"Стейк из тунца с картофельными крокетами и салатом", sr:"Stek od tune sa krompir kroketima i salatom", en:"Tuna steak with potato croquettes and salad"}, desc: {ru:"Тунец в корочке терияки, хрустящие крокеты, салат под винегретом. 304 г", sr:"Tuna u teriyaki glazuri, hrskavi kroketi, salata sa vinegretom. 304 g", en:"Teriyaki-glazed tuna, crispy croquettes, salad with vinaigrette. 304 g"} },
+      { price: "1.200 RSD", name: {ru:"Бефстроганов с картофельным пюре", sr:"Bif stroganov sa pireom", en:"Beef Stroganoff with mashed potatoes"}, desc: {ru:"Говядина с шампиньонами в сливочном соусе, солёные огурцы, хрустящий лук. 325 г", sr:"Junetina sa šampinjonima u pavlaci, kiseli krastavci, hrskavi luk. 325 g", en:"Beef and mushrooms in cream sauce, pickles, crispy onions. 325 g"} },
+      { price: "1.100 RSD", name: {ru:"Креветки терияки на гриле", sr:"Teriyaki škampi sa roštilja", en:"Grilled teriyaki shrimp"}, desc: {ru:"С дымной ноткой, на зелени, с лимоном и соусом чили-майо. 213 г", sr:"Sa notom dima, na zelenoj salati, uz limun i čili-majo sos. 213 g", en:"Lightly smoky, on greens, with lemon and chili mayo. 213 g"} },
+      { price: "1.100 RSD", name: {ru:"Татаки из тунца", sr:"Tataki od tune", en:"Tuna tataki"}, desc: {ru:"Тунец, обожжённый снаружи, в соево-терияки глазури с кунжутом. 135 г", sr:"Tuna kratko pečena spolja, u soja-teriyaki glazuri sa susamom. 135 g", en:"Tuna seared outside, soy-teriyaki glaze and sesame. 135 g"} },
+      { price: "750 RSD", name: {ru:"Тако с креветками", sr:"Tako sa škampima", en:"Shrimp tacos"}, desc: {ru:"Тортилья, гауда, айсберг, соус чили-майо. 237 г", sr:"Tortilja, gauda, ajsberg, čili-majo sos. 237 g", en:"Tortilla, gouda, iceberg, chili mayo. 237 g"} },
+      { price: "600 RSD", name: {ru:"Медовик", sr:"Medovik", en:"Medovik honey cake"}, desc: {ru:"Тонкие медовые коржи на сметанном креме. 145 г", sr:"Tanke kore sa medom i krem od pavlake. 145 g", en:"Thin honey layers with sour cream frosting. 145 g"} }
+    ]},
+    { title: {ru:"Бар", sr:"Bar", en:"Bar"}, kicker: {ru:"Коктейли, чай, лимонады", sr:"Kokteli, čaj, limunade", en:"Cocktails, tea, lemonades"}, img: "img/midnight.webp", items: [
+      { price: "800 RSD", name: {ru:"Джин-тоник смородиновый", sr:"Džin-tonik sa crnom ribizlom", en:"Blackcurrant gin & tonic"}, desc: {ru:"Джин, тоник и ликёр из чёрной смородины", sr:"Džin, tonik i liker od crne ribizle", en:"Gin, tonic and crème de cassis"} },
+      { price: "800 RSD", name: {ru:"Одиссей", sr:"Odiseja", en:"Odyssey"}, desc: {ru:"Malibu, ананас, амаретто и лимон", sr:"Malibu, ananas, amareto i limun", en:"Malibu, pineapple, amaretto and lemon"} },
+      { price: "800 RSD", name: {ru:"Tease me", sr:"Tease me", en:"Tease me"}, desc: {ru:"Просекко с малиной и бузиной", sr:"Prosekko sa malinom i zovom", en:"Prosecco with raspberry and elderflower"} },
+      { price: "900 RSD", name: {ru:"Nutty Velvet", sr:"Nutty Velvet", en:"Nutty Velvet"}, desc: {ru:"Сливочный ореховый коктейль с десертным характером", sr:"Kremast koktel od orašastih plodova, kao desert", en:"Creamy, nutty cocktail with a dessert profile"} },
+      { price: "750 RSD", name: {ru:"Чай пряное яблоко", sr:"Čaj začinjena jabuka", en:"Spiced apple tea"}, desc: {ru:"Чайник на весь стол: яблоко, мёд, пряности", sr:"Čajnik za ceo sto: jabuka, med, začini", en:"A pot for the table: apple, honey, spices"} },
+      { price: "500 RSD", name: {ru:"Лимонад базилик-клубника", sr:"Limunada bosiljak-jagoda", en:"Basil strawberry lemonade"}, desc: {ru:"Клубника и свежий базилик. 300 или 1000 мл", sr:"Jagoda i svež bosiljak. 300 ili 1000 ml", en:"Strawberry and fresh basil. 300 or 1000 ml"} }
+    ]}
+  ],
+  gallery: [
+    { n:"13", pos:"50% 30%", w:720, h:959, alt:{ru:"Гостья с коктейлем у неоновой вывески SPIČKI", sr:"Gošća sa koktelom ispred neonskog natpisa SPIČKI", en:"Guest with a cocktail by the SPIČKI neon sign"} },
+    { n:"06", pos:"40% 50%", w:720, h:959, alt:{ru:"Игра на PS5 за VIP-столом", sr:"Igra na PS5 za VIP stolom", en:"Playing PS5 at a VIP table"} },
+    { n:"11", pos:"50% 35%", w:720, h:960, alt:{ru:"Гостья выдыхает дым кальяна", sr:"Gošća izdiše dim nargile", en:"Guest exhaling hookah smoke"} },
+    { n:"01", pos:"50% 30%", w:720, h:1080, alt:{ru:"Гость с коктейлем на террасе", sr:"Gost sa koktelom na terasi", en:"Guest with a drink on the terrace"} },
+    { n:"03", pos:"50% 45%", w:720, h:1080, alt:{ru:"Эспрессо-мартини", sr:"Espresso martini", en:"Espresso martini"} },
+    { n:"12", pos:"50% 25%", w:720, h:1280, alt:{ru:"Гостья у бара под вывеской ŠIBICE", sr:"Gošća za šankom ispod natpisa ŠIBICE", en:"Guest at the bar under the ŠIBICE sign"} },
+    { n:"04", pos:"50% 50%", w:720, h:480, wide:true, alt:{ru:"Компания делает селфи на террасе", sr:"Društvo pravi selfi na terasi", en:"Friends taking a selfie on the terrace"} },
+    { n:"02", pos:"50% 40%", w:720, h:1080, alt:{ru:"Гость с коктейлем у неоновой вывески", sr:"Gost sa koktelom kod neonskog natpisa", en:"Guest with a cocktail by the neon sign"} },
+    { n:"09", pos:"50% 40%", w:720, h:960, alt:{ru:"Ягодный коктейль у красной стены", sr:"Bobičasti koktel kod crvenog zida", en:"Berry cocktail by the red wall"} },
+    { n:"07", pos:"50% 35%", w:720, h:959, alt:{ru:"Гостья с коктейлем в бокале-купе", sr:"Gošća sa koktelom u kupe čaši", en:"Guest with a coupe cocktail"} },
+    { n:"08", pos:"50% 28%", w:720, h:1280, alt:{ru:"Гостья с кальяном в тёплом свете", sr:"Gošća sa nargilom u toplom svetlu", en:"Guest with a hookah in warm light"} },
+    { n:"15", pos:"50% 30%", w:720, h:1280, alt:{ru:"Дым кальяна у барной стойки", sr:"Dim nargile kod šanka", en:"Hookah smoke at the bar"} },
+    { n:"05", pos:"50% 40%", w:720, h:1080, alt:{ru:"Друзья с кальяном на террасе", sr:"Prijatelji sa nargilom na terasi", en:"Friends sharing a hookah on the terrace"} },
+    { n:"10", pos:"50% 35%", w:720, h:1280, alt:{ru:"Кальян и облако дыма", sr:"Nargila i oblak dima", en:"Hookah and a cloud of smoke"} },
+    { n:"14", pos:"50% 22%", w:720, h:1280, alt:{ru:"Гостья с кальяном и коктейлем", sr:"Gošća sa nargilom i koktelom", en:"Guest with a hookah and a cocktail"} }
+  ],
+  articles: [
+    { slug:"igrovye-zony", img:"img/zone-secret.webp", tag:{ru:"Игры", sr:"Igre", en:"Gaming"},
+      title:{ru:"Кальян и игры в Белграде: PS5 и Secret Room с игровыми ПК", sr:"Nargila i igrice u Beogradu: PS5 i Secret Room sa gejming računarima", en:"Hookah and gaming in Belgrade: PS5 tables and a Secret Room with gaming PCs"},
+      desc:{ru:"Чем отличаются столы с PS5 от закрытой комнаты с пятью ПК и как забронировать нужную зону.", sr:"Po čemu se PS5 stolovi razlikuju od zatvorene sobe sa pet računara i kako da rezervišete zonu.", en:"How the PS5 tables differ from the private room with five PCs, and how to book the zone you want."} },
+    { slug:"kejtering", img:"img/hero-photo.webp", tag:{ru:"Кейтеринг", sr:"Ketering", en:"Catering"},
+      title:{ru:"Кальянный кейтеринг в Белграде: как заказать Spički на праздник", sr:"Ketering nargila u Beogradu: kako da naručite Spički za proslavu", en:"Hookah catering in Belgrade: how to book Spički for your event"},
+      desc:{ru:"Что входит в выезд и какие детали прислать, чтобы мы быстро всё рассчитали.", sr:"Šta je uključeno i koje detalje da pošaljete kako bismo brzo sve isplanirali.", en:"What the service includes and which details to send so we can plan quickly."} },
+    { slug:"biznes-lanch", img:"img/tuna_steak.webp", tag:{ru:"Кухня", sr:"Kuhinja", en:"Food"},
+      title:{ru:"Бизнес-ланч на Врачаре: три блюда за 1.300 RSD", sr:"Poslovni ručak na Vračaru: tri jela za 1.300 RSD", en:"Business lunch in Vračar: three courses for 1,300 RSD"},
+      desc:{ru:"Салат, суп и горячее, меню меняется каждую неделю. Плюс что заказать из основного меню.", sr:"Salata, supa i glavno jelo, meni se menja svake nedelje. Plus šta poručiti iz glavnog menija.", en:"Salad, soup and a main, changing weekly. Plus what to order from the main menu."} }
+  ]
+};
+
+/* ============================================================
+   ПЕРЕВОДЫ. Русский текст берётся из разметки страницы.
+   ============================================================ */
+const I18N = {
+  sr: {
+    "brand.aria":"Spički — na vrh", "nav.aria":"Sekcije", "lang.aria":"Jezik sajta", "nav.open":"Otvori meni", "nav.close":"Zatvori meni",
+    "nav.about":"O Spički", "nav.zones":"Zone", "nav.menu":"Meni", "nav.catering":"Ketering", "nav.gallery":"Galerija", "nav.articles":"Članci", "nav.contacts":"Kontakt",
+    "cta.book":"Rezerviši sto",
+    "hero.h1":"Spički — nargila lounge na Vračaru, Beograd", "hero.aka":"Nargila lounge · Vračar, Beograd",
+    "hero.slogan":"Daj meni spičku <em>da zakurim</em>",
+    "hero.lead":"Nargile, kuhinja, poslovni ručkovi, bar i igre: stolovi sa PS5 i zatvorena Secret Room sa pet gejming računara. Mačvanska&nbsp;10.",
+    "hero.menu":"Pogledaj meni", "hero.alt":"Logo Spički šibice na fotografiji: usne drže upaljenu šibicu",
+    "about.alt":"Gošća izdiše dim nargile", "about.h2":"Sve što retko stane na jedno mesto",
+    "about.p":"Kada smo otvarali Spički, hteli smo da spojimo raznovrsnu kuhinju, jak bar sa vinskom kartom, upečatljiv enterijer, prostor za networking i igre. Nastao je nargila lounge na Vračaru u koji se dolazi na večeru, na meč i na dugo veče sa prijateljima.",
+    "about.btn":"Izaberi zonu", "perks.aria":"Šta ima u Spički",
+    "p1.h":"Nargile", "p1.p":"Premium usluga: majstor bira duvan i jačinu po meri vašeg društva.",
+    "p2.h":"Naša kuhinja", "p2.p":"Od takosa i tatakija do bif stroganova. Radnim danima poslovni ručak od tri jela za 1.300&nbsp;RSD.",
+    "p3.h":"Bar i vinska karta", "p3.p":"Autorski i klasični kokteli, vino, kraft pivo, čaj u čajniku za ceo sto.",
+    "p4.h":"Društvene igre", "p4.p":"Najveći izbor društvenih igara u Beogradu — povedite društvo i ostanite dugo.",
+    "p5.h":"PS5 za stolom", "p5.p":"Dva VIP stola sa PlayStation&nbsp;5: nargila, kokteli i meč bez ustajanja sa sofe.",
+    "p6.h":"Secret Room", "p6.p":"Zatvorena zona sa pet gejming računara — za solo igru i za ceo skvad.",
+    "p7.h":"Dostava", "p7.p":"Jela iz Spički možete naručiti kući preko Wolta.",
+    "p8.h":"Ketering", "p8.p":"Dovozimo nargile, barmena i kuvara na vašu žurku ili korporativnu proslavu.",
+    "zones.h2":"Izaberite kako da provedete veče",
+    "z1.alt":"Secret Room: gejming računari sa zakrivljenim monitorima i stolicama", "z1.kicker":"Zatvorena zona · gejming računari",
+    "z1.p":"Potpuno zatvoren prostor sa pet gejming računara. Igrajte šta god želite, solo ili sa celim skvadom, uz nargilu, koktele i večeru dok gledate strimove omiljenih strimera.",
+    "z1.f1":"5 gejming računara", "z1.f2":"Nargila i bar u sobi", "z1.f3":"Odvojeno od glavne sale", "z1.btn":"Rezerviši Secret Room",
+    "z2.alt":"Gošća igra PS5 za VIP stolom", "z2.kicker":"VIP stolovi · PlayStation 5", "z2.h3":"Stolovi sa PS5",
+    "z2.p":"Dva VIP stola sa konzolama: nargila, kokteli i meč u dvoje ili turnir za celo društvo.", "z2.btn":"Rezerviši sto sa PS5",
+    "z3.word":"sala", "z3.alt":"Šank Spički ispod neonskog natpisa, gosti za šankom", "z3.kicker":"Glavna sala · bar", "z3.h3":"Lounge i bar",
+    "z3.p":"Udobne sofe, nargile, bar i police sa društvenim igrama. Ovde se večera, viđa posle posla i slavi.", "z3.btn":"Rezerviši sto",
+    "zones.note":"Kapacitet i uslove rezervacije zona proverite prilikom rezervacije.",
+    "menu.h2":"Malo od onoga što služimo", "menu.full":"Ceo meni", "menu.note":"Sva jela, pića i aktuelne cene — u našem meniju na Qastio.",
+    "cat.h2":"Spički dolaze kod vas", "cat.lead":"Ketering nargila za svaku priliku — od privatne žurke do korporativnog događaja.",
+    "cat.li1":"Nargile koje punimo ponovo koliko god puta želite.", "cat.li2":"Piće i hrana po vašem zahtevu — uz dolazak barmena i kuvara.", "cat.btn":"Dogovorimo se u Directu",
+    "ev.eyebrow":"Proslave", "ev.h3":"26. mart — rođendan Spički",
+    "ev.p1":"Svakog proleća slavimo sa gostima: DJ set, special miksevi, kokteli iz bara i iznenađenja. Najave su na našem Instagramu.",
+    "ev.p2":"I vašu proslavu možete da organizujete kod nas: rezervišite zonu na vreme i napišite želje u poruci.",
+    "gal.h2":"Kako to izgleda", "gal.lead":"Večeri u Spički: šank pod neonskim natpisom, nargile, PS5 i terasa.",
+    "lb.aria":"Pregled fotografije", "lb.close":"Zatvori", "lb.prev":"Prethodna fotografija", "lb.next":"Sledeća fotografija", "lb.open":"Otvori fotografiju",
+    "art.h2":"Pročitajte pre dolaska", "art.lead":"Kako funkcionišu gejming zone, kako naručiti ketering nargila i šta je u poslovnom ručku.", "art.read":"Pročitaj",
+    "book.eyebrow":"Rezervacija", "book.lead":"Rezervišite onlajn, telefonom ili preko Instagrama — kako vam odgovara.", "on.k":"Onlajn rezervacija", "on.p":"Izaberite datum, vreme i sto na šemi sale u sistemu za rezervacije Restoplace.", "on.btn":"Rezerviši onlajn", "on.phone":"Ili telefonom", "on.ig":"Preko Instagrama",
+    "book.s1":"Navedite datum, vreme i broj osoba.", "book.s2":"Kopirajte gotovu poruku i otvorite čet sa nama.", "book.s3":"Nalepite tekst i pošaljite. Odgovaramo u Directu.",
+    "f.date":"Datum", "f.time":"Vreme", "f.guests":"Broj gostiju", "f.zone":"Zona", "f.name":"Ime",
+    "f.note":"Želje <span style=\"font-weight:400\">(nije obavezno)</span>", "ph.name":"Kako da vam se obratimo", "ph.note":"Na primer: rođendan",
+    "zone.main":"Glavna sala", "zone.ps5":"VIP sto sa PS5", "zone.secret":"Secret Room (gejming računari)",
+    "book.preview":"Poruka za Instagram:", "book.copy":"Kopiraj i otvori Instagram", "book.just":"Samo piši",
+    "book.hint":"Poruka se ne šalje automatski — treba je poslati u četu na Instagramu.",
+    "c.h2":"Kako da nas nađete", "c.address":"Adresa", "c.district":"Vračar, Beograd", "c.route":"Prikaži rutu", "c.maps":"Otvori u Google Maps",
+    "c.hours":"Radno vreme", "c.net":"Na mrežama",
+    "r.eyebrow":"Utisci", "r.h2":"Bili ste kod nas? Recite kako je bilo.", "r.btn":"Ostavi recenziju na Google Maps",
+    "r.hint":"Ako se forma ne otvori, pronađite Spički na Google Maps, otvorite karticu „Recenzije” i kliknite „Napiši recenziju”.",
+    "foot.aria":"Linkovi", "foot.book":"Rezervacija", "foot.wolt":"Dostava Wolt", "foot.note":"Mačvanska&nbsp;10, Beograd · Meni i cene — prema Qastio",
+    "title":"Spički Beograd — nargila lounge na Vračaru",
+    "meta":"Spički — nargila lounge na Vračaru, Mačvanska 10. Nargile, kuhinja, kokteli, PS5 stolovi i Secret Room sa gejming računarima."
+  },
+  en: {
+    "brand.aria":"Spički — back to top", "nav.aria":"Sections", "lang.aria":"Site language", "nav.open":"Open menu", "nav.close":"Close menu",
+    "nav.about":"About", "nav.zones":"Zones", "nav.menu":"Menu", "nav.catering":"Catering", "nav.gallery":"Gallery", "nav.articles":"Articles", "nav.contacts":"Contact",
+    "cta.book":"Book a table",
+    "hero.h1":"Spički — hookah lounge in Vračar, Belgrade", "hero.aka":"Hookah lounge · Vračar, Belgrade",
+    "hero.slogan":"Strike a match and <em>take your time</em>",
+    "hero.lead":"Hookah, kitchen, business lunches, bar and games: PS5 tables and a private Secret Room with five gaming PCs. Mačvanska&nbsp;10.",
+    "hero.menu":"See the menu", "hero.alt":"Spički šibice logo on a photo of lips holding a lit match",
+    "about.alt":"Guest exhaling hookah smoke", "about.h2":"Everything that rarely fits under one roof",
+    "about.p":"When we opened Spički, we wanted to bring together a varied kitchen, a strong bar with a wine list, a bold interior, a place for networking, and games. The result is a hookah lounge in Vračar where people come for dinner, for a match, and for long nights with friends.",
+    "about.btn":"Choose a zone", "perks.aria":"What Spički offers",
+    "p1.h":"Hookah", "p1.p":"Premium service: our hookah master matches the tobacco and strength to your group.",
+    "p2.h":"Our kitchen", "p2.p":"From tacos and tataki to beef Stroganoff. On weekdays, a three-course business lunch for 1,300&nbsp;RSD.",
+    "p3.h":"Bar and wine list", "p3.p":"Signature and classic cocktails, wine, craft beer, tea served by the pot.",
+    "p4.h":"Board games", "p4.p":"The biggest board game selection in Belgrade — bring your friends and stay a while.",
+    "p5.h":"PS5 at your table", "p5.p":"Two VIP tables with PlayStation&nbsp;5: hookah, cocktails and a match without leaving the sofa.",
+    "p6.h":"Secret Room", "p6.p":"A private zone with five gaming PCs — for solo play or the whole squad.",
+    "p7.h":"Delivery", "p7.p":"Order food from Spički to your door via Wolt.",
+    "p8.h":"Catering", "p8.p":"We bring hookahs, a bartender and a chef to your party or corporate event.",
+    "zones.h2":"Choose how to spend your evening",
+    "z1.alt":"Secret Room: gaming PCs with curved monitors and gaming chairs", "z1.kicker":"Private zone · gaming PCs",
+    "z1.p":"A fully private room with five gaming PCs. Play anything you like, solo or as a squad, with hookah, cocktails and dinner while your favourite streamers are on.",
+    "z1.f1":"5 gaming PCs", "z1.f2":"Hookah and bar service in the room", "z1.f3":"Separate from the main hall", "z1.btn":"Book the Secret Room",
+    "z2.alt":"Guest playing PS5 at a VIP table", "z2.kicker":"VIP tables · PlayStation 5", "z2.h3":"PS5 tables",
+    "z2.p":"Two VIP tables with consoles: hookah, cocktails and a one-on-one match or a tournament for the whole group.", "z2.btn":"Book a PS5 table",
+    "z3.word":"lounge", "z3.alt":"The Spički bar under the neon sign, guests at the counter", "z3.kicker":"Main hall · bar", "z3.h3":"Lounge and bar",
+    "z3.p":"Soft sofas, hookahs, the bar and shelves of board games. People come here for dinner, after-work drinks and celebrations.", "z3.btn":"Book a table",
+    "zones.note":"Ask about capacity and booking terms for each zone when you book.",
+    "menu.h2":"A taste of what we serve", "menu.full":"Full menu", "menu.note":"All dishes, drinks and current prices are in our menu on Qastio.",
+    "cat.h2":"Spički comes to you", "cat.lead":"Hookah catering for any occasion — from a private party to a corporate event.",
+    "cat.li1":"Hookahs refilled as many times as you like.", "cat.li2":"Drinks and food on request — with our bartenders and chefs on site.", "cat.btn":"Message us on Instagram",
+    "ev.eyebrow":"Celebrations", "ev.h3":"26 March — Spički's birthday",
+    "ev.p1":"Every spring we celebrate with our guests: a DJ set, special mixes, cocktails from the bar and surprises. Announcements are on our Instagram.",
+    "ev.p2":"You can host your own celebration here too: book a zone in advance and add your wishes to the message.",
+    "gal.h2":"What it looks like", "gal.lead":"Evenings at Spički: the bar under the neon sign, hookahs, PS5 and the terrace.",
+    "lb.aria":"Photo viewer", "lb.close":"Close", "lb.prev":"Previous photo", "lb.next":"Next photo", "lb.open":"Open photo",
+    "art.h2":"Read before you visit", "art.lead":"How the gaming zones work, how to book hookah catering, and what the business lunch includes.", "art.read":"Read",
+    "book.eyebrow":"Booking", "book.lead":"Book online, by phone or via Instagram — whichever suits you.", "on.k":"Online booking", "on.p":"Pick the date, time and your table on the floor plan in the Restoplace booking system.", "on.btn":"Book online", "on.phone":"Or call", "on.ig":"Via Instagram",
+    "book.s1":"Choose the date, time and number of guests.", "book.s2":"Copy the ready-made message and open a chat with us.", "book.s3":"Paste the text and send it. We reply in Direct.",
+    "f.date":"Date", "f.time":"Time", "f.guests":"Guests", "f.zone":"Zone", "f.name":"Name",
+    "f.note":"Requests <span style=\"font-weight:400\">(optional)</span>", "ph.name":"What should we call you", "ph.note":"For example: a birthday",
+    "zone.main":"Main hall", "zone.ps5":"VIP table with PS5", "zone.secret":"Secret Room (gaming PCs)",
+    "book.preview":"Message for Instagram:", "book.copy":"Copy and open Instagram", "book.just":"Just message us",
+    "book.hint":"The message isn't sent automatically — send it in the Instagram chat.",
+    "c.h2":"How to find us", "c.address":"Address", "c.district":"Vračar, Belgrade", "c.route":"Get directions", "c.maps":"Open in Google Maps",
+    "c.hours":"Opening hours", "c.net":"Find us online",
+    "r.eyebrow":"Reviews", "r.h2":"Been to Spički? Tell us how it went.", "r.btn":"Leave a review on Google Maps",
+    "r.hint":"If the form doesn't open, find Spički on Google Maps, open the “Reviews” tab and tap “Write a review”.",
+    "foot.aria":"Links", "foot.book":"Booking", "foot.wolt":"Wolt delivery", "foot.note":"Mačvanska&nbsp;10, Belgrade · Menu and prices from Qastio",
+    "title":"Spički Belgrade — hookah lounge in Vračar",
+    "meta":"Spički is a hookah lounge in Vračar, Mačvanska 10, Belgrade. Hookah, food, cocktails, PS5 tables and a Secret Room with gaming PCs."
+  }
+};
+// Строки, которые собираются скриптом
+const DYN = {
+  ru: { days:["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"], openTill:"Открыто до", today:"Сегодня с", tomorrow:"Завтра с", daily:"Ежедневно с 12:00",
+        msg:["Здравствуйте! Хочу забронировать стол.","Зона","Дата","Время","Гостей","Имя","Пожелания"], locale:"ru-RU",
+        needDate:"Выберите дату и время, чтобы мы поняли, на когда держать стол.",
+        copied:"Текст скопирован. Вставьте его в чат Instagram и отправьте — бронь подтвердим ответом.",
+        copyFail:"Не получилось скопировать автоматически: текст выделен, скопируйте его вручную и отправьте нам в Instagram.",
+        links:["Instagram","Threads","Доставка","Меню","Телефон","Онлайн-бронь"], open:"Открыть фото", read:"Читать", nav:["Открыть меню","Закрыть меню"],
+        title:"Spički Белград — кальянный лаунж на Врачаре", meta:"Spički — кальянный лаунж на Врачаре, Mačvanska 10, Белград. Кальяны, кухня, коктейли, столы с PS5 и Secret Room с игровыми ПК." },
+  sr: { days:["Ponedeljak","Utorak","Sreda","Četvrtak","Petak","Subota","Nedelja"], openTill:"Otvoreno do", today:"Danas od", tomorrow:"Sutra od", daily:"Svaki dan od 12:00",
+        msg:["Zdravo! Želim da rezervišem sto.","Zona","Datum","Vreme","Broj gostiju","Ime","Želje"], locale:"sr-Latn-RS",
+        needDate:"Izaberite datum i vreme da bismo znali kada da vam čuvamo sto.",
+        copied:"Tekst je kopiran. Nalepite ga u čet na Instagramu i pošaljite — rezervaciju potvrđujemo odgovorom.",
+        copyFail:"Automatsko kopiranje nije uspelo: tekst je označen, kopirajte ga ručno i pošaljite nam na Instagramu.",
+        links:["Instagram","Threads","Dostava","Meni","Telefon","Onlajn rezervacija"], open:"Otvori fotografiju", read:"Pročitaj", nav:["Otvori meni","Zatvori meni"] },
+  en: { days:["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], openTill:"Open until", today:"Today from", tomorrow:"Tomorrow from", daily:"Daily from 12:00",
+        msg:["Hello! I'd like to book a table.","Zone","Date","Time","Guests","Name","Requests"], locale:"en-GB",
+        needDate:"Choose a date and time so we know when to hold your table.",
+        copied:"Text copied. Paste it into the Instagram chat and send — we'll confirm the booking in our reply.",
+        copyFail:"Couldn't copy automatically: the text is selected, copy it manually and send it to us on Instagram.",
+        links:["Instagram","Threads","Delivery","Menu","Phone","Online booking"], open:"Open photo", read:"Read", nav:["Open menu","Close menu"] }
+};
+/* ============================================================ */
+
+const LANGS = ["ru","sr","en"];
+let lang = "ru";
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const enc = encodeURIComponent;
+const placeName = "Spički, Mačvanska 10, Beograd";
+const L = Object.assign({}, SITE.links, {
+  mapCard: `https://www.google.com/maps/search/?api=1&query=${enc(placeName)}&query_place_id=${SITE.placeId}`,
+  route: `https://www.google.com/maps/dir/?api=1&destination=${enc(placeName)}&destination_place_id=${SITE.placeId}`,
+  review: `https://search.google.com/local/writereview?placeid=${SITE.placeId}`
+});
+document.querySelectorAll("[data-href]").forEach(a => { if (L[a.dataset.href]) a.href = L[a.dataset.href]; });
+
+// Запоминаем русский текст из разметки
+const RU = {};
+document.querySelectorAll("[data-t]").forEach(el => { const k = el.dataset.t; if (!(k in RU)) RU[k] = el.innerHTML; });
+document.querySelectorAll("[data-ta]").forEach(el => el.dataset.ta.split(";").forEach(p => { const [attr, k] = p.split(":"); if (!(k in RU)) RU[k] = el.getAttribute(attr) || ""; }));
+const t = k => (lang === "ru" ? RU[k] : (I18N[lang][k] ?? RU[k])) ?? "";
+const D = () => DYN[lang];
+
+function renderMenu() {
+  $("menu-cols").innerHTML = SITE.menu.map(col => `
+  <div class="menu-col">
+    <header><img src="${col.img}" alt="" loading="lazy" width="96" height="96"><h3><small>${esc(col.kicker[lang])}</small>${esc(col.title[lang])}</h3></header>
+    ${col.items.map(i => `<div class="dish"><span class="name">${esc(i.name[lang])}</span><span class="price">${esc(i.price)}</span>${i.desc ? `<span class="desc">${esc(i.desc[lang])}</span>` : ""}</div>`).join("")}
+  </div>`).join("");
+}
+function renderGallery() {
+  $("gallery-grid").innerHTML = SITE.gallery.map((g, i) =>
+    `<figure${g.wide ? ' class="wide"' : ""}><button type="button" data-i="${i}" aria-label="${esc(D().open)}: ${esc(g.alt[lang])}"><img src="img/g/${g.n}-s.webp" width="${g.w}" height="${g.h}" alt="${esc(g.alt[lang])}" loading="lazy" decoding="async" style="object-position:${g.pos}"></button></figure>`).join("");
+}
+function renderArticles() {
+  $("art-list").innerHTML = SITE.articles.map(a => `
+    <a class="art-card" href="articles/${a.slug}.html#${lang}">
+      <span class="art-img"><img src="${a.img}" alt="" loading="lazy" width="800" height="800"></span>
+      <span class="art-tag">${esc(a.tag[lang])}</span>
+      <span class="art-title">${esc(a.title[lang])}</span>
+      <span class="art-desc">${esc(a.desc[lang])}</span>
+      <span class="art-more">${esc(D().read)} <span aria-hidden="true">→</span></span>
+    </a>`).join("");
+}
+function renderLinks() {
+  const rows = [[D().links[4],SITE.links.phone,"tel:"+SITE.links.phone.replace(/[^+\d]/g,""),true],[D().links[5],"Restoplace",L.booking],[D().links[0],"@spicki_bg",L.instagram],[D().links[1],"@spicki_bg",L.threads],[D().links[2],"Wolt",L.wolt],[D().links[3],"Qastio",L.menu]];
+  $("links").innerHTML = rows.map(([k,v,u,tel]) => `<li><a href="${u}"${tel ? "" : ' target="_blank" rel="noopener"'}><span class="k">${esc(k)}</span><span${tel ? ' class="phone"' : ""}>${v}${tel ? "" : " ↗"}</span></a></li>`).join("");
+}
+
+// Часы работы + «открыто сейчас» по времени Белграда
+const fmt = s => { const [h,m] = s.split(":").map(Number); return String(h % 24).padStart(2,"0") + ":" + String(m).padStart(2,"0"); };
+const toMin = s => { const [h,m] = s.split(":").map(Number); return h*60+m; };
+let bgDay = null, bgMin = null;
+try {
+  const p = Object.fromEntries(new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Belgrade",weekday:"short",hour:"2-digit",minute:"2-digit",hourCycle:"h23"}).formatToParts(new Date()).map(x=>[x.type,x.value]));
+  bgDay = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"].indexOf(p.weekday);
+  bgMin = Number(p.hour)*60 + Number(p.minute);
+} catch(e) {}
+function renderHours() {
+  const order = [1,2,3,4,5,6,0];
+  $("hours-body").innerHTML = order.map((d,i) =>
+    `<tr${d===bgDay?' class="today"':''}><td>${D().days[i]}</td><td>${fmt(SITE.hours[d][0])}–${fmt(SITE.hours[d][1])}</td></tr>`).join("");
+  let text = D().daily, on = false;
+  if (bgDay !== null) {
+    const [o,c] = SITE.hours[bgDay].map(toMin);
+    const prev = SITE.hours[(bgDay+6)%7]; const prevSpill = toMin(prev[1]) - 1440;
+    if (bgMin >= o && bgMin < c) { on = true; text = `${D().openTill} ${fmt(SITE.hours[bgDay][1])}`; }
+    else if (prevSpill > 0 && bgMin < prevSpill) { on = true; text = `${D().openTill} ${fmt(prev[1])}`; }
+    else if (bgMin < o) text = `${D().today} ${fmt(SITE.hours[bgDay][0])}`;
+    else text = `${D().tomorrow} ${fmt(SITE.hours[(bgDay+1)%7][0])}`;
+  }
+  $("status-text").textContent = text;
+  $("status-dot").classList.toggle("on", on);
+}
+
+// Бронирование
+try { const n = new Date(); $("b-date").value = new Date(n.getTime() - n.getTimezoneOffset()*60000).toISOString().slice(0,10); $("b-date").min = $("b-date").value; } catch(e) {}
+const fmtDate = v => { if (!v) return ""; const [y,m,d] = v.split("-").map(Number); try { return new Date(y,m-1,d).toLocaleDateString(D().locale,{day:"numeric",month:"long",weekday:"long"}); } catch(e) { return v; } };
+function message() {
+  const M = D().msg, g = $("b-guests").value, n = $("b-name").value.trim(), note = $("b-note").value.trim();
+  const zone = $("b-zone").options[$("b-zone").selectedIndex].text;
+  return `${M[0]}\n${M[1]}: ${zone}\n${M[2]}: ${fmtDate($("b-date").value) || "—"}\n${M[3]}: ${$("b-time").value || "—"}\n${M[4]}: ${g}` + (n ? `\n${M[5]}: ${n}` : "") + (note ? `\n${M[6]}: ${note}` : "");
+}
+const updatePreview = () => { $("b-preview").textContent = message(); };
+["b-date","b-time","b-guests","b-zone","b-name","b-note"].forEach(id => { $(id).addEventListener("input", updatePreview); $(id).addEventListener("change", updatePreview); });
+document.querySelectorAll("[data-zone]").forEach(a => a.addEventListener("click", () => { $("b-zone").value = a.dataset.zone; updatePreview(); }));
+$("book-form").addEventListener("submit", e => {
+  e.preventDefault();
+  const hint = $("b-hint");
+  if (!$("b-date").value || !$("b-time").value) { hint.dataset.state = ""; hint.textContent = D().needDate; return; }
+  const txt = message();
+  const a = document.createElement("a"); a.href = L.instagramDM; a.target = "_blank"; a.rel = "noopener";
+  const selectPreview = () => { const r = document.createRange(); r.selectNodeContents($("b-preview")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+  const p = navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(txt) : Promise.reject();
+  p.then(() => { hint.dataset.state = "ok"; hint.textContent = D().copied; })
+   .catch(() => { selectPreview(); hint.dataset.state = ""; hint.textContent = D().copyFail; });
+  document.body.appendChild(a); a.click(); a.remove();
+});
+
+// Галерея: просмотр
+const lb = $("lb"), lbImg = $("lb-img"), lbCap = $("lb-cap");
+let lbI = 0;
+const lbShow = i => { lbI = (i + SITE.gallery.length) % SITE.gallery.length; const g = SITE.gallery[lbI]; lbImg.src = `img/g/${g.n}-l.webp`; lbImg.alt = g.alt[lang]; lbCap.textContent = `${g.alt[lang]} · ${lbI + 1} / ${SITE.gallery.length}`; };
+$("gallery-grid").addEventListener("click", e => { const b = e.target.closest("button[data-i]"); if (!b) return; lbShow(+b.dataset.i); try { lb.showModal(); } catch (err) { lb.setAttribute("open", ""); } });
+$("lb-prev").onclick = () => lbShow(lbI - 1);
+$("lb-next").onclick = () => lbShow(lbI + 1);
+$("lb-close").onclick = () => lb.close ? lb.close() : lb.removeAttribute("open");
+lb.addEventListener("click", e => { if (e.target === lb) lb.close(); });
+lb.addEventListener("keydown", e => { if (e.key === "ArrowLeft") lbShow(lbI - 1); if (e.key === "ArrowRight") lbShow(lbI + 1); });
+let tx = null;
+lb.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", e => { if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) lbShow(lbI + (dx < 0 ? 1 : -1)); tx = null; });
+
+// Мобильное меню
+const burger = $("burger"), nav = $("nav");
+const setNav = open => { nav.classList.toggle("open", open); burger.setAttribute("aria-expanded", String(open)); burger.setAttribute("aria-label", D().nav[open ? 1 : 0]); document.body.classList.toggle("nav-open", open); };
+burger.addEventListener("click", () => setNav(!nav.classList.contains("open")));
+nav.addEventListener("click", e => { if (e.target.closest("a")) setNav(false); });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("open")) { setNav(false); burger.focus(); } });
+
+// Переключение языка
+function setLang(l) {
+  lang = LANGS.includes(l) ? l : "ru";
+  document.documentElement.lang = lang === "sr" ? "sr-Latn" : lang;
+  document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = t(el.dataset.t); });
+  document.querySelectorAll("[data-ta]").forEach(el => el.dataset.ta.split(";").forEach(p => { const [attr, k] = p.split(":"); el.setAttribute(attr, t(k)); }));
+  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
+  document.title = lang === "ru" ? DYN.ru.title : I18N[lang].title;
+  const md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", lang === "ru" ? DYN.ru.meta : I18N[lang].meta);
+  burger.setAttribute("aria-label", D().nav[nav.classList.contains("open") ? 1 : 0]);
+  renderMenu(); renderGallery(); renderArticles(); renderLinks(); renderHours(); updatePreview();
+  try { localStorage.setItem("spicki-lang", lang); } catch(e) {}
+}
+document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang)));
+let start = "ru";
+const h = (location.hash || "").slice(1);
+if (LANGS.includes(h)) start = h;
+else { try { const saved = localStorage.getItem("spicki-lang"); if (LANGS.includes(saved)) start = saved; } catch(e) {} }
+setLang(start);
+
+// Появление при прокрутке
+if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const targets = document.querySelectorAll(".sec-head, .about-body, .about-img, .perks li, .zone, .cat-main, .cat-side, .menu-col, .art-card, .book-card, .contact-grid > div, .review .wrap > div");
+  const io = new IntersectionObserver(es => es.forEach(en => {
+    if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); }
+  }), { rootMargin: "0px 0px -8% 0px" });
+  targets.forEach(el => { if (el.getBoundingClientRect().top > innerHeight) io.observe(el); });
+}
+
+// Мобильная панель прячется у формы брони
+const bar = $("mbar");
+if ("IntersectionObserver" in window) {
+  new IntersectionObserver(es => es.forEach(en => bar.classList.toggle("hide", en.isIntersecting)), { threshold: .25 }).observe($("booking"));
+}
+</script>
+</body>
+</html>
