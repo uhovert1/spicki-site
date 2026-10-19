@@ -1,0 +1,73 @@
+/* Spički: анимации главной. Каждая включается классом на <html> из anim.js. */
+
+/* 1. Неоновая надпись «никуда не спешить» */
+.a-neon .hero .slogan em{animation:neon-on 1.8s steps(1,end) .4s both,neon-breathe 5s ease-in-out 2.2s infinite}
+@keyframes neon-on{
+  0%{opacity:.15;text-shadow:none}
+  8%{opacity:1;text-shadow:0 0 6px rgba(255,95,162,.9),0 0 22px rgba(255,46,126,.7)}
+  12%{opacity:.25;text-shadow:none}
+  20%{opacity:1;text-shadow:0 0 6px rgba(255,95,162,.9),0 0 22px rgba(255,46,126,.7)}
+  24%{opacity:.4;text-shadow:none}
+  32%,100%{opacity:1;text-shadow:0 0 6px rgba(255,95,162,.85),0 0 24px rgba(255,46,126,.6),0 0 60px rgba(255,46,126,.35)}
+}
+@keyframes neon-breathe{
+  0%,100%{text-shadow:0 0 6px rgba(255,95,162,.85),0 0 24px rgba(255,46,126,.6),0 0 60px rgba(255,46,126,.35)}
+  50%{text-shadow:0 0 4px rgba(255,95,162,.6),0 0 14px rgba(255,46,126,.4),0 0 34px rgba(255,46,126,.2)}
+  52%{text-shadow:0 0 2px rgba(255,95,162,.3)}
+  54%{text-shadow:0 0 6px rgba(255,95,162,.85),0 0 24px rgba(255,46,126,.6),0 0 60px rgba(255,46,126,.35)}
+}
+
+/* 3. Искры от спички */
+.fx-sparks{position:absolute;inset:0;pointer-events:none;display:none;z-index:2}
+.a-sparks .fx-sparks{display:block}
+.fx-sparks i{position:absolute;left:var(--x);top:var(--y);width:var(--s);height:var(--s);border-radius:50%;
+  background:radial-gradient(circle,#fff6e8 0,#ffb36b 40%,rgba(255,95,162,0) 70%);
+  box-shadow:0 0 10px 3px rgba(255,120,90,.75),0 0 22px 4px rgba(255,46,126,.35);opacity:0;
+  animation:spark var(--d) ease-out var(--delay) infinite}
+@keyframes spark{
+  0%{transform:translate(0,0) scale(1);opacity:0}
+  10%{opacity:1}
+  100%{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}
+}
+
+/* 4. Бегущая строка */
+.fx-marquee{display:none;overflow:hidden;border-block:1px solid var(--char-3);padding-block:18px;margin-block:8px;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.a-marquee .fx-marquee{display:block}
+.fx-marquee .track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.fx-marquee span{font:700 clamp(1.4rem,3vw,2.4rem)/1 var(--font-display);text-transform:uppercase;letter-spacing:.02em;white-space:nowrap;padding-inline:.6em;color:transparent;-webkit-text-stroke:1px rgba(255,240,245,.55)}
+.fx-marquee span:nth-child(4n+1){color:var(--flame);-webkit-text-stroke:0;text-shadow:0 0 18px rgba(255,46,126,.45)}
+.fx-marquee b{color:var(--flame);font-weight:700;align-self:center;font-size:1.4rem}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* 5. Неоновая кнопка брони */
+.a-btn .btn-fire{position:relative;overflow:hidden;isolation:isolate;animation:btn-glow 2.6s ease-in-out infinite}
+.a-btn .btn-fire::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);animation:btn-sweep 4.5s ease-in-out infinite}
+@keyframes btn-glow{0%,100%{box-shadow:0 0 0 0 rgba(255,46,126,0),0 8px 26px -10px rgba(255,46,126,.6)}50%{box-shadow:0 0 0 6px rgba(255,46,126,.14),0 10px 40px -6px rgba(255,46,126,.85)}}
+@keyframes btn-sweep{0%,55%{transform:translateX(-120%)}85%,100%{transform:translateX(120%)}}
+
+/* 6. Зоны: неоновый свет за курсором и приближение фото */
+.a-spot .zone{position:relative;isolation:isolate}
+.a-spot .zone::before{content:"";position:absolute;inset:0 -24px;z-index:-1;border-radius:16px;opacity:0;transition:opacity .4s;
+  background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,46,126,.14),transparent 60%)}
+.a-spot .zone:hover::before{opacity:1}
+.a-spot .zone-photo img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.a-spot .zone:hover .zone-photo img{transform:scale(1.08)}
+.a-spot .zone:hover .zone-photo{box-shadow:0 20px 50px -24px rgba(0,0,0,.8),0 0 50px -10px rgba(255,46,126,.55)}
+
+/* 7. Заголовки разделов появляются по словам */
+.a-words .sec-head h2 .w{display:inline-block;opacity:0;transform:translateY(.45em);filter:blur(6px);transition:opacity .7s,transform .8s cubic-bezier(.2,.7,.2,1),filter .7s;transition-delay:calc(var(--i)*70ms)}
+.a-words .sec-head.fx-in h2 .w{opacity:1;transform:none;filter:none}
+
+/* 8. Фото в первом экране поворачивается за курсором */
+.a-tilt .hero-photo{perspective:900px}
+.a-tilt .hero-photo img{transition:transform .25s ease-out;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));will-change:transform}
+
+/* 9. Галерея: каскад и розовый отблеск */
+.a-gal .gallery-grid figure{opacity:0;transform:translateY(24px) scale(.97);transition:opacity .8s,transform .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(var(--gi,0)*60ms)}
+.a-gal .gallery-grid figure.fx-in{opacity:1;transform:none}
+.a-gal .gallery-grid figure::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;transition:opacity .5s;background:linear-gradient(to top,rgba(255,46,126,.35),transparent 55%)}
+.a-gal .gallery-grid figure:hover::before{opacity:1}
+
+@media (max-width:1300px){.a-spot .zone::before{inset:0}}
+.a-calm .fx-marquee .track{animation:none}
