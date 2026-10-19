@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://spickibg.com/sitemap.xml
