@@ -77,3 +77,13 @@ footer{border-top:1px solid var(--char-3);padding-block:28px;font-size:.84rem;co
 h1,.body h2,.faq h2,.cta h2,.more h2,.more-list span{font-size-adjust:.40;font-weight:600;letter-spacing:-.02em}
 .cta h2{font-weight:500}
 @media (max-width:640px){.body{padding-bottom:8px}.faq{margin-top:32px}.faq h2{margin-top:24px}.cta{margin-top:36px}.more{padding-block:44px 56px}}
+
+/* Закреплённая кнопка меню (Qastio) */
+.menu-fab{position:fixed;z-index:56;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));display:inline-flex;align-items:center;gap:.55em;min-height:52px;padding:0 1.3em 0 1.1em;border-radius:999px;background:rgba(15,10,13,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--flame);color:var(--cream);font:600 .95rem/1 var(--font-body);text-decoration:none;box-shadow:0 10px 30px -10px rgba(0,0,0,.8),0 0 24px -6px rgba(255,46,126,.55);transition:background .25s,color .25s,box-shadow .3s,transform .2s}
+.menu-fab svg{color:var(--flame);flex:none}
+.menu-fab .arrow{color:var(--flame);font-size:.9em}
+.menu-fab:hover{background:var(--flame);color:#170a10;box-shadow:0 10px 34px -8px rgba(255,46,126,.8)}
+.menu-fab:hover svg,.menu-fab:hover .arrow{color:inherit}
+.menu-fab:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
+body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
+@media (max-width:640px){.menu-fab{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));justify-content:center}}
