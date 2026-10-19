@@ -357,6 +357,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 .art-card:focus-visible{outline:2px solid var(--flame);outline-offset:6px;border-radius:6px}
 @media (max-width:860px){.art-list{grid-template-columns:1fr}.art-card{grid-template-columns:120px 1fr;grid-template-rows:auto;column-gap:16px;row-gap:6px;align-items:start}.art-img{grid-row:1/span 4;margin:0;aspect-ratio:1}}
 </style>
+<style>
+/* Мобильная версия: ровные и более плотные отступы между блоками */
+@media (max-width:640px){
+  section{padding-block:36px}
+  .sec-head{margin-bottom:24px}
+  .menu-col > header{margin-bottom:14px}
+  /* у последнего блюда уже есть линия — без второй линии и лишнего отступа перед кнопкой */
+  .menu-cta{margin-top:24px;padding-top:0;border-top:0}
+  .zone{padding-block:24px}
+  .hero .wrap{padding-bottom:32px}
+  /* бегущая строка между разделами не добавляет пустоты сверху и снизу */
+  .fx-marquee{margin-block:0}
+  section:has(+ .fx-marquee){padding-bottom:28px}
+  .fx-marquee + section{padding-top:32px}
+}
+</style>
 </head>
 <body>
 <svg width="1" height="1" style="position:absolute;left:-9999px" aria-hidden="true" focusable="false">
