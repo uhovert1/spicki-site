@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://spickibg.com/</loc><lastmod>2026-10-19</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://spickibg.com/</loc><lastmod>2026-11-13</lastmod></url>
   <url><loc>https://spickibg.com/articles/biznes-lanch.html</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://spickibg.com/articles/igrovye-zony.html</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://spickibg.com/articles/kejtering.html</loc><lastmod>2026-10-19</lastmod></url>
   <url><loc>https://spickibg.com/privacy.html</loc><lastmod>2026-10-19</lastmod></url>
+  <url><loc>https://spickibg.com/news/</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="ru" href="https://spickibg.com/news/"/><xhtml:link rel="alternate" hreflang="sr-Latn" href="https://spickibg.com/news/sr/"/><xhtml:link rel="alternate" hreflang="en" href="https://spickibg.com/news/en/"/></url>
+  <url><loc>https://spickibg.com/news/sr/</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="ru" href="https://spickibg.com/news/"/><xhtml:link rel="alternate" hreflang="sr-Latn" href="https://spickibg.com/news/sr/"/><xhtml:link rel="alternate" hreflang="en" href="https://spickibg.com/news/en/"/></url>
+  <url><loc>https://spickibg.com/news/en/</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="ru" href="https://spickibg.com/news/"/><xhtml:link rel="alternate" hreflang="sr-Latn" href="https://spickibg.com/news/sr/"/><xhtml:link rel="alternate" hreflang="en" href="https://spickibg.com/news/en/"/></url>
+  <url><loc>https://spickibg.com/news/es-nalog-na-kalyannyj-tabak.html</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="ru" href="https://spickibg.com/news/es-nalog-na-kalyannyj-tabak.html"/><xhtml:link rel="alternate" hreflang="sr-Latn" href="https://spickibg.com/news/sr/es-nalog-na-kalyannyj-tabak.html"/><xhtml:link rel="alternate" hreflang="en" href="https://spickibg.com/news/en/es-nalog-na-kalyannyj-tabak.html"/></url>
+  <url><loc>https://spickibg.com/news/sr/es-nalog-na-kalyannyj-tabak.html</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="ru" href="https://spickibg.com/news/es-nalog-na-kalyannyj-tabak.html"/><xhtml:link rel="alternate" hreflang="sr-Latn" href="https://spickibg.com/news/sr/es-nalog-na-kalyannyj-tabak.html"/><xhtml:link rel="alternate" hreflang="en" href="https://spickibg.com/news/en/es-nalog-na-kalyannyj-tabak.html"/></url>
+  <url><loc>https://spickibg.com/news/en/es-nalog-na-kalyannyj-tabak.html</loc><lastmod>2026-11-13</lastmod><xhtml:link rel="alternate" hreflang="ru" href="https://spickibg.com/news/es-nalog-na-kalyannyj-tabak.html"/><xhtml:link rel="alternate" hreflang="sr-Latn" href="https://spickibg.com/news/sr/es-nalog-na-kalyannyj-tabak.html"/><xhtml:link rel="alternate" hreflang="en" href="https://spickibg.com/news/en/es-nalog-na-kalyannyj-tabak.html"/></url>
 </urlset>

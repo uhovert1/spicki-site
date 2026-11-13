@@ -87,3 +87,29 @@ h1,.body h2,.faq h2,.cta h2,.more h2,.more-list span{font-size-adjust:.40;font-w
 .menu-fab:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 body{padding-bottom:calc(88px + env(safe-area-inset-bottom,0px))}
 @media (max-width:640px){.menu-fab{left:max(16px,env(safe-area-inset-left,0px));right:max(16px,env(safe-area-inset-right,0px));justify-content:center}}
+
+/* Новости */
+.lang a{font:600 .74rem/1 var(--font-body);letter-spacing:.1em;color:var(--cream-dim);padding:8px 9px;border-radius:999px;text-align:center;min-width:22px;text-decoration:none}
+.lang a[aria-current="true"]{background:var(--cream);color:var(--char)}
+.lang a:hover{color:var(--flame)}
+.lang a[aria-current="true"]:hover{color:var(--char)}
+.lang a:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
+.news-date{margin:14px 0 0;font-size:.88rem;color:var(--cream-dim);font-variant-numeric:tabular-nums}
+.sources{margin-top:36px;padding-top:22px;border-top:1px solid var(--char-3)}
+.sources h2{font-size:1.1rem;margin:0 0 10px;font-weight:600}
+.sources ul{margin:0;padding-left:1.2em;display:grid;gap:6px;font-size:.9rem;color:var(--cream-dim)}
+.sources a{color:var(--cream-dim);overflow-wrap:anywhere}
+.sources a:hover{color:var(--flame)}
+.all-news{margin:18px 0 0}
+.all-news a{font-weight:600;text-decoration:none;color:var(--flame)}
+.news-index h1{margin-top:14px}
+.news-list{display:grid;gap:16px;margin:36px 0 8px}
+.news-card{display:grid;grid-template-columns:120px 1fr;grid-template-rows:auto auto 1fr;column-gap:18px;row-gap:6px;align-items:start;padding:14px;border:1px solid var(--char-3);border-radius:10px;text-decoration:none;color:var(--cream);min-width:0}
+.news-card:hover{border-color:var(--flame)}
+.news-card:focus-visible{outline:2px solid var(--flame);outline-offset:4px}
+.news-img{grid-row:1/span 3;aspect-ratio:1;border-radius:6px;overflow:hidden;background:var(--char-2)}
+.news-img img{width:100%;height:100%;object-fit:cover}
+.news-meta{font-size:.74rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--flame)}
+.news-title{font-size:1.15rem;font-weight:600;line-height:1.2;letter-spacing:-.01em;text-wrap:balance}
+.news-lead{font-size:.9rem;color:var(--cream-dim)}
+@media (max-width:520px){.news-card{grid-template-columns:84px 1fr;column-gap:14px}}
