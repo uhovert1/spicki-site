@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-page="ru" data-root="">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Spički Белград — кальянный лаунж на Врачаре</title>
+<title>Кальянная в Белграде — Spički: кальяны, бар, кухня и PS5</title>
 <meta name="theme-color" content="#0f0a0d">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
@@ -11,16 +11,22 @@
 <link rel="stylesheet" href="consent.css">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Spički šibice">
-<meta property="og:title" content="Spički — кальянный лаунж на Врачаре, Белград">
+<meta property="og:title" content="Spički — кальянная в Белграде">
+<meta property="og:locale" content="ru_RU">
 <meta property="og:description" content="Кальяны, кухня, бизнес-ланчи, бар и игры: столы с PS5 и Secret Room с пятью игровыми ПК. Mačvanska 10.">
 <meta property="og:image" content="https://spickibg.com/img/og-cover.jpg">
 <meta property="og:url" content="https://spickibg.com/">
 <link rel="canonical" href="https://spickibg.com/">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="description" content="Spički — кальянный лаунж на Врачаре, Mačvanska 10, Белград. Кальяны, кухня, коктейли, столы с PS5 и Secret Room с игровыми ПК.">
+<meta name="description" content="Spički — кальянная в Белграде на Mačvanska 10: кальяны, своя кухня, коктейли, столы с PS5 и Secret Room с игровыми ПК. Ежедневно с 12:00, онлайн-бронь.">
+<link rel="alternate" hreflang="ru" href="https://spickibg.com/">
+<link rel="alternate" hreflang="sr-Latn" href="https://spickibg.com/sr/">
+<link rel="alternate" hreflang="en" href="https://spickibg.com/en/">
+<link rel="alternate" hreflang="x-default" href="https://spickibg.com/en/">
+<script>/* язык: #sr/#en или явно выбранный ранее язык → отдельная страница /sr/ или /en/ */(function(){var d=document.documentElement;if(d.dataset.page!=="ru")return;var h=location.hash.slice(1),t=null;if(h==="ru")return;if(h==="sr"||h==="en")t=h;else{try{var o=JSON.parse(localStorage.getItem("spicki-lang"));if(o&&o.exp>Date.now()&&(o.v==="sr"||o.v==="en"))t=o.v}catch(e){}}if(t)location.replace(d.dataset.root+t+"/"+(h===t?"":location.hash))})();</script>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="anim.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BarOrPub", "name": "Spički šibice", "url": "https://spickibg.com/", "image": "https://spickibg.com/img/og-cover.jpg", "description": "Hookah lounge in Vračar, Belgrade: hookah, kitchen, cocktails, PS5 tables and a Secret Room with gaming PCs.", "address": {"@type": "PostalAddress", "streetAddress": "Mačvanska 10", "addressLocality": "Beograd", "postalCode": "11000", "addressCountry": "RS"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"], "opens": "12:00", "closes": "00:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "12:00", "closes": "01:00"}], "email": "info@spickibg.com", "sameAs": ["https://www.instagram.com/spicki_bg/", "https://www.threads.com/@spicki_bg"], "hasMenu": "https://qastio.app/rs/belgrade/spicki", "servesCuisine": ["International"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BarOrPub", "name": "Spički šibice", "alternateName": ["Spički", "Спички", "Spicki"], "url": "https://spickibg.com/", "image": "https://spickibg.com/img/og-cover.jpg", "description": "Кальянная в Белграде: кальяны, кухня, коктейли, столы с PS5 и Secret Room с игровыми ПК.", "hasMap": "https://www.google.com/maps/place/?q=place_id:ChIJrSgzmz9xWkcRgNWZYvhEYXk", "address": {"@type": "PostalAddress", "streetAddress": "Mačvanska 10", "addressLocality": "Beograd", "postalCode": "11000", "addressCountry": "RS"}, "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Sunday"], "opens": "12:00", "closes": "00:00"}, {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday", "Saturday"], "opens": "12:00", "closes": "01:00"}], "email": "info@spickibg.com", "sameAs": ["https://www.instagram.com/spicki_bg/", "https://www.threads.com/@spicki_bg"], "hasMenu": "https://qastio.app/rs/belgrade/spicki", "servesCuisine": ["International"]}</script>
 <style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}
 /* Montserrat: заголовки компактнее, кнопки первого экрана в одну строку */
 h1,h2,h3,.hero .slogan,.zone-num,.addr,.art-title,.steps li::before{font-size-adjust:.40;font-weight:600;letter-spacing:-.02em}
@@ -342,10 +348,10 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 /* Переключатель языка, бургер */
 .top-right{display:flex;align-items:center;gap:14px}
 .lang{display:inline-flex;border:1px solid rgba(255,240,245,.18);border-radius:999px;padding:3px}
-.lang button{all:unset;cursor:pointer;font:600 .74rem/1 var(--font-body);letter-spacing:.1em;color:var(--cream-dim);padding:8px 10px;border-radius:999px;min-width:22px;text-align:center}
-.lang button[aria-pressed="true"]{background:var(--cream);color:var(--char)}
-.lang button:hover:not([aria-pressed="true"]){color:var(--cream)}
-.lang button:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
+.lang button,.lang a{all:unset;cursor:pointer;font:600 .74rem/1 var(--font-body);letter-spacing:.1em;color:var(--cream-dim);padding:8px 10px;border-radius:999px;min-width:22px;text-align:center}
+.lang button[aria-pressed="true"],.lang a[aria-current]{background:var(--cream);color:var(--char)}
+.lang a:hover:not([aria-current]),.lang button:hover:not([aria-pressed="true"]){color:var(--cream)}
+.lang a:focus-visible,.lang button:focus-visible{outline:2px solid var(--flame);outline-offset:2px}
 .burger{all:unset;display:none;cursor:pointer;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,240,245,.25);position:relative;flex:none}
 .burger span{position:absolute;left:13px;right:13px;height:1.5px;background:var(--cream);transition:transform .3s,top .3s}
 .burger span:first-child{top:17px}.burger span:last-child{top:25px}
@@ -362,7 +368,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   body.nav-open .mbar{display:none}
   body.nav-open .menu-fab{display:none}
 }
-@media (max-width:640px){.top-book{display:none}.lang button{padding:8px 8px}}
+@media (max-width:640px){.top-book{display:none}.lang button,.lang a{padding:8px 8px}}
 
 /* Статьи */
 .art-head{grid-template-columns:1fr 1fr;align-items:end;gap:14px 48px}
@@ -410,7 +416,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </nav>
     <div class="top-right">
       <div class="lang" role="group" data-ta="aria-label:lang.aria" aria-label="Язык сайта">
-        <button type="button" data-lang="ru" aria-pressed="true">RU</button><button type="button" data-lang="sr" aria-pressed="false">SR</button><button type="button" data-lang="en" aria-pressed="false">EN</button>
+        <a href="./" hreflang="ru" lang="ru" data-lang="ru" aria-current="page">RU</a><a href="sr/" hreflang="sr-Latn" lang="sr-Latn" data-lang="sr">SR</a><a href="en/" hreflang="en" lang="en" data-lang="en">EN</a>
       </div>
       <a class="btn btn-fire top-book" href="https://book.spickibg.com/" data-book="" data-t="cta.book">Забронировать стол</a>
       <button class="burger" type="button" id="burger" aria-expanded="false" aria-controls="nav" data-ta="aria-label:nav.open" aria-label="Открыть меню"><span></span><span></span></button>
@@ -422,8 +428,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
   <section class="hero" style="padding-block:0" aria-labelledby="hero-title">
     <div class="wrap">
       <div class="hero-copy">
-        <h1 id="hero-title" class="sr-only" data-t="hero.h1">Spički — кальянный лаунж на Врачаре, Белград</h1>
-        <p class="aka" data-t="hero.aka">Кальянный лаунж · Врачар, Белград</p>
+        <h1 id="hero-title" class="sr-only" data-t="hero.h1">Spički — кальянная в Белграде</h1>
+        <p class="aka" data-t="hero.aka">Кальянная в Белграде</p>
         <p class="slogan" data-t="hero.slogan">В Спичках можно <em>никуда не спешить</em></p>
         <p class="lead" data-t="hero.lead">Кальяны, кухня, бизнес-ланчи, бар и игры: столы с PS5 и закрытая Secret Room с пятью игровыми ПК. Mačvanska&nbsp;10.</p>
         <div class="actions">
@@ -449,7 +455,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
         <div class="about-body">
           <p class="eyebrow" data-t="nav.about">О Spički</p>
           <h2 id="about-title" data-t="about.h2">Всё, что редко помещается в одном месте</h2>
-          <p data-t="about.p">Открывая Spički, мы хотели соединить разнообразную кухню, сильный бар с винной картой, яркий интерьер, место для нетворкинга и игры. Получился кальянный лаунж на Врачаре, куда приходят на ужин, на матч и на долгий вечер с друзьями.</p>
+          <p data-t="about.p">Открывая Spički, мы хотели соединить разнообразную кухню, сильный бар с винной картой, яркий интерьер, место для нетворкинга и игры. Получилась кальянная в Белграде, куда приходят на ужин, на матч и на долгий вечер с друзьями.</p>
           <a class="btn btn-line" href="#zones"><span data-t="about.btn">Выбрать зону</span> <span class="arrow" aria-hidden="true">→</span></a>
         </div>
       </div>
@@ -729,12 +735,12 @@ const I18N = {
     "brand.aria":"Spički — na vrh", "nav.aria":"Sekcije", "lang.aria":"Jezik sajta", "nav.open":"Otvori meni", "nav.close":"Zatvori meni",
     "nav.about":"O Spički", "nav.zones":"Zone", "nav.menu":"Meni", "nav.catering":"Ketering", "nav.gallery":"Galerija", "nav.articles":"Članci", "nav.contacts":"Kontakt",
     "cta.book":"Rezerviši sto",
-    "hero.h1":"Spički — nargila lounge na Vračaru, Beograd", "hero.aka":"Nargila lounge · Vračar, Beograd",
+    "hero.h1":"Spički — nargila bar u Beogradu", "hero.aka":"Nargila bar u Beogradu",
     "hero.slogan":"Daj meni spičku <em>da zakurim</em>",
     "hero.lead":"Nargile, kuhinja, poslovni ručkovi, bar i igre: stolovi sa PS5 i zatvorena Secret Room sa pet gejming računara. Mačvanska&nbsp;10.",
     "hero.menu":"Pogledaj meni", "hero.alt":"Logo Spički šibice na fotografiji: usne drže upaljenu šibicu",
     "about.alt":"Gošća izdiše dim nargile", "about.h2":"Sve što retko stane na jedno mesto",
-    "about.p":"Kada smo otvarali Spički, hteli smo da spojimo raznovrsnu kuhinju, jak bar sa vinskom kartom, upečatljiv enterijer, prostor za networking i igre. Nastao je nargila lounge na Vračaru u koji se dolazi na večeru, na meč i na dugo veče sa prijateljima.",
+    "about.p":"Kada smo otvarali Spički, hteli smo da spojimo raznovrsnu kuhinju, jak bar sa vinskom kartom, upečatljiv enterijer, prostor za networking i igre. Nastao je nargila bar u Beogradu u koji se dolazi na večeru, na meč i na dugo veče sa prijateljima.",
     "about.btn":"Izaberi zonu", "perks.aria":"Šta ima u Spički",
     "p1.h":"Nargile", "p1.p":"Premium usluga: majstor bira duvan i jačinu po meri vašeg društva.",
     "p2.h":"Naša kuhinja", "p2.p":"Od takosa i tatakija do bif stroganova. Radnim danima poslovni ručak od tri jela za 1.300&nbsp;RSD.",
@@ -774,19 +780,20 @@ const I18N = {
     "r.eyebrow":"Utisci", "r.h2":"Bili ste kod nas? Recite kako je bilo.", "r.btn":"Ostavi recenziju na Google Maps",
     "r.hint":"Ako se forma ne otvori, pronađite Spički na Google Maps, otvorite karticu „Recenzije” i kliknite „Napiši recenziju”.",
     "foot.aria":"Linkovi", "foot.pib":"PIB", "foot.mb":"MB", "foot.privacy":"Politika privatnosti", "foot.book":"Rezervacija", "foot.wolt":"Dostava Wolt", "foot.note":"Mačvanska&nbsp;10, Beograd · Meni i cene — prema Qastio",
-    "title":"Spički Beograd — nargila lounge na Vračaru",
-    "meta":"Spički — nargila lounge na Vračaru, Mačvanska 10. Nargile, kuhinja, kokteli, PS5 stolovi i Secret Room sa gejming računarima."
+    "title":"Nargila bar Beograd — Spički: nargile, kokteli, kuhinja i PS5",
+    "meta":"Spički — nargila bar u Beogradu, Mačvanska 10: nargile, naša kuhinja, kokteli, stolovi sa PS5 i Secret Room sa gejming računarima. Svaki dan od 12:00, online rezervacija.",
+    "og":"Spički — nargila bar u Beogradu", "ld":"Nargila bar u Beogradu: nargile, kuhinja, kokteli, PS5 stolovi i Secret Room sa gejming računarima."
   },
   en: {
     "brand.aria":"Spički — back to top", "nav.aria":"Sections", "lang.aria":"Site language", "nav.open":"Open menu", "nav.close":"Close menu",
     "nav.about":"About", "nav.zones":"Zones", "nav.menu":"Menu", "nav.catering":"Catering", "nav.gallery":"Gallery", "nav.articles":"Articles", "nav.contacts":"Contact",
     "cta.book":"Book a table",
-    "hero.h1":"Spički — hookah lounge in Vračar, Belgrade", "hero.aka":"Hookah lounge · Vračar, Belgrade",
+    "hero.h1":"Spički — hookah lounge in Belgrade", "hero.aka":"Hookah lounge in Belgrade",
     "hero.slogan":"Strike a match and <em>take your time</em>",
     "hero.lead":"Hookah, kitchen, business lunches, bar and games: PS5 tables and a private Secret Room with five gaming PCs. Mačvanska&nbsp;10.",
     "hero.menu":"See the menu", "hero.alt":"Spički šibice logo on a photo of lips holding a lit match",
     "about.alt":"Guest exhaling hookah smoke", "about.h2":"Everything that rarely fits under one roof",
-    "about.p":"When we opened Spički, we wanted to bring together a varied kitchen, a strong bar with a wine list, a bold interior, a place for networking, and games. The result is a hookah lounge in Vračar where people come for dinner, for a match, and for long nights with friends.",
+    "about.p":"When we opened Spički, we wanted to bring together a varied kitchen, a strong bar with a wine list, a bold interior, a place for networking, and games. The result is a hookah lounge in Belgrade where people come for dinner, for a match, and for long nights with friends.",
     "about.btn":"Choose a zone", "perks.aria":"What Spički offers",
     "p1.h":"Hookah", "p1.p":"Premium service: our hookah master matches the tobacco and strength to your group.",
     "p2.h":"Our kitchen", "p2.p":"From tacos and tataki to beef Stroganoff. On weekdays, a three-course business lunch for 1,300&nbsp;RSD.",
@@ -826,8 +833,9 @@ const I18N = {
     "r.eyebrow":"Reviews", "r.h2":"Been to Spički? Tell us how it went.", "r.btn":"Leave a review on Google Maps",
     "r.hint":"If the form doesn't open, find Spički on Google Maps, open the “Reviews” tab and tap “Write a review”.",
     "foot.aria":"Links", "foot.pib":"Tax ID (PIB)", "foot.mb":"Company No. (MB)", "foot.privacy":"Privacy policy", "foot.book":"Booking", "foot.wolt":"Wolt delivery", "foot.note":"Mačvanska&nbsp;10, Belgrade · Menu and prices from Qastio",
-    "title":"Spički Belgrade — hookah lounge in Vračar",
-    "meta":"Spički is a hookah lounge in Vračar, Mačvanska 10, Belgrade. Hookah, food, cocktails, PS5 tables and a Secret Room with gaming PCs."
+    "title":"Hookah Lounge in Belgrade — Spički: hookah, cocktails, food, PS5",
+    "meta":"Spički is a hookah lounge in Belgrade at Mačvanska 10: hookah, our own kitchen, cocktails, PS5 tables and a Secret Room with gaming PCs. Open daily from 12:00, book online.",
+    "og":"Spički — hookah lounge in Belgrade", "ld":"Hookah lounge in Belgrade: hookah, food, cocktails, PS5 tables and a Secret Room with gaming PCs."
   }
 };
 // Строки, которые собираются скриптом
@@ -838,7 +846,7 @@ const DYN = {
         copied:"Текст скопирован. Вставьте его в чат Instagram и отправьте — бронь подтвердим ответом.",
         copyFail:"Не получилось скопировать автоматически: текст выделен, скопируйте его вручную и отправьте нам в Instagram.",
         links:["Instagram","Threads","Доставка","Меню","Телефон","Онлайн-бронь"], open:"Открыть фото", read:"Читать", nav:["Открыть меню","Закрыть меню"],
-        title:"Spički Белград — кальянный лаунж на Врачаре", meta:"Spički — кальянный лаунж на Врачаре, Mačvanska 10, Белград. Кальяны, кухня, коктейли, столы с PS5 и Secret Room с игровыми ПК." },
+        title:"Кальянная в Белграде — Spički: кальяны, бар, кухня и PS5", meta:"Spički — кальянная в Белграде на Mačvanska 10: кальяны, своя кухня, коктейли, столы с PS5 и Secret Room с игровыми ПК. Ежедневно с 12:00, онлайн-бронь." },
   sr: { days:["Ponedeljak","Utorak","Sreda","Četvrtak","Petak","Subota","Nedelja"], openTill:"Otvoreno do", today:"Danas od", tomorrow:"Sutra od", daily:"Svaki dan od 12:00",
         msg:["Zdravo! Želim da rezervišem sto.","Zona","Datum","Vreme","Broj gostiju","Ime","Želje"], locale:"sr-Latn-RS",
         needDate:"Izaberite datum i vreme da bismo znali kada da vam čuvamo sto.",
@@ -855,7 +863,9 @@ const DYN = {
 /* ============================================================ */
 
 const LANGS = ["ru","sr","en"];
-let lang = "ru";
+const ROOT = document.documentElement.dataset.root || "";
+const PAGE = LANGS.includes(document.documentElement.dataset.page) ? document.documentElement.dataset.page : "ru";
+let lang = PAGE;
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const enc = encodeURIComponent;
@@ -877,18 +887,18 @@ const D = () => DYN[lang];
 function renderMenu() {
   $("menu-cols").innerHTML = SITE.menu.map(col => `
   <div class="menu-col">
-    <header><img src="${col.img}" alt="" loading="lazy" width="96" height="96"><h3><small>${esc(col.kicker[lang])}</small>${esc(col.title[lang])}</h3></header>
+    <header><img src="${ROOT}${col.img}" alt="" loading="lazy" width="96" height="96"><h3><small>${esc(col.kicker[lang])}</small>${esc(col.title[lang])}</h3></header>
     ${col.items.map(i => `<div class="dish"><span class="name">${esc(i.name[lang])}</span><span class="price">${esc(i.price)}</span>${i.desc ? `<span class="desc">${esc(i.desc[lang])}</span>` : ""}</div>`).join("")}
   </div>`).join("");
 }
 function renderGallery() {
   $("gallery-grid").innerHTML = SITE.gallery.map((g, i) =>
-    `<figure${g.wide ? ' class="wide"' : ""}><button type="button" data-i="${i}" aria-label="${esc(D().open)}: ${esc(g.alt[lang])}"><img src="img/g/${g.n}-s.webp" width="${g.w}" height="${g.h}" alt="${esc(g.alt[lang])}" loading="lazy" decoding="async" style="object-position:${g.pos}"></button></figure>`).join("");
+    `<figure${g.wide ? ' class="wide"' : ""}><button type="button" data-i="${i}" aria-label="${esc(D().open)}: ${esc(g.alt[lang])}"><img src="${ROOT}img/g/${g.n}-s.webp" width="${g.w}" height="${g.h}" alt="${esc(g.alt[lang])}" loading="lazy" decoding="async" style="object-position:${g.pos}"></button></figure>`).join("");
 }
 function renderArticles() {
   $("art-list").innerHTML = SITE.articles.map(a => `
-    <a class="art-card" href="articles/${a.slug}.html#${lang}">
-      <span class="art-img"><img src="${a.img}" alt="" loading="lazy" width="800" height="800"></span>
+    <a class="art-card" href="${ROOT}articles/${a.slug}.html#${lang}">
+      <span class="art-img"><img src="${ROOT}${a.img}" alt="" loading="lazy" width="800" height="800"></span>
       <span class="art-tag">${esc(a.tag[lang])}</span>
       <span class="art-title">${esc(a.title[lang])}</span>
       <span class="art-desc">${esc(a.desc[lang])}</span>
@@ -898,12 +908,12 @@ function renderArticles() {
 function renderNews() {
   const n = SITE.news || [], box = $("news-block"); if (!box) return;
   box.hidden = !n.length; if (!n.length) return;
-  const base = {ru:"news/", sr:"news/sr/", en:"news/en/"}[lang] || "news/";
+  const base = ROOT + ({ru:"news/", sr:"news/sr/", en:"news/en/"}[lang] || "news/");
   const loc = {ru:"ru-RU", sr:"sr-Latn-RS", en:"en-GB"}[lang] || "ru-RU";
   $("news-all").href = base;
   $("news-list").innerHTML = n.map(a => {
     const d = new Date(a.date + "T12:00:00").toLocaleDateString(loc, {day:"numeric", month:"long", year:"numeric"});
-    return `<a class="news-item" href="${base}${a.slug}.html"><img src="${a.img}" alt="" loading="lazy" width="96" height="96"><span><span class="news-meta">${esc(d)} · ${esc(a.tag[lang])}</span><span class="news-t">${esc(a.title[lang])}</span></span></a>`;
+    return `<a class="news-item" href="${base}${a.slug}.html"><img src="${ROOT}${a.img}" alt="" loading="lazy" width="96" height="96"><span><span class="news-meta">${esc(d)} · ${esc(a.tag[lang])}</span><span class="news-t">${esc(a.title[lang])}</span></span></a>`;
   }).join("");
 }
 function renderLinks() {
@@ -973,7 +983,7 @@ $("book-form").addEventListener("submit", e => {
 // Галерея: просмотр
 const lb = $("lb"), lbImg = $("lb-img"), lbCap = $("lb-cap");
 let lbI = 0;
-const lbShow = i => { lbI = (i + SITE.gallery.length) % SITE.gallery.length; const g = SITE.gallery[lbI]; lbImg.src = `img/g/${g.n}-l.webp`; lbImg.alt = g.alt[lang]; lbCap.textContent = `${g.alt[lang]} · ${lbI + 1} / ${SITE.gallery.length}`; };
+const lbShow = i => { lbI = (i + SITE.gallery.length) % SITE.gallery.length; const g = SITE.gallery[lbI]; lbImg.src = `${ROOT}img/g/${g.n}-l.webp`; lbImg.alt = g.alt[lang]; lbCap.textContent = `${g.alt[lang]} · ${lbI + 1} / ${SITE.gallery.length}`; };
 $("gallery-grid").addEventListener("click", e => { const b = e.target.closest("button[data-i]"); if (!b) return; lbShow(+b.dataset.i); try { lb.showModal(); } catch (err) { lb.setAttribute("open", ""); } });
 $("lb-prev").onclick = () => lbShow(lbI - 1);
 $("lb-next").onclick = () => lbShow(lbI + 1);
@@ -992,26 +1002,22 @@ nav.addEventListener("click", e => { if (e.target.closest("a")) setNav(false); }
 document.addEventListener("keydown", e => { if (e.key === "Escape" && nav.classList.contains("open")) { setNav(false); burger.focus(); } });
 
 // Переключение языка
-function setLang(l, persist) {
+function setLang(l) {
   lang = LANGS.includes(l) ? l : "ru";
   document.documentElement.lang = lang === "sr" ? "sr-Latn" : lang;
   document.querySelectorAll("[data-t]").forEach(el => { el.innerHTML = t(el.dataset.t); });
   document.querySelectorAll("[data-ta]").forEach(el => el.dataset.ta.split(";").forEach(p => { const [attr, k] = p.split(":"); el.setAttribute(attr, t(k)); }));
-  document.querySelectorAll(".lang button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.lang === lang)));
   document.title = lang === "ru" ? DYN.ru.title : I18N[lang].title;
   if (typeof syncBookingLinks === "function") syncBookingLinks();
   const md = document.querySelector('meta[name="description"]'); if (md) md.setAttribute("content", lang === "ru" ? DYN.ru.meta : I18N[lang].meta);
   burger.setAttribute("aria-label", D().nav[nav.classList.contains("open") ? 1 : 0]);
   renderMenu(); renderGallery(); renderArticles(); renderNews(); renderLinks(); renderHours(); updatePreview();
-  // язык сохраняется на устройстве только по явному выбору посетителя, на 12 месяцев
-  if (persist) { try { localStorage.setItem("spicki-lang", JSON.stringify({ v: lang, exp: Date.now() + 365 * 864e5 })); } catch(e) {} }
 }
-document.querySelectorAll(".lang button").forEach(b => b.addEventListener("click", () => setLang(b.dataset.lang, true)));
-let start = "ru";
-const h = (location.hash || "").slice(1);
-if (LANGS.includes(h)) start = h;
-else { try { const o = JSON.parse(localStorage.getItem("spicki-lang")); if (o && o.exp > Date.now() && LANGS.includes(o.v)) start = o.v; } catch(e) {} }
-setLang(start);
+// У каждого языка своя страница (/, /sr/, /en/). Язык запоминается на устройстве только по явному клику, на 12 месяцев.
+document.querySelectorAll(".lang a[data-lang]").forEach(a => a.addEventListener("click", () => {
+  try { localStorage.setItem("spicki-lang", JSON.stringify({ v: a.dataset.lang, exp: Date.now() + 365 * 864e5 })); } catch(e) {}
+}));
+setLang(PAGE);
 
 // Появление при прокрутке
 if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {

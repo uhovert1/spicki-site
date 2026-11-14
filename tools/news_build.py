@@ -23,6 +23,7 @@ HTML_LANG = {"ru": "ru", "sr": "sr-Latn", "en": "en"}
 HREFLANG = {"ru": "ru", "sr": "sr-Latn", "en": "en"}
 SUBDIR = {"ru": "news/", "sr": "news/sr/", "en": "news/en/"}
 UP = {"ru": "../", "sr": "../../", "en": "../../"}
+HOME = {"ru": "", "sr": "sr/", "en": "en/"}  # главная на каждом языке: /, /sr/, /en/
 MONTHS = {
     "ru": ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"],
     "sr": ["januar", "februar", "mart", "april", "maj", "jun", "jul", "avgust", "septembar", "oktobar", "novembar", "decembar"],
@@ -178,7 +179,7 @@ def topbar(l, up, lang_hrefs):
         f'<a href="{lang_hrefs[k]}" hreflang="{HREFLANG[k]}" lang="{HTML_LANG[k]}"{" aria-current=\"true\"" if k == l else ""}>{k.upper()}</a>'
         for k in LANGS)
     return f"""<header class="top"><div class="wrap">
-  <a href="{up}index.html#{l}" aria-label="Spički">{LOGO}</a>
+  <a href="{up}{HOME[l]}" aria-label="Spički">{LOGO}</a>
   <div class="top-right">
     <nav class="lang" aria-label="Language">{langs}</nav>
     <a class="btn btn-fire" href="https://book.spickibg.com/" target="_blank" rel="noopener">{t['book']}</a>
@@ -245,7 +246,7 @@ def article_page(a, l, others):
     page += f"""
 <main>
   <article class="wrap narrow">
-    <p class="crumbs"><a href="{up}index.html#{l}">Spički</a> / <a href="index.html">{t['news']}</a></p>
+    <p class="crumbs"><a href="{up}{HOME[l]}">Spički</a> / <a href="index.html">{t['news']}</a></p>
     <span class="tag">{e(x['tag'])}</span>
     <h1>{e(x['title'])}</h1>
     <p class="news-date"><time datetime="{a['date']}">{fmt_date(a['date'], l)}</time>{upd}</p>
@@ -288,7 +289,7 @@ def index_page(items, l):
     page += f"""
 <main>
   <section class="wrap narrow news-index">
-    <p class="crumbs"><a href="{up}index.html#{l}">Spički</a> / {t['news']}</p>
+    <p class="crumbs"><a href="{up}{HOME[l]}">Spički</a> / {t['news']}</p>
     <h1>{t['h']}</h1>
     <p class="lead">{t['idx_lead']}</p>
     <div class="news-list">{cards}
@@ -314,7 +315,7 @@ def sitemap(items):
     today = date.today().isoformat()
     out = []
     for u in static:
-        if "<loc>https://spickibg.com/</loc>" in u and items:
+        if re.search(r"<loc>https://spickibg\.com/(sr/|en/)?</loc>", u) and items:
             u = re.sub(r"<lastmod>.*?</lastmod>", f"<lastmod>{items[0]['date']}</lastmod>", u)
         out.append(u)
 
@@ -347,6 +348,9 @@ def main():
     home = re.sub(r"/\*NEWS-START\*/.*?/\*NEWS-END\*/", lambda m: home_block(items), home, count=1, flags=re.S)
     writes[ROOT / "index.html"] = home
     writes[ROOT / "sitemap.xml"] = sitemap(items)
+    # отдельные главные /sr/ и /en/ собираются из обновлённого index.html
+    import home_build
+    writes.update(home_build.build_from(home))
     for p, s in writes.items():
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(s, encoding="utf-8")
