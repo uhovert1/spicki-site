@@ -1,0 +1,11 @@
+Звуки интро на главной (intro.js). Все — Creative Commons 0 (общественное достояние), с Freesound.org.
+Обрезаны, нормализованы по громкости, перекодированы в моно MP3.
+
+hookah-bubbles.mp3  «Hookah bubling.wav» — oresamp — https://freesound.org/s/417603/
+hookah-exhale.mp3   «blow smoke» — dreggsome — https://freesound.org/s/795416/
+n-bell.mp3          «Good Phone Notification Sound» — qubodup — https://freesound.org/s/782969/
+n-chime.mp3         «Message Pop» — Qvantor — https://freesound.org/s/879790/
+n-pluck.mp3         «UI Toast Notification» — Qvantor — https://freesound.org/s/878254/
+n-ding.mp3          «Notification Ding» — NoTomorrow12 — https://freesound.org/s/700332/
+n-pop.mp3           «Message Receive» — Froey_ — https://freesound.org/s/760369/
+n-buzz.mp3          «Phone notification on vibrate» — Froey_ — https://freesound.org/s/759616/

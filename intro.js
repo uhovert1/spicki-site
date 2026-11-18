@@ -22,7 +22,7 @@
   // [иконка, приложение, заголовок, текст]; первые пять — главные, дальше — лавина
   var T = {
     ru: {
-      now: "сейчас", skip: "Пропустить", snd: "Звук кальяна", h: ["Время", "<em>выдохнуть</em>"], sub: "Spički · Mačvanska 10",
+      now: "сейчас", skip: "Пропустить", tap: "Коснитесь, чтобы открыть", snd: "Звук кальяна", h: ["Время", "<em>выдохнуть</em>"], sub: "Spički · Mačvanska 10",
       sr: "Время выдохнуть. Spički, кальянная в Белграде.",
       n: [
         ["park", "Паркинг", "Штраф за парковку", "Зона 2, Vračar — 3 000 RSD. Оплатите в течение 8 дней"],
@@ -43,7 +43,7 @@
       ]
     },
     sr: {
-      now: "sada", skip: "Preskoči", snd: "Zvuk nargile", h: ["Vreme da", "<em>izdahneš</em>"], sub: "Spički · Mačvanska 10",
+      now: "sada", skip: "Preskoči", tap: "Dodirnite da otvorite", snd: "Zvuk nargile", h: ["Vreme da", "<em>izdahneš</em>"], sub: "Spički · Mačvanska 10",
       sr: "Vreme da izdahneš. Spički, nargila lounge u Beogradu.",
       n: [
         ["park", "Parking", "Kazna za parkiranje", "Zona 2, Vračar — 3.000 RSD. Platite u roku od 8 dana"],
@@ -64,7 +64,7 @@
       ]
     },
     en: {
-      now: "now", skip: "Skip", snd: "Hookah sound", h: ["Time to", "<em>exhale</em>"], sub: "Spički · Mačvanska 10",
+      now: "now", skip: "Skip", tap: "Tap to open", snd: "Hookah sound", h: ["Time to", "<em>exhale</em>"], sub: "Spički · Mačvanska 10",
       sr: "Time to exhale. Spički, a hookah lounge in Belgrade.",
       n: [
         ["park", "Parking", "Parking fine", "Zone 2, Vračar — 3,000 RSD. Pay within 8 days"],
@@ -98,7 +98,7 @@
   var stage = el("div", "intro-stage");
   stage.setAttribute("aria-hidden", "true");
   stage.appendChild(el("div", "intro-top", '<span class="intro-clock">' + esc(hm) + "</span>"));
-  stage.appendChild(el("div", "intro-lock", '<div class="intro-time">' + esc(hm) + '</div><div class="intro-date">' + esc(day) + "</div>"));
+  stage.appendChild(el("div", "intro-lock", '<div class="intro-time">' + esc(hm) + '</div><div class="intro-date">' + esc(day) + '</div><div class="intro-tap">' + esc(t.tap) + "</div>"));
   var pile = el("div", "intro-pile");
   stage.appendChild(pile);
   var wi = 0, words = t.h.map(function (w) { return '<span class="w" style="--i:' + (wi++) + '">' + w + "</span>"; }).join(" ");
@@ -150,85 +150,78 @@
       cards[k].classList.toggle("back", age >= 2 && age < 6);
       cards[k].classList.toggle("far", age >= 6);
     }
+    if (i < 5) sfx(SND[item[0]], 0.8);
+    else { sfx(SND[item[0]], rnd(0.3, 0.5), rnd(0.94, 1.06)); if (i % 3 === 0) sfx("n-buzz", 0.7); }
     if (i === 2) box.classList.add("busy");
     if (i >= 5) { box.classList.remove("shake"); void box.offsetWidth; box.classList.add("shake"); }
   }
 
 
-  /* ---------- Звук кальяна: синтез Web Audio, без файлов ----------
-     Браузер разрешает звук только после касания/клика, поэтому контекст создаётся
-     по первому жесту (в т.ч. по «Да, мне есть 18»). Без жеста интро идёт без звука,
-     а кнопка-динамик зовёт его включить. */
-  var AC = window.AudioContext || window.webkitAudioContext, ctx = null, master = null, noiseBuf = null, muted = false, bubbling = 0;
+  /* ---------- Звук: записи из библиотеки Freesound (CC0), файлы в /sfx ----------
+     Бульканье — «Hookah bubling» (oresamp), выдох — «blow smoke» (dreggsome),
+     уведомления — qubodup, Qvantor, NoTomorrow12, Froey_. Все CC0, см. sfx/CREDITS.txt.
+     Звук включён по умолчанию, но браузер даёт его только после касания: поэтому интро
+     стартует с экрана блокировки «Коснитесь, чтобы открыть» (или после «Да, мне есть 18»). */
+  var BASE = (function () { try { return new URL("sfx/", (document.currentScript && document.currentScript.src) || location.href).href; } catch (e) { return "/sfx/"; } })();
+  var FILES = ["hookah-bubbles", "hookah-exhale", "n-bell", "n-chime", "n-ding", "n-pluck", "n-pop", "n-buzz"];
+  var SND = { park: "n-bell", doc: "n-chime", mup: "n-ding", bolt: "n-pluck", air: "n-pop", chat: "n-pop", home: "n-chime" };
+  var AC = window.AudioContext || window.webkitAudioContext, ctx = null, master = null, muted = false, raw = {}, buf = {}, VOL = 0.85;
+  if (AC && window.fetch) FILES.forEach(function (f) {
+    raw[f] = fetch(BASE + f + ".mp3").then(function (r) { return r.ok ? r.arrayBuffer() : null; }).catch(function () { return null; });
+  });
+  function decodeAll() {
+    FILES.forEach(function (f) {
+      if (buf[f] || !raw[f]) return;
+      buf[f] = raw[f].then(function (ab) {
+        if (!ab) return null;
+        return new Promise(function (ok) { ctx.decodeAudioData(ab, ok, function () { ok(null); }); });
+      });
+    });
+  }
   function audio() {
     if (!AC) return null;
     if (!ctx) {
       try { ctx = new AC(); } catch (e) { AC = null; return null; }
-      master = ctx.createGain(); master.gain.value = 0.7;
+      master = ctx.createGain(); master.gain.value = VOL;
       var comp = ctx.createDynamicsCompressor(); master.connect(comp); comp.connect(ctx.destination);
-      // коричневый шум — основа для бульканья фоном и выдоха
-      var len = ctx.sampleRate * 2, last = 0; noiseBuf = ctx.createBuffer(1, len, ctx.sampleRate);
-      var d = noiseBuf.getChannelData(0);
-      for (var i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last * 3.5; }
+      decodeAll();
     }
     return ctx;
   }
   function live() { return ctx && ctx.state === "running" && !muted; }
-  function syncBtn() { var on = live(); sndBtn.classList.toggle("is-on", on); sndBtn.setAttribute("aria-pressed", on ? "true" : "false"); }
+  function syncBtn() { var on = !muted; sndBtn.classList.toggle("is-on", on); sndBtn.classList.toggle("blocked", on && !(ctx && ctx.state === "running")); sndBtn.setAttribute("aria-pressed", on ? "true" : "false"); }
   function unlock(e) {
-    if (muted || (e && e.target === sndBtn)) return;
+    if (e && sndBtn.contains(e.target)) return;
     var c = audio(); if (!c) return;
-    var go = function () { syncBtn(); if (box.classList.contains("calm") && !done && !bubbling) bubbles(); };
-    if (c.state !== "running") c.resume().then(go, function () {}); else go();
+    if (c.state !== "running") {
+      // iOS: тихий буфер внутри жеста окончательно «открывает» звук
+      try { var sb = c.createBufferSource(); sb.buffer = c.createBuffer(1, 1, 22050); sb.connect(c.destination); sb.start(0); } catch (x) {}
+      c.resume().then(syncBtn, function () {});
+    } else syncBtn();
   }
-  ["pointerdown", "keydown", "touchstart"].forEach(function (ev) { document.addEventListener(ev, unlock, true); });
+  if (!AC) sndBtn.hidden = true;
+  syncBtn();
+  var GESTURES = ["pointerdown", "pointerup", "touchend", "click", "keydown"];
+  GESTURES.forEach(function (ev) { document.addEventListener(ev, unlock, true); });
   sndBtn.addEventListener("click", function (e) {
     e.stopPropagation();
     var c = audio(); if (!c) return;
-    if (live()) { muted = true; master.gain.setTargetAtTime(0, c.currentTime, 0.05); syncBtn(); return; }
-    muted = false; master.gain.setTargetAtTime(0.7, c.currentTime, 0.05);
-    c.resume().then(function () { syncBtn(); if (box.classList.contains("calm") && !done && !bubbling) bubbles(); }, function () {});
+    if (live()) { muted = true; master.gain.setTargetAtTime(0, c.currentTime, 0.04); syncBtn(); return; }
+    muted = false; master.gain.setTargetAtTime(VOL, c.currentTime, 0.04);
+    c.resume().then(syncBtn, function () {});
   });
-  function noise(t0, dur) { var s = ctx.createBufferSource(); s.buffer = noiseBuf; s.loop = true; s.start(t0, Math.random()); s.stop(t0 + dur); return s; }
-
-  // Затяжка: вода булькает в колбе — низкие «блупы» с подъёмом тона и шум воды
-  function bubbles() {
-    if (!live()) return;
-    bubbling = 1;
-    var t0 = ctx.currentTime + 0.05, dur = 2.3;
-    var bus = ctx.createGain(), lp = ctx.createBiquadFilter();
-    lp.type = "lowpass"; lp.frequency.value = 1100; bus.connect(lp); lp.connect(master);
-    bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(1, t0 + 0.35);
-    bus.gain.setValueAtTime(1, t0 + dur - 0.3); bus.gain.linearRampToValueAtTime(0, t0 + dur);
-    for (var t = t0; t < t0 + dur; ) {
-      var o = ctx.createOscillator(), g = ctx.createGain(), f = rnd(70, 165), up = rnd(0.03, 0.075);
-      o.type = "sine";
-      o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * rnd(2.2, 3.6), t + up);
-      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(rnd(0.25, 0.6), t + 0.008);
-      g.gain.exponentialRampToValueAtTime(0.0008, t + up + rnd(0.03, 0.08));
-      o.connect(g); g.connect(bus); o.start(t); o.stop(t + 0.2);
-      t += Math.random() < 0.2 ? rnd(0.12, 0.2) : rnd(0.03, 0.075);
-    }
-    // шум воды и воздуха через шахту
-    var w = noise(t0, dur), bp = ctx.createBiquadFilter(), wg = ctx.createGain();
-    bp.type = "bandpass"; bp.frequency.value = 260; bp.Q.value = 1.2;
-    wg.gain.value = 0.55; w.connect(bp); bp.connect(wg); wg.connect(bus);
-    var a = noise(t0, dur), hp = ctx.createBiquadFilter(), ag = ctx.createGain();
-    hp.type = "bandpass"; hp.frequency.value = 1700; hp.Q.value = 0.8;
-    ag.gain.setValueAtTime(0.0001, t0); ag.gain.exponentialRampToValueAtTime(0.08, t0 + dur * 0.8); ag.gain.linearRampToValueAtTime(0, t0 + dur);
-    a.connect(hp); hp.connect(ag); ag.connect(master);
+  function sfx(name, gain, rate) {
+    if (!live() || !buf[name]) return;
+    buf[name].then(function (b) {
+      if (!b || !live()) return;
+      var s = ctx.createBufferSource(), g = ctx.createGain();
+      s.buffer = b; if (rate) s.playbackRate.value = rate;
+      g.gain.value = gain == null ? 1 : gain;
+      s.connect(g); g.connect(master); s.start();
+    });
   }
-  // Выдох: мягкий шум, тон уходит вниз — под дым
-  function exhaleSound() {
-    if (!live()) return;
-    var t0 = ctx.currentTime + 0.02, dur = 3.2;
-    var s = noise(t0, dur), bp = ctx.createBiquadFilter(), lp = ctx.createBiquadFilter(), g = ctx.createGain();
-    bp.type = "bandpass"; bp.Q.value = 0.6; bp.frequency.setValueAtTime(950, t0); bp.frequency.exponentialRampToValueAtTime(320, t0 + dur);
-    lp.type = "lowpass"; lp.frequency.setValueAtTime(3200, t0); lp.frequency.exponentialRampToValueAtTime(700, t0 + dur);
-    g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.9, t0 + 0.28);
-    g.gain.setValueAtTime(0.9, t0 + 0.6); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
-    s.connect(bp); bp.connect(lp); lp.connect(g); g.connect(master);
-  }
+  function bubbles() { sfx("hookah-bubbles", 1); }
+  function exhaleSound() { sfx("hookah-exhale", 1); }
 
   /* ---------- Дым: заливает экран и рассеивается, открывая сайт ---------- */
   function puff(rgb) {
@@ -325,7 +318,7 @@
       box.classList.add("smoked");
       root.classList.remove("intro-on");
     }, function () {
-      ["pointerdown", "keydown", "touchstart"].forEach(function (ev) { document.removeEventListener(ev, unlock, true); });
+      GESTURES.forEach(function (ev) { document.removeEventListener(ev, unlock, true); });
       box.remove();
     });
   }
@@ -344,11 +337,26 @@
     later(exhale, at + 450);
   }
 
-  // Если открыт вопрос «Вам есть 18?», ждём ответа: экран блокировки стоит, уведомления — после
-  if (root.classList.contains("ag-lock")) {
-    var mo = new MutationObserver(function () {
-      if (!root.classList.contains("ag-lock")) { mo.disconnect(); play(); }
-    });
-    mo.observe(root, { attributes: true, attributeFilter: ["class"] });
-  } else play();
+  var started = false;
+  function gateOpen() { return root.classList.contains("ag-lock"); }
+  function start() { if (started) return; started = true; box.classList.remove("wait"); play(); }
+  // Вопрос «Вам есть 18?» может открыться чуть позже интро. Пока он открыт — ждём;
+  // ответ «Да» — это и есть касание: звук включается, уведомления идут сразу.
+  var sawGate = gateOpen();
+  new MutationObserver(function () {
+    if (gateOpen()) sawGate = true;
+    else if (sawGate) start();
+  }).observe(root, { attributes: true, attributeFilter: ["class"] });
+  // Без вопроса — экран блокировки «Коснитесь, чтобы открыть»: касание включает звук и запускает уведомления.
+  // Если никто не коснулся — через 7 секунд стартуем сами (без звука, динамик подскажет).
+  box.classList.add("wait");
+  function go(e) {
+    if (started || gateOpen()) return;
+    if (e && (e.target === skip || sndBtn.contains(e.target))) return;
+    if (e && e.type === "keydown" && e.key === "Escape") return;
+    start();
+  }
+  box.addEventListener("click", go);
+  document.addEventListener("keydown", go);
+  later(go, 7000);
 })();
