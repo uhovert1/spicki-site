@@ -22,7 +22,7 @@
   // [иконка, приложение, заголовок, текст]; первые пять — главные, дальше — лавина
   var T = {
     ru: {
-      now: "сейчас", unread: "Непрочитанных", skip: "Пропустить", snd: "Звук кальяна", h: ["Время", "<em>выдохнуть</em>"], sub: "Spički · Mačvanska 10",
+      now: "сейчас", skip: "Пропустить", snd: "Звук кальяна", h: ["Время", "<em>выдохнуть</em>"], sub: "Spički · Mačvanska 10",
       sr: "Время выдохнуть. Spički, кальянная в Белграде.",
       n: [
         ["park", "Паркинг", "Штраф за парковку", "Зона 2, Vračar — 3 000 RSD. Оплатите в течение 8 дней"],
@@ -43,7 +43,7 @@
       ]
     },
     sr: {
-      now: "sada", unread: "Nepročitano", skip: "Preskoči", snd: "Zvuk nargile", h: ["Vreme da", "<em>izdahneš</em>"], sub: "Spički · Mačvanska 10",
+      now: "sada", skip: "Preskoči", snd: "Zvuk nargile", h: ["Vreme da", "<em>izdahneš</em>"], sub: "Spički · Mačvanska 10",
       sr: "Vreme da izdahneš. Spički, nargila lounge u Beogradu.",
       n: [
         ["park", "Parking", "Kazna za parkiranje", "Zona 2, Vračar — 3.000 RSD. Platite u roku od 8 dana"],
@@ -64,7 +64,7 @@
       ]
     },
     en: {
-      now: "now", unread: "Unread", skip: "Skip", snd: "Hookah sound", h: ["Time to", "<em>exhale</em>"], sub: "Spički · Mačvanska 10",
+      now: "now", skip: "Skip", snd: "Hookah sound", h: ["Time to", "<em>exhale</em>"], sub: "Spički · Mačvanska 10",
       sr: "Time to exhale. Spički, a hookah lounge in Belgrade.",
       n: [
         ["park", "Parking", "Parking fine", "Zone 2, Vračar — 3,000 RSD. Pay within 8 days"],
@@ -97,7 +97,7 @@
   var box = el("div", "intro");
   var stage = el("div", "intro-stage");
   stage.setAttribute("aria-hidden", "true");
-  stage.appendChild(el("div", "intro-top", '<span class="intro-clock">' + esc(hm) + '</span><span class="intro-count">' + esc(t.unread) + "<b>0</b></span>"));
+  stage.appendChild(el("div", "intro-top", '<span class="intro-clock">' + esc(hm) + "</span>"));
   stage.appendChild(el("div", "intro-lock", '<div class="intro-time">' + esc(hm) + '</div><div class="intro-date">' + esc(day) + "</div>"));
   var pile = el("div", "intro-pile");
   stage.appendChild(pile);
@@ -114,9 +114,8 @@
   sndBtn.type = "button"; sndBtn.setAttribute("aria-label", t.snd); sndBtn.title = t.snd;
   box.appendChild(sndBtn);
   document.body.appendChild(box);
-  var count = box.querySelector(".intro-count b");
 
-  var timers = [], done = false, n = 0, unread = 0;
+  var timers = [], done = false, n = 0;
   function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
 
   function rnd(a, b) { return a + Math.random() * (b - a); }
@@ -151,9 +150,6 @@
       cards[k].classList.toggle("back", age >= 2 && age < 6);
       cards[k].classList.toggle("far", age >= 6);
     }
-    unread += i < 5 ? 1 : Math.ceil(rnd(2, 6));
-    count.textContent = unread;
-    count.classList.add("bump"); setTimeout(function () { count.classList.remove("bump"); }, 140);
     if (i === 2) box.classList.add("busy");
     if (i >= 5) { box.classList.remove("shake"); void box.offsetWidth; box.classList.add("shake"); }
   }
