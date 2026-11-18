@@ -58,7 +58,7 @@ jobs:
           print(len(rows), "rows")
           PY
             python3 /tmp/parse.py
-            rm -f search-*.html search-*.q
+            sed -i -E 's/[ps]k\.eyJ[A-Za-z0-9._-]+/MAPBOX_TOKEN_REMOVED/g' search-*.html
           else
             for u in $URLS; do
               f=$(echo "$u" | sed 's|https\?://||; s|[^A-Za-z0-9._-]|_|g')
