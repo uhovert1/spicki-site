@@ -8,10 +8,9 @@ html.intro-on::after{content:"";position:fixed;inset:0;z-index:9998;background:#
 html.intro-on .hero,html.intro-on .hero *{animation-play-state:paused!important}
 
 .intro{position:fixed;inset:0;z-index:9999;overflow:hidden;color:#fff0f5;font-family:"Montserrat",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-  background:radial-gradient(120% 80% at 50% 0%,#24141d 0%,#0f0a0d 60%);
   transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1),filter .8s ease}
 .intro.out{opacity:0;transform:scale(1.06);filter:blur(10px);pointer-events:none}
-.intro-stage{position:absolute;inset:0}
+.intro-stage{position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%,#24141d 0%,#0f0a0d 60%);transition:opacity .9s ease}
 
 /* Верхняя строка: часы и счётчик непрочитанных */
 .intro-top{position:absolute;left:0;right:0;top:0;display:flex;justify-content:space-between;align-items:center;gap:12px;
@@ -62,7 +61,7 @@ html.intro-on .hero,html.intro-on .hero *{animation-play-state:paused!important}
 .intro.calm .intro-top,.intro.calm .intro-lock{opacity:0}
 /* выдох: уведомления падают и растворяются */
 .intro.calm .intro-n{opacity:0;filter:blur(16px);transform:translateY(46vh) rotate(calc(var(--r) * -3)) scale(.85);transition-delay:calc(var(--k) * 18ms)}
-.intro::before{content:"";position:absolute;inset:-20%;background:radial-gradient(40% 35% at 50% 52%,rgba(255,46,126,.28),transparent 70%);opacity:0;transition:opacity 1.4s;pointer-events:none}
+.intro::before{content:"";position:absolute;inset:-20%;z-index:1;background:radial-gradient(40% 35% at 50% 52%,rgba(255,46,126,.28),transparent 70%);opacity:0;transition:opacity 1.4s;pointer-events:none}
 .intro.calm::before{opacity:1}
 
 .intro-skip{position:absolute;z-index:5;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));
@@ -70,6 +69,23 @@ html.intro-on .hero,html.intro-on .hero *{animation-play-state:paused!important}
   font:600 .82rem/1 "Montserrat",system-ui,sans-serif;letter-spacing:.04em;cursor:pointer;transition:border-color .2s,background .2s}
 .intro-skip:hover{border-color:#ff5fa2;background:rgba(255,46,126,.14)}
 .intro-skip:focus-visible{outline:2px solid #ff5fa2;outline-offset:3px}
+.intro-snd{position:absolute;z-index:5;left:max(16px,env(safe-area-inset-left,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));
+  width:42px;height:42px;display:grid;place-items:center;border-radius:50%;border:1px solid rgba(255,240,245,.22);background:rgba(15,10,13,.55);color:#fff0f5;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+.intro-snd svg{width:20px;height:20px}
+.intro-snd .on{display:none}
+.intro-snd.is-on{border-color:#ff5fa2;color:#ff5fa2}
+.intro-snd.is-on .on{display:inline}.intro-snd.is-on .off{display:none}
+.intro-snd:hover{border-color:#ff5fa2}
+.intro-snd:focus-visible{outline:2px solid #ff5fa2;outline-offset:3px}
+/* на «Время выдохнуть» без звука — динамик мягко пульсирует, зовёт включить */
+.intro.calm .intro-snd:not(.is-on){animation:intro-ping 1.4s ease-out infinite}
+@keyframes intro-ping{0%{box-shadow:0 0 0 0 rgba(255,95,162,.55)}100%{box-shadow:0 0 0 14px rgba(255,95,162,0)}}
+
+/* Дым на переходе к сайту */
+.intro-smoke{position:absolute;inset:0;width:100%;height:100%;z-index:6;pointer-events:none}
+.intro.smoking .intro-skip,.intro.smoking .intro-snd{opacity:0;pointer-events:none;transition:opacity .3s}
+.intro.smoked{pointer-events:none;cursor:auto}
+.intro.smoked::before,.intro.smoked .intro-stage{opacity:0}
 .intro-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 @media (prefers-reduced-motion: reduce){

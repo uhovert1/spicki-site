@@ -22,7 +22,7 @@
   // [иконка, приложение, заголовок, текст]; первые пять — главные, дальше — лавина
   var T = {
     ru: {
-      now: "сейчас", unread: "Непрочитанных", skip: "Пропустить", h: ["Время", "<em>выдохнуть</em>"], sub: "Spički · Mačvanska 10",
+      now: "сейчас", unread: "Непрочитанных", skip: "Пропустить", snd: "Звук кальяна", h: ["Время", "<em>выдохнуть</em>"], sub: "Spički · Mačvanska 10",
       sr: "Время выдохнуть. Spički, кальянная в Белграде.",
       n: [
         ["park", "Паркинг", "Штраф за парковку", "Зона 2, Vračar — 3 000 RSD. Оплатите в течение 8 дней"],
@@ -43,7 +43,7 @@
       ]
     },
     sr: {
-      now: "sada", unread: "Nepročitano", skip: "Preskoči", h: ["Vreme da", "<em>izdahneš</em>"], sub: "Spički · Mačvanska 10",
+      now: "sada", unread: "Nepročitano", skip: "Preskoči", snd: "Zvuk nargile", h: ["Vreme da", "<em>izdahneš</em>"], sub: "Spički · Mačvanska 10",
       sr: "Vreme da izdahneš. Spički, nargila lounge u Beogradu.",
       n: [
         ["park", "Parking", "Kazna za parkiranje", "Zona 2, Vračar — 3.000 RSD. Platite u roku od 8 dana"],
@@ -64,7 +64,7 @@
       ]
     },
     en: {
-      now: "now", unread: "Unread", skip: "Skip", h: ["Time to", "<em>exhale</em>"], sub: "Spički · Mačvanska 10",
+      now: "now", unread: "Unread", skip: "Skip", snd: "Hookah sound", h: ["Time to", "<em>exhale</em>"], sub: "Spički · Mačvanska 10",
       sr: "Time to exhale. Spički, a hookah lounge in Belgrade.",
       n: [
         ["park", "Parking", "Parking fine", "Zone 2, Vračar — 3,000 RSD. Pay within 8 days"],
@@ -110,6 +110,9 @@
   box.appendChild(sr);
   var skip = el("button", "intro-skip", esc(t.skip)); skip.type = "button";
   box.appendChild(skip);
+  var sndBtn = el("button", "intro-snd", '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9h4l5-4v14l-5-4H4Z"/><path class="on" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 9.2a4 4 0 0 1 0 5.6M18.6 6.6a7.6 7.6 0 0 1 0 10.8"/><path class="off" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m16.5 9.5 5 5m0-5-5 5"/></svg>');
+  sndBtn.type = "button"; sndBtn.setAttribute("aria-label", t.snd); sndBtn.title = t.snd;
+  box.appendChild(sndBtn);
   document.body.appendChild(box);
   var count = box.querySelector(".intro-count b");
 
@@ -155,27 +158,185 @@
     if (i >= 5) { box.classList.remove("shake"); void box.offsetWidth; box.classList.add("shake"); }
   }
 
+
+  /* ---------- Звук кальяна: синтез Web Audio, без файлов ----------
+     Браузер разрешает звук только после касания/клика, поэтому контекст создаётся
+     по первому жесту (в т.ч. по «Да, мне есть 18»). Без жеста интро идёт без звука,
+     а кнопка-динамик зовёт его включить. */
+  var AC = window.AudioContext || window.webkitAudioContext, ctx = null, master = null, noiseBuf = null, muted = false, bubbling = 0;
+  function audio() {
+    if (!AC) return null;
+    if (!ctx) {
+      try { ctx = new AC(); } catch (e) { AC = null; return null; }
+      master = ctx.createGain(); master.gain.value = 0.7;
+      var comp = ctx.createDynamicsCompressor(); master.connect(comp); comp.connect(ctx.destination);
+      // коричневый шум — основа для бульканья фоном и выдоха
+      var len = ctx.sampleRate * 2, last = 0; noiseBuf = ctx.createBuffer(1, len, ctx.sampleRate);
+      var d = noiseBuf.getChannelData(0);
+      for (var i = 0; i < len; i++) { last = (last + 0.02 * (Math.random() * 2 - 1)) / 1.02; d[i] = last * 3.5; }
+    }
+    return ctx;
+  }
+  function live() { return ctx && ctx.state === "running" && !muted; }
+  function syncBtn() { var on = live(); sndBtn.classList.toggle("is-on", on); sndBtn.setAttribute("aria-pressed", on ? "true" : "false"); }
+  function unlock(e) {
+    if (muted || (e && e.target === sndBtn)) return;
+    var c = audio(); if (!c) return;
+    var go = function () { syncBtn(); if (box.classList.contains("calm") && !done && !bubbling) bubbles(); };
+    if (c.state !== "running") c.resume().then(go, function () {}); else go();
+  }
+  ["pointerdown", "keydown", "touchstart"].forEach(function (ev) { document.addEventListener(ev, unlock, true); });
+  sndBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    var c = audio(); if (!c) return;
+    if (live()) { muted = true; master.gain.setTargetAtTime(0, c.currentTime, 0.05); syncBtn(); return; }
+    muted = false; master.gain.setTargetAtTime(0.7, c.currentTime, 0.05);
+    c.resume().then(function () { syncBtn(); if (box.classList.contains("calm") && !done && !bubbling) bubbles(); }, function () {});
+  });
+  function noise(t0, dur) { var s = ctx.createBufferSource(); s.buffer = noiseBuf; s.loop = true; s.start(t0, Math.random()); s.stop(t0 + dur); return s; }
+
+  // Затяжка: вода булькает в колбе — низкие «блупы» с подъёмом тона и шум воды
+  function bubbles() {
+    if (!live()) return;
+    bubbling = 1;
+    var t0 = ctx.currentTime + 0.05, dur = 2.3;
+    var bus = ctx.createGain(), lp = ctx.createBiquadFilter();
+    lp.type = "lowpass"; lp.frequency.value = 1100; bus.connect(lp); lp.connect(master);
+    bus.gain.setValueAtTime(0, t0); bus.gain.linearRampToValueAtTime(1, t0 + 0.35);
+    bus.gain.setValueAtTime(1, t0 + dur - 0.3); bus.gain.linearRampToValueAtTime(0, t0 + dur);
+    for (var t = t0; t < t0 + dur; ) {
+      var o = ctx.createOscillator(), g = ctx.createGain(), f = rnd(70, 165), up = rnd(0.03, 0.075);
+      o.type = "sine";
+      o.frequency.setValueAtTime(f, t); o.frequency.exponentialRampToValueAtTime(f * rnd(2.2, 3.6), t + up);
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(rnd(0.25, 0.6), t + 0.008);
+      g.gain.exponentialRampToValueAtTime(0.0008, t + up + rnd(0.03, 0.08));
+      o.connect(g); g.connect(bus); o.start(t); o.stop(t + 0.2);
+      t += Math.random() < 0.2 ? rnd(0.12, 0.2) : rnd(0.03, 0.075);
+    }
+    // шум воды и воздуха через шахту
+    var w = noise(t0, dur), bp = ctx.createBiquadFilter(), wg = ctx.createGain();
+    bp.type = "bandpass"; bp.frequency.value = 260; bp.Q.value = 1.2;
+    wg.gain.value = 0.55; w.connect(bp); bp.connect(wg); wg.connect(bus);
+    var a = noise(t0, dur), hp = ctx.createBiquadFilter(), ag = ctx.createGain();
+    hp.type = "bandpass"; hp.frequency.value = 1700; hp.Q.value = 0.8;
+    ag.gain.setValueAtTime(0.0001, t0); ag.gain.exponentialRampToValueAtTime(0.08, t0 + dur * 0.8); ag.gain.linearRampToValueAtTime(0, t0 + dur);
+    a.connect(hp); hp.connect(ag); ag.connect(master);
+  }
+  // Выдох: мягкий шум, тон уходит вниз — под дым
+  function exhaleSound() {
+    if (!live()) return;
+    var t0 = ctx.currentTime + 0.02, dur = 3.2;
+    var s = noise(t0, dur), bp = ctx.createBiquadFilter(), lp = ctx.createBiquadFilter(), g = ctx.createGain();
+    bp.type = "bandpass"; bp.Q.value = 0.6; bp.frequency.setValueAtTime(950, t0); bp.frequency.exponentialRampToValueAtTime(320, t0 + dur);
+    lp.type = "lowpass"; lp.frequency.setValueAtTime(3200, t0); lp.frequency.exponentialRampToValueAtTime(700, t0 + dur);
+    g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(0.9, t0 + 0.28);
+    g.gain.setValueAtTime(0.9, t0 + 0.6); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+    s.connect(bp); bp.connect(lp); lp.connect(g); g.connect(master);
+  }
+
+  /* ---------- Дым: заливает экран и рассеивается, открывая сайт ---------- */
+  function puff(rgb) {
+    // клуб дыма: «кучевой» фрактальный шум с мягким краем и светом сверху
+    var N = 160, c = document.createElement("canvas"); c.width = c.height = N;
+    var x = c.getContext("2d"), im = x.createImageData(N, N), d = im.data, oct = [];
+    for (var o = 0; o < 5; o++) {
+      var cells = 3 << o, g = [];
+      for (var k = 0; k < (cells + 1) * (cells + 1); k++) g.push(Math.random());
+      oct.push({ c: cells, g: g, w: 1 / Math.pow(1.8, o) });
+    }
+    function sm(v) { return v * v * (3 - 2 * v); }
+    for (var py = 0; py < N; py++) for (var px = 0; px < N; px++) {
+      var v = 0, ws = 0;
+      for (var q = 0; q < oct.length; q++) {
+        var O = oct[q], fx = px / N * O.c, fy = py / N * O.c, ix = fx | 0, iy = fy | 0, tx = sm(fx - ix), ty = sm(fy - iy), W = O.c + 1;
+        var a = O.g[iy * W + ix], b = O.g[iy * W + ix + 1], cc = O.g[(iy + 1) * W + ix], dd = O.g[(iy + 1) * W + ix + 1];
+        var n = (a + (b - a) * tx) * (1 - ty) + (cc + (dd - cc) * tx) * ty;
+        v += O.w * (q ? 1 - Math.abs(n * 2 - 1) : n); ws += O.w;
+      }
+      v /= ws;
+      var dx = px / N * 2 - 1, dy = py / N * 2 - 1, r = Math.sqrt(dx * dx + dy * dy), fall = Math.max(0, 1 - r * r);
+      var al = Math.max(0, Math.min(1, (v * fall - 0.2) * 2.4));
+      var lit = 0.82 + 0.3 * (1 - py / N) * v;
+      var i = (py * N + px) * 4;
+      d[i] = Math.min(255, rgb[0] * lit); d[i + 1] = Math.min(255, rgb[1] * lit); d[i + 2] = Math.min(255, rgb[2] * lit); d[i + 3] = al * 255;
+    }
+    x.putImageData(im, 0, 0);
+    return c;
+  }
+  function smoke(onCovered, onDone) {
+    var cv = el("canvas", "intro-smoke"); box.appendChild(cv);
+    var g = cv.getContext && cv.getContext("2d");
+    if (!g) { onCovered(); onDone(); return; }
+    var S = 0.34, W = Math.ceil(innerWidth * S), H = Math.ceil(innerHeight * S), M = Math.max(W, H), m = Math.min(W, H);
+    cv.width = W; cv.height = H;
+    // светлые клубы, тени для объёма и розовые — подсвеченные неоном
+    var light = [puff([204, 192, 199]), puff([214, 204, 210]), puff([194, 180, 189])], dark = [puff([112, 94, 106])], pink = [puff([226, 140, 182]), puff([206, 122, 164])];
+    var parts = [], t0 = performance.now(), last = t0, emitted = 0, covered = false, TOTAL = 56;
+    function add(i) {
+      var side = rnd(-1, 1), roll = Math.random();
+      parts.push({
+        x: W * (0.5 + side * 0.32), y: H * rnd(0.85, 1.15),
+        vx: side * rnd(0.05, 0.35) * M, vy: -rnd(0.45, 1.05) * H,
+        r0: m * rnd(0.25, 0.4), r1: M * rnd(0.45, 0.75), rot: rnd(0, 6.28), vr: rnd(-0.6, 0.6),
+        a: rnd(0.45, 0.75), born: (performance.now() - t0) / 1000,
+        tex: roll < 0.24 ? dark[0] : roll < 0.38 ? pink[(Math.random() * 2) | 0] : light[(Math.random() * 3) | 0]
+      });
+      // тени рисуем первыми — они «под» светлым дымом
+      parts.sort(function (p, q) { return (q.tex === dark[0]) - (p.tex === dark[0]); });
+    }
+    (function frame(now) {
+      var tt = (now - t0) / 1000, dt = Math.min(0.05, (now - last) / 1000); last = now;
+      var want = Math.min(TOTAL, Math.floor(tt / 1.1 * TOTAL));
+      while (emitted < want) add(emitted++);
+      if (!covered && tt > 1.0) { covered = true; onCovered(); }
+      var fade = tt < 1.5 ? 1 : Math.max(0, 1 - Math.pow((tt - 1.5) / 2.3, 1.2));
+      g.clearRect(0, 0, W, H);
+      // ровная дымка снизу вверх — чтобы экран залило целиком, а клубы дали фактуру
+      var veil = Math.min(1, Math.max(0, (tt - 0.35) / 0.65)) * 0.55 * fade;
+      if (veil > 0) {
+        var gr = g.createLinearGradient(0, H, 0, 0);
+        gr.addColorStop(0, "rgba(150,128,142," + veil + ")"); gr.addColorStop(1, "rgba(120,98,112," + veil * 0.9 + ")");
+        g.globalAlpha = 1; g.fillStyle = gr; g.fillRect(0, 0, W, H);
+      }
+      for (var i = 0; i < parts.length; i++) {
+        var p = parts[i], age = tt - p.born, k = Math.min(1, age / 2.2), drag = Math.pow(0.45, dt);
+        p.vx *= drag; p.vy *= drag; p.x += p.vx * dt; p.y += p.vy * dt; p.rot += p.vr * dt;
+        var r = p.r0 + (p.r1 - p.r0) * (1 - Math.pow(1 - k, 2.5));
+        g.globalAlpha = p.a * Math.min(1, age / 0.25) * fade;
+        g.save(); g.translate(p.x, p.y); g.rotate(p.rot); g.drawImage(p.tex, -r, -r, r * 2, r * 2); g.restore();
+      }
+      if (tt < 3.9) requestAnimationFrame(frame); else onDone();
+    })(t0);
+  }
   function exhale() {
     if (done || box.classList.contains("calm")) return;
     timers.forEach(clearTimeout); timers = [];
     Array.prototype.forEach.call(pile.children, function (c) { c.classList.add("in"); });
     void box.offsetWidth;
     box.classList.add("calm");
-    later(finish, 2600);
+    later(bubbles, 250);
+    later(finish, 2700);
   }
   function finish() {
     if (done) return;
     done = true;
     timers.forEach(clearTimeout);
-    box.classList.add("out");
-    root.classList.remove("intro-on");
     document.removeEventListener("keydown", onKey);
-    setTimeout(function () { box.remove(); }, 900);
+    exhaleSound();
+    box.classList.add("smoking");
+    smoke(function () {
+      // экран под дымом: интро прячем, сайт уже живой — дым рассеивается поверх него
+      box.classList.add("smoked");
+      root.classList.remove("intro-on");
+    }, function () {
+      ["pointerdown", "keydown", "touchstart"].forEach(function (ev) { document.removeEventListener(ev, unlock, true); });
+      box.remove();
+    });
   }
   function onKey(e) { if (e.key === "Escape") finish(); }
 
   skip.addEventListener("click", finish);
-  box.addEventListener("click", function (e) { if (e.target !== skip && box.classList.contains("calm")) finish(); });
+  box.addEventListener("click", function (e) { if (e.target !== skip && !sndBtn.contains(e.target) && box.classList.contains("calm")) finish(); });
   document.addEventListener("keydown", onKey);
 
   function play() {
