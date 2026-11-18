@@ -1,0 +1,40 @@
+# Временный: скачивает CC0-звуки с Freesound для интро (из контейнера Claude Freesound недоступен). Будет удалён.
+name: fetch-sfx
+on:
+  workflow_dispatch:
+    inputs:
+      urls:
+        description: "URL через пробел; пусто — только поиск"
+        required: false
+        default: ""
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch
+        env:
+          URLS: ${{ inputs.urls }}
+        run: |
+          mkdir -p out && cd out
+          UA="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36"
+          if [ -z "$URLS" ]; then
+            i=0
+            for q in "hookah" "shisha" "nargile" "waterpipe bubbling" "hookah exhale" "exhale smoke" "notification pop" "notification ding" "phone notification" "message notification"; do
+              i=$((i+1))
+              enc=$(python3 -c "import urllib.parse,sys;print(urllib.parse.quote(sys.argv[1]))" "$q")
+              curl -sL -A "$UA" -o "search-$i.html" -w "$q %{http_code}\n" "https://freesound.org/search/?q=$enc&f=license:%22Creative+Commons+0%22&s=Downloads+desc"
+              echo "$q" > "search-$i.q"
+              sleep 1
+            done
+          else
+            for u in $URLS; do
+              f=$(echo "$u" | sed 's|https\?://||; s|[^A-Za-z0-9._-]|_|g')
+              curl -sL -A "$UA" -o "$f" -w "$u %{http_code} %{size_download}\n" "$u"
+              sleep 1
+            done
+          fi
+          ls -la
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sfx
+          path: out
