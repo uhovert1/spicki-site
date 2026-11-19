@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spički 3D — загляните в кальянную в Белграде</title>
+<meta name="description" content="Интерактивный 3D-зал кальянной Spički на Mačvanska 10, Белград: бар, кальян, PS5 и Secret Room. Покрутите, понажимайте — и забронируйте стол.">
+<link rel="canonical" href="https://spickibg.com/3d/">
+<meta property="og:title" content="Spički 3D — кальянная в Белграде">
+<meta property="og:description" content="Покрутите зал, зажгите спичку и затянитесь кальяном — прямо в браузере.">
+<meta property="og:image" content="https://spickibg.com/img/og-cover.jpg">
+<meta name="theme-color" content="#0f0a0d">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="app.css">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.min.js","three/addons/":"./vendor/jsm/"}}</script>
+</head>
+<body>
+<div id="stage" aria-hidden="true"></div>
+
+<header class="hud-top">
+  <a class="brand" href="https://spickibg.com/" title="spickibg.com"><svg viewBox="0 0 24 34" aria-hidden="true"><path fill="#ff2e7e" d="M13.5 1c1.2 5.6 9.5 9.6 9.5 18.6C23 27.4 18 33 12 33S1 27.4 1 20.6c0-5 2.8-8.5 5.6-10.7-.2 3.6 1 6.2 3.3 7.4C9.6 10.6 11.4 5.3 13.5 1Z"/></svg><b>Spički</b><span>3D</span></a>
+  <span class="found" id="found"></span>
+  <div class="hud-right">
+    <nav class="langs" id="langs"><a data-l="ru">RU</a><a data-l="sr">SR</a><a data-l="en">EN</a></nav>
+    <button class="ico" id="snd" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 9h4l5-4v14l-5-4H4Z"/><path class="on" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M16 9.2a4 4 0 0 1 0 5.6M18.6 6.6a7.6 7.6 0 0 1 0 10.8"/><path class="off" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="m16.5 9.5 5 5m0-5-5 5"/></svg></button>
+    <a class="book" id="book" href="https://book.spickibg.com/" target="_blank" rel="noopener"></a>
+  </div>
+</header>
+
+<nav class="views" id="views"></nav>
+
+<div class="lights">
+  <button class="ico" id="lightBtn" type="button" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-4 12.7V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 2Zm-3 18h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"/></svg></button>
+  <div class="lights-pop" id="lightPop" hidden></div>
+</div>
+
+<div class="tip" id="tip" hidden></div>
+
+<aside class="panel" id="panel" hidden aria-live="polite">
+  <button class="x" id="panelX" type="button" aria-label="×">×</button>
+  <p class="kicker" id="pk"></p>
+  <h2 id="ph"></h2>
+  <div class="ptext" id="pt"></div>
+  <div class="pacts" id="pa"></div>
+</aside>
+
+<div class="welcome" id="welcome">
+  <div class="w-in">
+    <svg class="w-flame" viewBox="0 0 24 34" aria-hidden="true"><path fill="#ff2e7e" d="M13.5 1c1.2 5.6 9.5 9.6 9.5 18.6C23 27.4 18 33 12 33S1 27.4 1 20.6c0-5 2.8-8.5 5.6-10.7-.2 3.6 1 6.2 3.3 7.4C9.6 10.6 11.4 5.3 13.5 1Z"/></svg>
+    <p class="w-kick">Spički · Mačvanska 10</p>
+    <h1 id="wh"></h1>
+    <p class="w-sub" id="ws"></p>
+    <div class="w-load"><i id="wbar"></i></div>
+    <button class="w-go" id="wgo" type="button" disabled></button>
+    <p class="w-hint" id="whint"></p>
+  </div>
+</div>
+
+<noscript><p class="nojs">Spički 3D работает с JavaScript. Сайт: <a href="https://spickibg.com/">spickibg.com</a></p></noscript>
+<script type="module" src="main.js"></script>
+</body>
+</html>
