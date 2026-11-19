@@ -343,6 +343,20 @@ function frameOffset(dt) {
   else camera.setViewOffset(innerWidth, innerHeight, off.x, off.y, innerWidth, innerHeight);
 }
 
+// Слабое устройство: если кадров стабильно мало — снижаем разрешение (фоновую вкладку с 1–5 к/с не считаем)
+const perf = { n: 0, t: 0, step: 0 };
+function adaptQuality(dt) {
+  if (perf.step > 1 || document.hidden) return;
+  perf.n++; perf.t += dt;
+  if (perf.t < 2.5) return;
+  const fps = perf.n / perf.t; perf.n = 0; perf.t = 0;
+  if (fps > 6 && fps < 34) {
+    perf.step++;
+    renderer.setPixelRatio(perf.step === 1 ? Math.min(devicePixelRatio, 1.1) : 0.85);
+    resize();
+  }
+}
+
 const clock = new THREE.Clock();
 renderer.setAnimationLoop(() => {
   const dt = Math.min(0.05, clock.getDelta()), tt = clock.elapsedTime;
@@ -355,4 +369,5 @@ renderer.setAnimationLoop(() => {
   camera.position.clamp(ROOM.min, ROOM.max);
   W.update(tt, dt);
   composer.render();
+  adaptQuality(dt);
 });
