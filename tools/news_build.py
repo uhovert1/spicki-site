@@ -192,6 +192,7 @@ def footer(l, up):
     return f"""<footer><div class="wrap">Spički šibice · Mačvanska 10, Beograd · <a href="https://www.instagram.com/spicki_bg/" target="_blank" rel="noopener">Instagram @spicki_bg</a><br>© {date.today().year} MANUYLOV AND PARTNERS DOO BEOGRAD (VRAČAR) · {t['pib']} 114447111 · {t['mb']} 22025082 · <a href="mailto:info@spickibg.com">info@spickibg.com</a> · <a href="{up}privacy.html">{t['privacy']}</a> · <a href="{up}privacy.html" data-privacy-open>{t['privacy']}</a></div></footer>
 <a class="menu-fab" href="https://qastio.app/rs/belgrade/spicki" target="_blank" rel="noopener">{FAB_ICON}<span>{t['menu_s']}</span><span class="arrow" aria-hidden="true">↗</span></a>
 <script src="{up}consent.js" data-root="{up}"></script>
+<script src="{up}t.js" defer></script>
 </body>
 </html>
 """
