@@ -33,7 +33,7 @@ T = {
     "ru": dict(news="Новости", all="Все новости", h="Новости кальянного мира", sources="Источники", faq="Частые вопросы",
                more="Ещё новости", articles="Статьи", book="Забронировать стол", menu="Полное меню", menu_s="Меню",
                cta_h="Кальяны в Белграде — в Spički", cta_p="Mačvanska 10, Врачар, Белград · ежедневно с 12:00",
-               cta_p2="Кальяны, кухня, бар, столы с PS5 и Secret Room с игровыми ПК.", read="Читать",
+               cta_p2="Кальяны, кухня, бар, столы с PS5 и Secret Room с игровыми ПК.", home_url="https://spickibg.com/", home_a="Кальянная Spički в Белграде — всё о заведении", read="Читать",
                idx_title="Новости кальянного мира — Spički, Белград",
                idx_desc="Новости кальянной индустрии и культуры кальяна: законы, рынок, тренды. Что это значит для гостей кальянных в Белграде.",
                idx_lead="Что происходит в мире кальянов: законы, рынок, тренды. И что это значит для гостей кальянных в Белграде.",
@@ -41,7 +41,7 @@ T = {
     "sr": dict(news="Vesti", all="Sve vesti", h="Vesti iz sveta nargila", sources="Izvori", faq="Česta pitanja",
                more="Još vesti", articles="Članci", book="Rezerviši sto", menu="Ceo meni", menu_s="Meni",
                cta_h="Nargile u Beogradu — u Spički", cta_p="Mačvanska 10, Vračar, Beograd · svaki dan od 12:00",
-               cta_p2="Nargile, kuhinja, bar, PS5 stolovi i Secret Room sa gejming računarima.", read="Pročitaj",
+               cta_p2="Nargile, kuhinja, bar, PS5 stolovi i Secret Room sa gejming računarima.", home_url="https://spickibg.com/sr/", home_a="Nargila bar Spički u Beogradu — sve o nama", read="Pročitaj",
                idx_title="Vesti iz sveta nargila — Spički, Beograd",
                idx_desc="Vesti iz industrije i kulture nargila: zakoni, tržište, trendovi. Šta to znači za goste nargila barova u Beogradu.",
                idx_lead="Šta se dešava u svetu nargila: zakoni, tržište, trendovi. I šta to znači za goste nargila barova u Beogradu.",
@@ -49,7 +49,7 @@ T = {
     "en": dict(news="News", all="All news", h="Hookah world news", sources="Sources", faq="FAQ",
                more="More news", articles="Articles", book="Book a table", menu="Full menu", menu_s="Menu",
                cta_h="Hookah in Belgrade — at Spički", cta_p="Mačvanska 10, Vračar, Belgrade · daily from 12:00",
-               cta_p2="Hookah, kitchen, bar, PS5 tables and a Secret Room with gaming PCs.", read="Read",
+               cta_p2="Hookah, kitchen, bar, PS5 tables and a Secret Room with gaming PCs.", home_url="https://spickibg.com/en/", home_a="Spički hookah lounge in Belgrade — all about us", read="Read",
                idx_title="Hookah world news — Spički, Belgrade",
                idx_desc="News from the hookah industry and culture: laws, market, trends. What it means for hookah lounge guests in Belgrade.",
                idx_lead="What is happening in the hookah world: laws, market and trends, and what it means for hookah lounge guests in Belgrade.",
@@ -200,7 +200,7 @@ def footer(l, up):
 
 def cta(l):
     t = T[l]
-    return f"""<aside class="cta"><h2>{t['cta_h']}</h2><p>{t['cta_p']}</p><p>{t['cta_p2']}</p>
+    return f"""<aside class="cta"><h2>{t['cta_h']}</h2><p>{t['cta_p']}</p><p>{t['cta_p2']}</p><p><a href="{t['home_url']}">{t['home_a']} →</a></p>
       <div class="row"><a class="btn btn-fire" href="https://book.spickibg.com/" target="_blank" rel="noopener">{t['book']} ↗</a><a class="btn btn-line" href="https://qastio.app/rs/belgrade/spicki" target="_blank" rel="noopener">{t['menu']} ↗</a></div></aside>"""
 
 

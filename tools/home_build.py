@@ -168,6 +168,17 @@ def build(lang, src, I18N, DYN):
     data = json.loads(ld.group(1))
     data["description"] = d["ld"]
     html = html[:ld.start(1)] + json.dumps(data, ensure_ascii=False) + html[ld.end(1):]
+    # FAQPage — из переводов вопросов и ответов раздела «Частые вопросы»
+    fq = re.search(r'<script type="application/ld\+json" id="ld-faq">(.*?)</script>', html, re.S)
+    if fq:
+        qa = []
+        for i in range(1, 30):
+            q, a = d.get(f"faq.q{i}"), d.get(f"faq.a{i}")
+            if not q or not a:
+                break
+            qa.append({"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}})
+        faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": qa}
+        html = html[:fq.start(1)] + json.dumps(faq, ensure_ascii=False) + html[fq.end(1):]
     note = f"<!-- Сгенерировано tools/home_build.py из index.html ({lang}). Не править вручную. -->\n"
     html = html.replace("<!doctype html>\n", "<!doctype html>\n" + note, 1)
     return html, missing
