@@ -238,65 +238,137 @@
     });
   }
 
-  /* ---------- галерея: фото сначала падают стопкой в центр экрана, потом разлетаются в плитку ---------- */
-  function galleryIntro() {
-    var gal = $("gal");
-    if (!("IntersectionObserver" in window) || !gal.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (gal.getBoundingClientRect().top < innerHeight * 0.75) return; // уже видна — не прячем
-    gal.classList.add("pre");
-    var done = false;
-    // заранее грузим все превью, чтобы в стопке не было пустых карточек
-    var pre = new IntersectionObserver(function (es) {
-      if (!es[0].isIntersecting) return; pre.disconnect();
-      $$("#gal img").forEach(function (im) { im.loading = "eager"; });
-    }, { rootMargin: "900px 0px 900px 0px" });
-    pre.observe(gal);
-    var io = new IntersectionObserver(function (es) {
-      if (!es[0].isIntersecting || done) return; done = true; io.disconnect();
-      var imgs = $$("#gal img");
-      var ready = Promise.all(imgs.map(function (im) { im.loading = "eager"; return im.decode ? im.decode().catch(function () {}) : 0; }));
-      Promise.race([ready, new Promise(function (r) { setTimeout(r, 900); })]).then(function () {
-        try { play(); } catch (e) { gal.classList.remove("pre", "playing"); }
-      });
-      setTimeout(function () { gal.classList.remove("pre"); }, 8000); // страховка: фото не должны остаться скрытыми
-    }, { rootMargin: "0px 0px -25% 0px" });
-    io.observe(gal);
-    function play() {
-      var figs = $$("#gal figure"), n = figs.length;
-      var gr = gal.getBoundingClientRect(), cx = gr.left + gr.width / 2;
-      var cy = Math.min(Math.max(gr.top + 200, innerHeight * 0.45), innerHeight * 0.6); // стопка — у верха галереи, но в кадре
-      var DROP = 95, LAND = 420, HOLD = 380, SPREAD = 45, FLY = 900;
-      var T = (n - 1) * DROP + LAND + HOLD; // момент, когда стопка начинает разлетаться
-      var left = n;
-      figs.forEach(function (f, i) {
-        var r = f.getBoundingClientRect();
-        var s = Math.min(1, Math.min(innerWidth * 0.62, 300) / r.width);
-        var dx = cx - (r.left + r.width / 2), dy = cy - (r.top + r.height / 2);
-        var rot = (i % 2 ? 1 : -1) * (5 + (i * 37 % 13)), jx = (i * 53 % 31) - 15, jy = (i * 29 % 23) - 11;
-        var t0 = i * DROP, t1 = t0 + LAND, t2 = T + i * SPREAD, D = t2 + FLY;
-        var pile = "translate(" + (dx + jx) + "px," + (dy + jy) + "px) rotate(" + rot + "deg) scale(" + s + ")";
-        f.style.zIndex = String(i + 1);
-        var a = f.animate([
-          { offset: 0, opacity: 0, transform: "translate(" + (dx + jx) + "px," + (dy - innerHeight * 0.9) + "px) rotate(" + (rot * 3) + "deg) scale(" + (s * 1.25) + ")" },
-          { offset: t0 / D, opacity: 0, transform: "translate(" + (dx + jx) + "px," + (dy - innerHeight * 0.9) + "px) rotate(" + (rot * 3) + "deg) scale(" + (s * 1.25) + ")", easing: "cubic-bezier(.3,1.35,.5,1)" },
-          { offset: t1 / D, opacity: 1, transform: pile },
-          { offset: t2 / D, opacity: 1, transform: pile, easing: "cubic-bezier(.2,.9,.25,1.12)" },
-          { offset: 1, opacity: 1, transform: "none" }
-        ], { duration: D, fill: "both" });
-        a.onfinish = function () {
-          a.cancel(); f.style.zIndex = "";
-          if (--left === 0) gal.classList.remove("pre");
-        };
-      });
-      gal.classList.add("playing");
-      gal.classList.remove("pre");
-      setTimeout(function () { gal.classList.remove("playing"); }, T + n * SPREAD + FLY + 100);
+  /* ---------- галерея: вступление «как в комиксе» (по мотивам black26) ----------
+     4 страницы по 3 растровых фото листаются всё быстрее, затем быстрая «плёнка» кадров с растром и красными вспышками,
+     затем сцена гаснет, а фото раскладываются в плитку. Пока галерея не доехала — на её месте стоит первая страница. */
+  function galleryFlip() {
+    var box = $("gal-box");
+    if (!("IntersectionObserver" in window) || !box.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (box.getBoundingClientRect().top < innerHeight * 0.5) return; // галерея уже на экране — без вступления
+    var G = SITE.gallery.map(function (g) { return g.n; });
+    if (G.length < 15) return;
+    var PAGES = [[G[0], G[1], G[2]], [G[3], G[4], G[5]], [G[7], G[8], G[9]], [G[10], G[11], G[12]]];
+    var FILM_L = [[G[13]], [G[1], G[4], G[8]], [G[6]], [G[2], G[11]], [G[14]], [G[0], G[5], G[9]], [G[6]], [G[12], G[7]], [G[10]], [G[8], G[13], G[2]], [G[5]], [G[11]]];
+    var FILM_P = [[G[13]], [G[1], G[4]], [G[6]], [G[2]], [G[14]], [G[0], G[5]], [G[3]], [G[12]], [G[10], G[7]], [G[8]], [G[5]], [G[11]]];
+    var K = 1.15;
+    var PAGE_D = [0.3, 0.24, 0.2, 0.17].map(function (x) { return x * K; });
+    var PAGE_TURN = [0.11, 0.1, 0.09, 0.08].map(function (x) { return x * K; });
+    var FILM_D = [0.09, 0.08, 0.075, 0.07, 0.065, 0.06, 0.055, 0.05, 0.045, 0.045, 0.04, 0.04].map(function (x) { return x * K * 1.15; });
+    var RED = { 2: 1, 8: 1 }; // красные вспышки — не чаще 3 раз в секунду
+    var T = { pageStart: [], filmStart: [] }, acc = 0;
+    PAGE_D.forEach(function (x) { T.pageStart.push(acc); acc += x; });
+    T.film = acc; FILM_D.forEach(function (x) { T.filmStart.push(acc); acc += x; });
+    T.end = acc;
+    var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+    var eOut3 = function (u) { return 1 - Math.pow(1 - u, 3); };
+    var eInOut3 = function (u) { return u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2; };
+
+    var stage = d.createElement("div"); stage.className = "gstage"; stage.setAttribute("aria-hidden", "true");
+    stage.innerHTML = '<div class="gst"><div class="gflip"></div><canvas class="gdots"></canvas><div class="gtint"></div><button type="button" class="gskip" tabindex="-1">' + esc(t("n.skip")) + " ⏭</button></div>";
+    box.appendChild(stage); box.classList.add("pre");
+    var gst = stage.firstChild, flip = gst.querySelector(".gflip"), dots = gst.querySelector(".gdots"), tint = gst.querySelector(".gtint");
+    var shots = { pages: [], film: [] }, onList = [], port = false, state = "wait", raf = 0, t0 = 0, built = false;
+
+    var pnl = function (n, print) { return '<div class="pnl"><img alt="" decoding="async" src="img/g/' + n + (print ? "-p" : "-s") + '.webp"></div>'; };
+    var mk = function (cls, html) { var x = d.createElement("div"); x.className = cls; x.innerHTML = html; flip.appendChild(x); return x; };
+    function size() {
+      var w = box.clientWidth, h = Math.round(Math.min(innerHeight * 0.86, Math.max(box.clientHeight, 300)));
+      gst.style.height = h + "px"; gst.style.top = Math.round((innerHeight - h) / 2) + "px";
+      var p = h / w > 0.9;
+      if (p !== port || !built) { port = p; build(); }
+      dots.width = w; dots.height = h;
+      var g = dots.getContext("2d"), step = 6, R = Math.hypot(w, h) * 0.55; g.fillStyle = "#0A0506";
+      for (var y = 0; y < h + step; y += step) for (var x = (y / step) % 2 ? step / 2 : 0; x < w + step; x += step) {
+        var dd = Math.hypot(x - w / 2, y - h / 2) / R; g.beginPath(); g.arc(x, y, step * 0.18 + step * 0.32 * clamp(dd), 0, 6.2832); g.fill();
+      }
     }
+    function build() {
+      built = true; flip.textContent = ""; onList = [];
+      var pc = port ? " port" : "";
+      shots.pages = PAGES.map(function (ids, i) { var s = mk("shot page" + pc, ids.map(function (n) { return pnl(n, true); }).join("")); s.style.zIndex = String(20 + PAGES.length - i); return s; });
+      shots.film = (port ? FILM_P : FILM_L).map(function (ids) { return mk("shot film n" + ids.length + pc, ids.map(function (n) { return pnl(n); }).join("")); });
+      render(0);
+    }
+    function setOn(list) {
+      onList.forEach(function (el) { if (list.indexOf(el) < 0) { el.classList.remove("on"); el.style.transform = ""; el.style.removeProperty("--shade"); } });
+      list.forEach(function (el) { el.classList.add("on"); });
+      onList = list;
+    }
+    function render(tt) {
+      var on = [], red = 0, dt = 0;
+      if (tt < T.film) {
+        var i = 0; while (i < PAGE_D.length - 1 && tt >= T.pageStart[i + 1]) i++;
+        var u = Math.max(0, tt - T.pageStart[i]), dd = PAGE_D[i], page = shots.pages[i];
+        on.push(page);
+        var push = 1.05 - 0.05 * eOut3(clamp(u / dd)), tilt = (i % 2 ? 0.7 : -0.7) * (1 - u / dd), turn0 = dd - PAGE_TURN[i];
+        if (state === "play" && u > turn0) {
+          var p = eInOut3(clamp((u - turn0) / PAGE_TURN[i]));
+          on.push(shots.pages[i + 1] || shots.film[0]);
+          page.style.transform = "scale(" + push + ") rotateY(" + (-p * 105) + "deg)";
+          page.style.setProperty("--shade", p.toFixed(3));
+        } else { page.style.transform = "scale(" + push + ") rotate(" + tilt + "deg)"; page.style.setProperty("--shade", 0); }
+      } else {
+        var j = 0; while (j < FILM_D.length - 1 && tt >= T.filmStart[j + 1]) j++;
+        var v = clamp((tt - T.filmStart[j]) / FILM_D[j]), el = shots.film[j];
+        on.push(el); el.style.transform = "scale(" + (1.06 - 0.06 * eOut3(v)).toFixed(4) + ")";
+        red = RED[j] ? 1 : 0; dt = 1;
+      }
+      setOn(on);
+      tint.style.opacity = (red * 0.9).toFixed(2); dots.style.opacity = dt ? "0.28" : "0";
+    }
+    function loop(now) {
+      var tt = (now - t0) / 1000;
+      if (tt >= T.end) { finish(); return; }
+      render(tt); raf = requestAnimationFrame(loop);
+    }
+    function play() {
+      if (state !== "wait") return;
+      state = "load";
+      var imgs = Array.prototype.slice.call(flip.querySelectorAll("img"));
+      var ready = Promise.all(imgs.map(function (im) { return im.decode ? im.decode().catch(function () {}) : 0; }));
+      Promise.race([ready, new Promise(function (r) { setTimeout(r, 700); })]).then(function () {
+        if (state !== "load") return;
+        state = "play"; stage.classList.add("playing"); gst.querySelector(".gskip").tabIndex = 0;
+        t0 = performance.now(); raf = requestAnimationFrame(loop);
+      });
+    }
+    function finish() {
+      if (state === "done") return;
+      state = "done"; cancelAnimationFrame(raf); removeEventListener("scroll", onScroll); removeEventListener("resize", onResize);
+      var figs = $$("#gal figure"), top = innerHeight, k = 0;
+      box.classList.remove("pre");
+      figs.forEach(function (f) {
+        var r = f.getBoundingClientRect(); if (r.bottom < -50 || r.top > top + 50) return; // анимируем только те, что видно
+        f.animate([
+          { opacity: 0, transform: "translateY(26px) scale(.86) rotate(" + (k % 2 ? 5 : -5) + "deg)" },
+          { opacity: 1, transform: "none" }
+        ], { duration: 560, delay: 60 + k * 55, easing: "cubic-bezier(.2,.9,.3,1.3)", fill: "backwards" });
+        k++;
+      });
+      stage.animate([{ opacity: 1, transform: "scale(1)" }, { opacity: 0, transform: "scale(1.04)" }], { duration: 380, easing: "ease-in", fill: "forwards" })
+        .onfinish = function () { stage.remove(); };
+    }
+    gst.querySelector(".gskip").addEventListener("click", finish);
+    function onScroll() {
+      if (state === "done") return;
+      var r = box.getBoundingClientRect();
+      if (!built && r.top < innerHeight * 2.5) size(); // заранее собрать сцену и начать грузить картинки
+      if (state !== "wait") return;
+      if (r.bottom < innerHeight * 0.3) { finish(); return; }          // пролистали мимо — сразу плитка
+      var g = gst.getBoundingClientRect();
+      if (g.height && g.bottom <= innerHeight + 8) play();              // сцена целиком в кадре
+    }
+    var rz = 0;
+    function onResize() { clearTimeout(rz); rz = setTimeout(function () { if (state === "wait" || state === "load") size(); }, 150); }
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onResize);
+    setTimeout(onScroll, 50);
+    setTimeout(function () { if (state !== "done" && state !== "wait") finish(); }, 15000); // страховка
   }
 
   setLang(lang);
   setInterval(renderHours, 60000);
-  galleryIntro();
+  galleryFlip();
 
   /* ---------- старт анимации первого экрана: после интро и проверки 18+ ---------- */
   var goMO = new MutationObserver(maybeGo);

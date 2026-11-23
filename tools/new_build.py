@@ -121,6 +121,12 @@ def main():
         shutil.copy2(ROOT / f, OUT / f)
     for dd in COPY_DIRS:
         shutil.copytree(ROOT / dd, OUT / dd, dirs_exist_ok=True)
+    # «печатные» растровые копии фото для анимации галереи (как страницы комикса)
+    import halftone
+    for g in d["SITE"]["gallery"]:
+        src, dst = ROOT / "img" / "g" / f"{g['n']}-l.webp", OUT / "img" / "g" / f"{g['n']}-p.webp"
+        if not dst.exists() or dst.stat().st_mtime < src.stat().st_mtime:
+            halftone.main(str(src), str(dst))
     print(f"OK: new/ собран (v={ver}, ключей ru={len(T["ru"])})")
 
 

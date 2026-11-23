@@ -45,7 +45,8 @@
     "n.sup.p": "Пишите нам в Instagram — ответим в директе.",
     "n.sup.btn": "Написать в Direct",
     "n.main": "Основной сайт spickibg.com",
-    "n.legal": "Юридическое лицо"
+    "n.legal": "Юридическое лицо",
+    "n.skip": "Пропустить"
   },
   "sr": {
     "n.title": "Spički — nargila bar u Beogradu · novi dizajn",
@@ -92,7 +93,8 @@
     "n.sup.p": "Pišite nam na Instagramu — odgovaramo u direktu.",
     "n.sup.btn": "Piši u Direct",
     "n.main": "Glavni sajt spickibg.com",
-    "n.legal": "Pravno lice"
+    "n.legal": "Pravno lice",
+    "n.skip": "Preskoči"
   },
   "en": {
     "n.title": "Spički — hookah lounge in Belgrade · new design",
@@ -139,6 +141,7 @@
     "n.sup.p": "Message us on Instagram — we reply in Direct.",
     "n.sup.btn": "Message in Direct",
     "n.main": "Main website spickibg.com",
-    "n.legal": "Legal entity"
+    "n.legal": "Legal entity",
+    "n.skip": "Skip"
   }
 }

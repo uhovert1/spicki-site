@@ -155,9 +155,32 @@ ul,ol{padding:0;list-style:none}
 .gal button:hover{transform:rotate(0deg) scale(1.02)}
 .gal img{width:100%;height:auto}
 .gal figure{position:relative}
-.gal.pre figure{opacity:0}
-.gal.playing{pointer-events:none}
-.gal.playing figure{will-change:transform,opacity}
+
+/* вступление галереи: страницы комикса → плёнка → плитка */
+.gal-box{position:relative}
+.gal-box.pre .gal figure{opacity:0}
+.gstage{position:absolute;inset:34px 0 0;z-index:5;pointer-events:none}
+.gst{position:sticky;overflow:hidden;background:var(--black);border:4px solid #fff;box-shadow:10px 10px 0 var(--red);pointer-events:auto}
+.gflip{position:absolute;inset:0;perspective:1800px}
+.shot{position:absolute;inset:0;display:grid;visibility:hidden;transform-origin:50% 50%;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.shot.on{visibility:visible;will-change:transform}
+.shot.film{background:var(--black);gap:6px;z-index:10}
+.shot.film.n2{grid-template-columns:1fr 1fr}
+.shot.film.n3{grid-template-columns:1fr 1fr 1fr}
+.shot.film.port.n2{grid-template-columns:1fr;grid-template-rows:1fr 1fr}
+.shot.page{background:var(--paper);padding:16px;gap:12px;grid-template:"a b" 1fr "a c" 1fr / .85fr 1.3fr;transform-origin:0 50%}
+.shot.page.port{padding:10px;gap:8px;grid-template:"b b" .8fr "a c" 1.2fr / 1.15fr .85fr}
+.shot.page .pnl{border:3px solid var(--ink)}
+.shot.page .pnl:nth-child(1){grid-area:a}
+.shot.page .pnl:nth-child(2){grid-area:b}
+.shot.page .pnl:nth-child(3){grid-area:c}
+.shot.page::after{content:"";position:absolute;inset:0;background:var(--black);opacity:calc(var(--shade,0) * .6);pointer-events:none}
+.pnl{position:relative;overflow:hidden;min-width:0;min-height:0;background:var(--ink)}
+.pnl img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 35%;display:block}
+.gdots{position:absolute;inset:0;width:100%;height:100%;z-index:30;opacity:0;pointer-events:none}
+.gtint{position:absolute;inset:0;z-index:29;background:var(--red);mix-blend-mode:multiply;opacity:0;pointer-events:none}
+.gskip{position:absolute;z-index:40;top:12px;left:12px;border:2px solid #fff;background:rgba(10,5,6,.72);color:#fff;font:800 13px/1 var(--body);padding:8px 12px;border-radius:999px;cursor:pointer;opacity:0;transition:opacity .3s}
+.gstage.playing .gskip{opacity:1}
 
 /* коротко + faq */
 .guide{display:grid;gap:24px;margin:30px 0 54px}
