@@ -255,7 +255,10 @@
       if (!es[0].isIntersecting || done) return; done = true; io.disconnect();
       var imgs = $$("#gal img");
       var ready = Promise.all(imgs.map(function (im) { im.loading = "eager"; return im.decode ? im.decode().catch(function () {}) : 0; }));
-      Promise.race([ready, new Promise(function (r) { setTimeout(r, 900); })]).then(play);
+      Promise.race([ready, new Promise(function (r) { setTimeout(r, 900); })]).then(function () {
+        try { play(); } catch (e) { gal.classList.remove("pre", "playing"); }
+      });
+      setTimeout(function () { gal.classList.remove("pre"); }, 8000); // страховка: фото не должны остаться скрытыми
     }, { rootMargin: "0px 0px -25% 0px" });
     io.observe(gal);
     function play() {
