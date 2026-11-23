@@ -355,6 +355,9 @@ def main():
     for p, s in writes.items():
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(s, encoding="utf-8")
+    # new.spickibg.com берёт новости и тексты из index.html — пересобираем и его
+    import new_build
+    new_build.main()
     print(f"OK: новостей {len(items)}, файлов записано {len(writes)}")
     for a in items[:3]:
         print(" ", a["date"], a["slug"])

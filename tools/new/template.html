@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{{n.title}}</title>
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://spickibg.com/">
+<meta name="description" content="{{meta}}">
+<meta name="theme-color" content="#D4111F">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Spički šibice">
+<meta property="og:title" content="{{hero.h1}}">
+<meta property="og:description" content="{{meta}}">
+<meta property="og:image" content="https://spickibg.com/img/og-cover.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="fonts/seymour.woff" as="font" type="font/woff" crossorigin>
+<link rel="preload" href="fonts/mulish.woff" as="font" type="font/woff" crossorigin>
+<link rel="stylesheet" href="consent.css">
+<link rel="stylesheet" href="intro.css">
+<link rel="stylesheet" href="app.css?v={{v}}">
+<script>/* язык: ?lang= → выбранный ранее → язык устройства. Пока не подставлены переводы, страница скрыта (не дольше 2 с) */(function(){var d=document.documentElement,l=null,q=(location.search.match(/[?&]lang=(ru|sr|en)\b/)||[])[1];if(q)l=q;else{try{var o=JSON.parse(localStorage.getItem("spicki-lang"));if(o&&o.exp>Date.now()&&/^(ru|sr|en)$/.test(o.v))l=o.v}catch(e){}if(!l){var n=(navigator.language||"").toLowerCase();l=/^(sr|hr|bs|sh|cnr|me)/.test(n)?"sr":/^(ru|uk|be|kk)/.test(n)?"ru":"en"}}d.dataset.lang=l;d.lang=l==="sr"?"sr-Latn":l;if(l!=="ru"){d.classList.add("i18n-wait");setTimeout(function(){d.classList.remove("i18n-wait")},2000)}})();</script>
+<script>/* интро «время выдохнуть» (intro.js): только при заходе извне, не при перезагрузке/«назад»; ?intro — показать, ?nointro — нет */(function(){try{var d=document.documentElement,q=location.search,r=document.referrer,n=performance.getEntriesByType?performance.getEntriesByType("navigation")[0]:null,own=false;try{own=!!r&&new URL(r).host===location.host}catch(e){}if(/[?&]intro\b/.test(q)||(!/[?&]nointro\b/.test(q)&&!location.hash&&!own&&!(n&&/reload|back_forward/.test(n.type))&&!matchMedia("(prefers-reduced-motion: reduce)").matches&&!/bot|crawl|spider|lighthouse|headless|preview/i.test(navigator.userAgent)))d.classList.add("intro-on")}catch(e){}})();</script>
+<script type="application/ld+json">{{ld}}</script>
+</head>
+<body>
+<a class="skip" href="#main">Spički</a>
+
+<header class="top">
+  <a class="logo" href="#top" data-ta="aria-label:n.top">Spički</a>
+  <div class="lang-chip" role="group" data-ta="aria-label:n.lang">
+    <button type="button" data-lang="ru">RU</button><button type="button" data-lang="sr">SR</button><button type="button" data-lang="en">EN</button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ ГЕРОЙ ============ -->
+<section class="op g-red" id="top" data-bar="" data-zone="">
+  <div class="op-in">
+    <div class="op-text">
+      <p class="tag" data-t="n.tag"></p>
+      <h1 class="mega" id="hero-h"><span class="sr-only" data-t="hero.h1"></span><span aria-hidden="true" class="split" data-t="hero.aka"></span></h1>
+      <p class="slogan" data-t="hero.slogan"></p>
+      <p class="lead" data-t="hero.lead"></p>
+      <div class="acts">
+        <button type="button" class="buy on-red" data-sheet=""><span data-t="cta.book"></span> <span aria-hidden="true">→</span></button>
+        <a class="buy ghost" data-href="menu" href="#" target="_blank" rel="noopener"><span data-t="hero.menu"></span> <span aria-hidden="true">↗</span></a>
+      </div>
+      <p class="status"><span class="dot" data-status-dot></span><span data-status></span></p>
+    </div>
+    <figure class="op-photo">
+      <img src="img/hero-photo.webp" width="1024" height="1024" alt="" data-ta="alt:hero.alt" fetchpriority="high">
+      <span class="badge b-age" data-t="n.badge"></span>
+      <span class="badge b-time" data-t="n.photo"></span>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ О НАС ============ -->
+<section class="lot g-paper" id="about" data-bar="n.about" data-zone="">
+  <div class="wrap">
+    <p class="tag" data-t="n.about"></p>
+    <h2 class="big" data-t="about.h2"></h2>
+    <p class="lead narrow" data-t="about.p"></p>
+    <ul class="blks perks" data-ta="aria-label:perks.aria">
+      <li class="blk k1"><h3 data-t="p1.h"></h3><p data-t="p1.p"></p></li>
+      <li class="blk k2"><h3 data-t="p2.h"></h3><p data-t="p2.p"></p></li>
+      <li class="blk k3"><h3 data-t="p3.h"></h3><p data-t="p3.p"></p></li>
+      <li class="blk k4"><h3 data-t="p4.h"></h3><p data-t="p4.p"></p></li>
+      <li class="blk k3"><h3 data-t="p5.h"></h3><p data-t="p5.p"></p></li>
+      <li class="blk k4"><h3 data-t="p6.h"></h3><p data-t="p6.p"></p></li>
+      <li class="blk k1"><h3 data-t="p7.h"></h3><p data-t="p7.p"></p></li>
+      <li class="blk k2"><h3 data-t="p8.h"></h3><p data-t="p8.p"></p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ 01 КАЛЬЯНЫ ============ -->
+<section class="lot g-ink" id="hookah" data-bar="n.l1" data-zone="main">
+  <div class="wrap split2">
+    <div>
+      <p class="tag" data-t="n.l1"></p>
+      <h2 class="big" data-t="g1.h"></h2>
+      <p class="lead" data-t="p1.p"></p>
+      <ul class="blks list">
+        <li class="blk k1" data-t="n.hk1"></li>
+        <li class="blk k2" data-t="n.hk2"></li>
+        <li class="blk k3" data-t="n.hk3"></li>
+      </ul>
+      <div class="price">
+        <p class="price-k" data-t="n.check"></p>
+        <p class="price-v long">1&nbsp;500–4&nbsp;000 <small>RSD</small></p>
+        <p class="price-s" data-t="n.perPerson"></p>
+      </div>
+      <button type="button" class="buy" data-sheet="main"><span data-t="cta.book"></span> <span aria-hidden="true">→</span></button>
+    </div>
+    <figure class="card tilt-r"><img src="img/about-hookah.webp" width="1100" height="1467" alt="" data-ta="alt:about.alt" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- ============ 02 КУХНЯ И БАР ============ -->
+<section class="lot g-red" id="menu" data-bar="n.l2" data-zone="main">
+  <div class="wrap">
+    <p class="tag" data-t="n.l2"></p>
+    <h2 class="big" data-t="menu.h2"></h2>
+    <div class="split2 al-top">
+      <div>
+        <p class="lead" data-t="p2.p"></p>
+        <p class="lead" data-t="p3.p"></p>
+        <div class="price on-red">
+          <p class="price-k" data-t="n.lunch"></p>
+          <p class="price-v">1&nbsp;300 <small>RSD</small></p>
+          <p class="price-s" data-t="n.lunchSub"></p>
+        </div>
+        <div class="acts">
+          <a class="buy on-red" data-href="menu" href="#" target="_blank" rel="noopener"><span data-t="menu.full"></span> <span aria-hidden="true">↗</span></a>
+          <a class="buy ghost" data-href="wolt" href="#" target="_blank" rel="noopener"><span data-t="foot.wolt"></span> <span aria-hidden="true">↗</span></a>
+        </div>
+        <p class="small" data-t="menu.note"></p>
+      </div>
+      <div class="menu-box">
+        <div class="tabs" role="tablist" id="menu-tabs"></div>
+        <ul class="dishes" id="menu-list"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 03 PS5 ============ -->
+<section class="lot g-paper" id="ps5" data-bar="n.l3" data-zone="ps5">
+  <div class="wrap split2 rev">
+    <figure class="card tilt-l"><img src="img/zone-play.webp" width="800" height="800" alt="" data-ta="alt:z2.alt" loading="lazy"><span class="badge b-num">PS5</span></figure>
+    <div>
+      <p class="tag" data-t="z2.kicker"></p>
+      <h2 class="big" data-t="z2.h3"></h2>
+      <p class="lead" data-t="z2.p"></p>
+      <ul class="blks list">
+        <li class="blk k2" data-t="n.ps1"></li>
+        <li class="blk k3" data-t="n.ps2"></li>
+        <li class="blk k1" data-t="n.ps3"></li>
+      </ul>
+      <div class="price"><p class="price-v">2 <small data-t="n.psUnit"></small></p></div>
+      <button type="button" class="buy" data-sheet="ps5"><span data-t="z2.btn"></span> <span aria-hidden="true">→</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 04 SECRET ROOM ============ -->
+<section class="lot g-dark" id="secret" data-bar="n.l4" data-zone="secret">
+  <div class="wrap split2">
+    <div>
+      <p class="tag" data-t="z1.kicker"></p>
+      <h2 class="big" data-t="p6.h"></h2>
+      <p class="lead" data-t="z1.p"></p>
+      <ul class="blks list">
+        <li class="blk k1" data-t="z1.f1"></li>
+        <li class="blk k2" data-t="z1.f2"></li>
+        <li class="blk k4" data-t="z1.f3"></li>
+      </ul>
+      <div class="price"><p class="price-v">5 <small data-t="n.srUnit"></small></p><p class="price-s" data-t="n.srCap"></p></div>
+      <button type="button" class="buy" data-sheet="secret"><span data-t="z1.btn"></span> <span aria-hidden="true">→</span></button>
+    </div>
+    <figure class="card tilt-r"><img src="img/zone-secret.webp" width="800" height="800" alt="" data-ta="alt:z1.alt" loading="lazy"><span class="badge b-num">5 PC</span></figure>
+  </div>
+</section>
+
+<!-- ============ 05 ЛАУНЖ ============ -->
+<section class="lot g-red" id="lounge" data-bar="n.l5" data-zone="main">
+  <div class="wrap split2 rev">
+    <figure class="card tilt-l"><img src="img/zone-bar.webp" width="800" height="800" alt="" data-ta="alt:z3.alt" loading="lazy"></figure>
+    <div>
+      <p class="tag" data-t="z3.kicker"></p>
+      <h2 class="big" data-t="z3.h3"></h2>
+      <p class="lead" data-t="z3.p"></p>
+      <ul class="blks list">
+        <li class="blk k2"><h3 data-t="p4.h"></h3><p data-t="p4.p"></p></li>
+        <li class="blk k3"><h3 data-t="p3.h"></h3><p data-t="p3.p"></p></li>
+      </ul>
+      <div class="price on-red"><p class="price-v"><span data-t="n.loungeBig"></span> <small data-t="n.loungeUnit"></small></p></div>
+      <button type="button" class="buy on-red" data-sheet="main"><span data-t="z3.btn"></span> <span aria-hidden="true">→</span></button>
+      <p class="small" data-t="zones.note"></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 06 КЕЙТЕРИНГ ============ -->
+<section class="lot g-paper" id="catering" data-bar="n.l6" data-zone="">
+  <div class="wrap split2 al-top">
+    <div>
+      <p class="tag" data-t="n.l6"></p>
+      <h2 class="big" data-t="cat.h2"></h2>
+      <p class="lead" data-t="cat.lead"></p>
+      <ul class="blks list">
+        <li class="blk k1" data-t="cat.li1"></li>
+        <li class="blk k4" data-t="cat.li2"></li>
+      </ul>
+      <a class="buy" data-href="instagramDM" href="#" target="_blank" rel="noopener"><span data-t="cat.btn"></span> <span aria-hidden="true">↗</span></a>
+    </div>
+    <aside class="event">
+      <span class="badge b-ev">26.03</span>
+      <p class="tag" data-t="ev.eyebrow"></p>
+      <h3 data-t="ev.h3"></h3>
+      <p data-t="ev.p1"></p>
+      <p data-t="ev.p2"></p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============ 07 ГАЛЕРЕЯ ============ -->
+<section class="lot g-ink" id="gallery" data-bar="n.l7" data-zone="">
+  <div class="wrap">
+    <p class="tag" data-t="n.l7"></p>
+    <h2 class="big" data-t="gal.h2"></h2>
+    <p class="lead narrow" data-t="gal.lead"></p>
+    <div class="gal" id="gal"></div>
+  </div>
+</section>
+
+<!-- ============ 08 КОРОТКО + FAQ ============ -->
+<section class="lot g-paper" id="guide" data-bar="n.l8" data-zone="">
+  <div class="wrap">
+    <p class="tag" data-t="g.eyebrow"></p>
+    <h2 class="big" data-t="g.h2"></h2>
+    <p class="lead narrow" data-t="g.lead"></p>
+    <div class="guide">
+      <div class="blk k2"><h3 data-t="g2.h"></h3><p data-t="g2.p"></p></div>
+      <div class="blk k3"><h3 data-t="g3.h"></h3><p data-t="g3.p"></p></div>
+      <div class="blk k1"><h3 data-t="g4.h"></h3><p data-t="g4.p"></p></div>
+    </div>
+    <h3 class="mid" data-t="faq.h"></h3>
+    <div class="faq">
+      <details><summary data-t="faq.q1"></summary><p data-t="faq.a1"></p></details>
+      <details><summary data-t="faq.q2"></summary><p data-t="faq.a2"></p></details>
+      <details><summary data-t="faq.q3"></summary><p data-t="faq.a3"></p></details>
+      <details><summary data-t="faq.q4"></summary><p data-t="faq.a4"></p></details>
+      <details><summary data-t="faq.q5"></summary><p data-t="faq.a5"></p></details>
+      <details><summary data-t="faq.q6"></summary><p data-t="faq.a6"></p></details>
+      <details><summary data-t="faq.q7"></summary><p data-t="faq.a7"></p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 09 СТАТЬИ И НОВОСТИ ============ -->
+<section class="lot g-red" id="read" data-bar="n.l9" data-zone="">
+  <div class="wrap">
+    <p class="tag" data-t="n.l9"></p>
+    <h2 class="big" data-t="art.h2"></h2>
+    <p class="lead narrow" data-t="art.lead"></p>
+    <div class="arts" id="arts"></div>
+    <div class="news" id="news">
+      <h3 class="mid" data-t="news.h"></h3>
+      <div id="news-list"></div>
+      <a class="buy on-red" id="news-all" href="https://spickibg.com/news/"><span data-t="news.all"></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10 БРОНЬ ============ -->
+<section class="lot g-dark" id="booking" data-bar="n.l10" data-zone="">
+  <div class="wrap split2 al-top">
+    <div>
+      <p class="tag" data-t="book.eyebrow"></p>
+      <h2 class="big" data-t="cta.book"></h2>
+      <p class="lead" data-t="book.lead"></p>
+      <div class="blk k2 online">
+        <h3 data-t="on.k"></h3>
+        <p data-t="on.p"></p>
+        <a class="buy on-red" data-book="" href="https://book.spickibg.com/"><span data-t="on.btn"></span> <span aria-hidden="true">→</span></a>
+      </div>
+      <p class="tag" data-t="on.ig"></p>
+      <ol class="steps">
+        <li data-t="book.s1"></li>
+        <li data-t="book.s2"></li>
+        <li data-t="book.s3"></li>
+      </ol>
+    </div>
+    <form class="form blk k3" id="book-form" novalidate>
+      <div class="fields">
+        <label class="f"><span data-t="f.date"></span><input id="b-date" type="date" required></label>
+        <label class="f"><span data-t="f.time"></span><input id="b-time" type="time" step="1800" value="20:00" required></label>
+        <label class="f"><span data-t="f.guests"></span><select id="b-guests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option value="10+">10+</option></select></label>
+        <label class="f"><span data-t="f.zone"></span><select id="b-zone"><option value="main" data-t="zone.main"></option><option value="ps5" data-t="zone.ps5"></option><option value="secret" data-t="zone.secret"></option></select></label>
+        <label class="f"><span data-t="f.name"></span><input id="b-name" type="text" autocomplete="given-name" data-ta="placeholder:ph.name"></label>
+        <label class="f"><span data-t="f.note"></span><input id="b-note" type="text" data-ta="placeholder:ph.note"></label>
+      </div>
+      <p class="small" id="preview-label" data-t="book.preview"></p>
+      <div class="preview" id="b-preview" aria-labelledby="preview-label"></div>
+      <div class="acts">
+        <button class="buy on-red" type="submit" data-t="book.copy"></button>
+        <a class="buy ghost-ink" data-href="instagramDM" href="#" target="_blank" rel="noopener" data-t="book.just"></a>
+      </div>
+      <p class="small" id="b-hint" role="status" aria-live="polite" data-t="book.hint"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ КАК НАС НАЙТИ ============ -->
+<section class="sup g-red" id="contacts" data-bar="nav.contacts" data-zone="">
+  <div class="wrap">
+    <p class="tag" data-t="nav.contacts"></p>
+    <h2 class="big" data-t="c.h2"></h2>
+    <div class="find">
+      <div class="blk k2">
+        <h3 data-t="c.address"></h3>
+        <p class="addr">Mačvanska 10<small data-t="c.district"></small></p>
+        <div class="acts col">
+          <a class="buy" data-href="route" href="#" target="_blank" rel="noopener"><span data-t="c.route"></span> <span aria-hidden="true">↗</span></a>
+          <a class="buy ghost-ink" data-href="mapCard" href="#" target="_blank" rel="noopener" data-t="c.maps"></a>
+        </div>
+      </div>
+      <div class="blk k1">
+        <h3 data-t="c.hours"></h3>
+        <p class="status ink"><span class="dot" data-status-dot></span><span data-status></span></p>
+        <table class="hours"><tbody id="hours"></tbody></table>
+      </div>
+      <div class="blk k4">
+        <h3 data-t="c.net"></h3>
+        <ul class="links" id="links"></ul>
+      </div>
+    </div>
+    <div class="ask">
+      <div>
+        <h3 class="mid" data-t="n.sup.h"></h3>
+        <p data-t="n.sup.p"></p>
+      </div>
+      <a class="buy" data-href="instagramDM" href="#" target="_blank" rel="noopener"><span data-t="n.sup.btn"></span> <span aria-hidden="true">↗</span></a>
+    </div>
+    <div class="ask rev">
+      <div>
+        <h3 class="mid" data-t="r.h2"></h3>
+        <p class="small" data-t="r.hint"></p>
+      </div>
+      <a class="buy ghost" data-href="review" href="#" target="_blank" rel="noopener"><span data-t="r.btn"></span> <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-logo">Spički</p>
+    <p data-t="foot.note"></p>
+    <p>MANUYLOV AND PARTNERS DOO BEOGRAD (VRAČAR) · <span data-t="foot.pib"></span> 114447111 · <span data-t="foot.mb"></span> 22025082 · <a href="mailto:info@spickibg.com">info@spickibg.com</a></p>
+    <p class="foot-links"><a href="https://spickibg.com/" data-main data-t="n.main"></a> · <a href="https://spickibg.com/privacy.html" data-t="foot.privacy"></a> · <a href="#" data-privacy-open></a></p>
+  </div>
+</footer>
+
+<!-- нижняя панель -->
+<div class="bar" id="bar" aria-hidden="true">
+  <div class="bar-t"><b id="bar-name">Spički</b><span id="bar-sub"><span class="dot" data-status-dot></span><span data-status></span></span></div>
+  <button type="button" class="bar-btn" data-sheet="" tabindex="-1" data-t="n.bar.book"></button>
+</div>
+
+<!-- окно брони -->
+<dialog class="sheet" id="sheet" aria-labelledby="sh-h">
+  <div class="sh-bar" data-t="n.sh.bar"></div>
+  <div class="sh-in">
+    <h2 id="sh-h" data-t="n.sh.h"></h2>
+    <p class="sh-k" data-t="n.sh.zone"></p>
+    <div class="sh-zones" id="sh-zones">
+      <button type="button" data-z="main" data-t="zone.main"></button>
+      <button type="button" data-z="ps5" data-t="zone.ps5"></button>
+      <button type="button" data-z="secret" data-t="zone.secret"></button>
+    </div>
+    <p class="sh-status"><span class="dot" data-status-dot></span><span data-status></span></p>
+    <a class="buy on-red wide" id="sh-online" data-book="main" href="https://book.spickibg.com/"><span data-t="n.sh.online"></span> <span aria-hidden="true">→</span></a>
+    <button type="button" class="buy ghost-ink wide" id="sh-ig" data-t="n.sh.ig"></button>
+    <p class="small" data-t="n.sh.note"></p>
+    <button type="button" class="sh-close" id="sh-close" data-t="n.sh.close"></button>
+  </div>
+</dialog>
+
+<!-- просмотр фото -->
+<dialog class="lb" id="lb" data-ta="aria-label:lb.aria">
+  <figure><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
+  <button type="button" class="lb-b lb-prev" id="lb-prev" data-ta="aria-label:lb.prev">←</button>
+  <button type="button" class="lb-b lb-next" id="lb-next" data-ta="aria-label:lb.next">→</button>
+  <button type="button" class="lb-b lb-close" id="lb-close" data-ta="aria-label:lb.close">✕</button>
+</dialog>
+
+<script src="data.js?v={{v}}"></script>
+<script src="app.js?v={{v}}"></script>
+<script src="consent.js" data-root="https://spickibg.com/"></script>
+<script src="https://spickibg.com/t.js" defer></script>
+<script src="intro.js"></script>
+</body>
+</html>

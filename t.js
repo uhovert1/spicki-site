@@ -20,7 +20,7 @@
     try { ss && ss.setItem("sp_src", JSON.stringify(src)); } catch (e) {}
   }
   src = src || { r: internal ? d.referrer.split(/[?#]/)[0] : "", h: refHost, u: utm };
-  var host = L.hostname, site = /^3d\./.test(host) || /^\/3d(\/|$)/.test(L.pathname) ? "3d" : "main";
+  var host = L.hostname, site = /^3d\./.test(host) || /^\/3d(\/|$)/.test(L.pathname) ? "3d" : /^new\./.test(host) || /^\/new(\/|$)/.test(L.pathname) ? "new" : "main";
   var lang = (d.documentElement.lang || "").slice(0, 2);
   function send(o) {
     o.s = site; o.p = L.pathname; o.l = lang; o.r = src.r; o.u = src.u; o.w = window.innerWidth;
@@ -45,6 +45,7 @@
     if (/wolt\.com$/.test(x)) return "wolt";
     if (/^(t\.me|telegram\.me)$/.test(x)) return "telegram";
     if (/^(wa\.me|api\.whatsapp\.com)$/.test(x)) return "whatsapp";
+    if (/^new\.spickibg\.com$/.test(x) && site !== "new") return "new";
     if (/^3d\.spickibg\.com$/.test(x) || (x === "spickibg.com" && /^\/3d\//.test(u.pathname) && site !== "3d")) return "3d";
     return null;
   }
