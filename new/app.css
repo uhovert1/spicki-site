@@ -154,6 +154,10 @@ ul,ol{padding:0;list-style:none}
 .gal button{display:block;width:100%;padding:0;border:5px solid #fff;background:#fff;box-shadow:7px 7px 0 var(--red);cursor:zoom-in;transform:rotate(var(--r,0deg));transition:transform .2s}
 .gal button:hover{transform:rotate(0deg) scale(1.02)}
 .gal img{width:100%;height:auto}
+.gal figure{position:relative}
+.gal.pre figure{opacity:0}
+.gal.playing{pointer-events:none}
+.gal.playing figure{will-change:transform,opacity}
 
 /* коротко + faq */
 .guide{display:grid;gap:24px;margin:30px 0 54px}
@@ -336,3 +340,4 @@ html.js.go .mega .w{animation:w-in .6s cubic-bezier(.2,.9,.3,1.35) both;animatio
 .ag-k,.pv-s,.pv-msg{color:#ff5a64!important;font-family:var(--cond)}
 .ag-actions .ag-yes{background:var(--red)!important;border:3px solid #fff!important;border-radius:0!important;box-shadow:5px 5px 0 #000;font-weight:900}
 .ag-actions .ag-no,.pv-clear{border-radius:0!important}
+#gallery{z-index:3}

@@ -231,15 +231,69 @@
     : null;
   function observeReveal() {
     if (!revIO) return;
-    $$(".lot .blk, .lot .card, .lot .price, .lot .big, .lot .event, .lot .art, .lot .menu-box, .sup .blk, .faq details, .gal figure").forEach(function (el) {
+    $$(".lot .blk, .lot .card, .lot .price, .lot .big, .lot .event, .lot .art, .lot .menu-box, .sup .blk, .faq details").forEach(function (el) {
       if (el.classList.contains("rv")) return;
       if (el.getBoundingClientRect().top < innerHeight) return;
       el.classList.add("rv"); revIO.observe(el);
     });
   }
 
+  /* ---------- галерея: фото сначала падают стопкой в центр экрана, потом разлетаются в плитку ---------- */
+  function galleryIntro() {
+    var gal = $("gal");
+    if (!("IntersectionObserver" in window) || !gal.animate || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (gal.getBoundingClientRect().top < innerHeight * 0.75) return; // уже видна — не прячем
+    gal.classList.add("pre");
+    var done = false;
+    // заранее грузим все превью, чтобы в стопке не было пустых карточек
+    var pre = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting) return; pre.disconnect();
+      $$("#gal img").forEach(function (im) { im.loading = "eager"; });
+    }, { rootMargin: "900px 0px 900px 0px" });
+    pre.observe(gal);
+    var io = new IntersectionObserver(function (es) {
+      if (!es[0].isIntersecting || done) return; done = true; io.disconnect();
+      var imgs = $$("#gal img");
+      var ready = Promise.all(imgs.map(function (im) { im.loading = "eager"; return im.decode ? im.decode().catch(function () {}) : 0; }));
+      Promise.race([ready, new Promise(function (r) { setTimeout(r, 900); })]).then(play);
+    }, { rootMargin: "0px 0px -25% 0px" });
+    io.observe(gal);
+    function play() {
+      var figs = $$("#gal figure"), n = figs.length;
+      var gr = gal.getBoundingClientRect(), cx = gr.left + gr.width / 2;
+      var cy = Math.min(Math.max(gr.top + 200, innerHeight * 0.45), innerHeight * 0.6); // стопка — у верха галереи, но в кадре
+      var DROP = 95, LAND = 420, HOLD = 380, SPREAD = 45, FLY = 900;
+      var T = (n - 1) * DROP + LAND + HOLD; // момент, когда стопка начинает разлетаться
+      var left = n;
+      figs.forEach(function (f, i) {
+        var r = f.getBoundingClientRect();
+        var s = Math.min(1, Math.min(innerWidth * 0.62, 300) / r.width);
+        var dx = cx - (r.left + r.width / 2), dy = cy - (r.top + r.height / 2);
+        var rot = (i % 2 ? 1 : -1) * (5 + (i * 37 % 13)), jx = (i * 53 % 31) - 15, jy = (i * 29 % 23) - 11;
+        var t0 = i * DROP, t1 = t0 + LAND, t2 = T + i * SPREAD, D = t2 + FLY;
+        var pile = "translate(" + (dx + jx) + "px," + (dy + jy) + "px) rotate(" + rot + "deg) scale(" + s + ")";
+        f.style.zIndex = String(i + 1);
+        var a = f.animate([
+          { offset: 0, opacity: 0, transform: "translate(" + (dx + jx) + "px," + (dy - innerHeight * 0.9) + "px) rotate(" + (rot * 3) + "deg) scale(" + (s * 1.25) + ")" },
+          { offset: t0 / D, opacity: 0, transform: "translate(" + (dx + jx) + "px," + (dy - innerHeight * 0.9) + "px) rotate(" + (rot * 3) + "deg) scale(" + (s * 1.25) + ")", easing: "cubic-bezier(.3,1.35,.5,1)" },
+          { offset: t1 / D, opacity: 1, transform: pile },
+          { offset: t2 / D, opacity: 1, transform: pile, easing: "cubic-bezier(.2,.9,.25,1.12)" },
+          { offset: 1, opacity: 1, transform: "none" }
+        ], { duration: D, fill: "both" });
+        a.onfinish = function () {
+          a.cancel(); f.style.zIndex = "";
+          if (--left === 0) gal.classList.remove("pre");
+        };
+      });
+      gal.classList.add("playing");
+      gal.classList.remove("pre");
+      setTimeout(function () { gal.classList.remove("playing"); }, T + n * SPREAD + FLY + 100);
+    }
+  }
+
   setLang(lang);
   setInterval(renderHours, 60000);
+  galleryIntro();
 
   /* ---------- старт анимации первого экрана: после интро и проверки 18+ ---------- */
   var goMO = new MutationObserver(maybeGo);
