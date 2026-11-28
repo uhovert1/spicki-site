@@ -5,8 +5,9 @@
      spicki-age-18 — подтверждение 18+, хранится 30 дней;
      spicki-lang   — язык, только если посетитель сам нажал RU/SR/EN, хранится 12 месяцев;
      spicki-ads    — выбор в баннере про рекламу Meta: согласие 12 месяцев, отказ 6 месяцев.
-   Пиксель Meta (Facebook/Instagram) загружается ТОЛЬКО после «Принять» в баннере (закон о защите данных Сербии,
-   ст. 12 ч. 1 п. 1 — согласие). До выбора и после отказа никаких запросов в Meta и cookies нет.
+   Пиксель Meta (Facebook/Instagram) загружается ТОЛЬКО с согласия (закон о защите данных Сербии, ст. 12 ч. 1 п. 1).
+   Согласие спрашиваем в окне 18+, без отдельного баннера: под кнопками написано, что «Да» разрешает рекламные cookies Meta,
+   рядом — «Да, но без рекламных cookies». До выбора и после отказа никаких запросов в Meta и cookies нет.
    <noscript>-картинку пикселя на страницы не ставим: она срабатывает без согласия. */
 (function () {
   var AGE_KEY = "spicki-age-18", LANG_KEY = "spicki-lang", ADS_KEY = "spicki-ads", DAY = 864e5, AGE_DAYS = 30;
@@ -19,8 +20,7 @@
           st: "Настройки приватности", sp: "Без вашего согласия сайт не использует cookies, рекламу и пиксели соцсетей. На этом устройстве хранится:",
           ads: "Реклама Meta (Facebook, Instagram)", adsD: "Пиксель Meta ставит cookies и сообщает Meta, что вы были на сайте, — чтобы показывать рекламу Spički и считать её результаты.",
           adsOn: "разрешено", adsOff: "отклонено", adsAllow: "Разрешить рекламу Meta", adsStop: "Отключить рекламу Meta",
-          bh: "Реклама Spički в Instagram и Facebook", bp: "Можно включить пиксель Meta? Он ставит cookies и сообщает Meta, что вы были на сайте, — чтобы показывать вам рекламу Spički. Без согласия ничего не загружается.",
-          accept: "Принять", decline: "Отклонить", custom: "Подробнее",
+          adsNote: "Нажимая «Да», вы также разрешаете рекламные cookies Meta (Facebook, Instagram).", adsSkip: "Да, но без рекламных cookies",
           age: "Подтверждение 18+", ageD: "Чтобы не спрашивать возраст на каждой странице. Срок — 30 дней.",
           lang: "Выбранный язык", langD: "Сохраняется, только если вы сами переключили язык. Срок — 12 месяцев.",
           until: "до", none: "не сохранено",
@@ -33,8 +33,7 @@
           st: "Podešavanja privatnosti", sp: "Bez vašeg pristanka sajt ne koristi kolačiće, reklame ni piksele društvenih mreža. Na ovom uređaju se čuva:",
           ads: "Reklame Meta (Facebook, Instagram)", adsD: "Piksel Meta postavlja kolačiće i javlja kompaniji Meta da ste posetili sajt — da bi se prikazivale reklame Spički i merili rezultati.",
           adsOn: "dozvoljeno", adsOff: "odbijeno", adsAllow: "Dozvoli reklame Meta", adsStop: "Isključi reklame Meta",
-          bh: "Reklame Spički na Instagramu i Facebooku", bp: "Da li smemo da uključimo piksel Meta? On postavlja kolačiće i javlja kompaniji Meta da ste posetili sajt — da biste videli reklame Spički. Bez pristanka ništa se ne učitava.",
-          accept: "Prihvati", decline: "Odbij", custom: "Više",
+          adsNote: "Klikom na „Da” dozvoljavate i reklamne kolačiće Meta (Facebook, Instagram).", adsSkip: "Da, ali bez reklamnih kolačića",
           age: "Potvrda 18+", ageD: "Da vas ne bismo pitali za godine na svakoj stranici. Rok — 30 dana.",
           lang: "Izabrani jezik", langD: "Čuva se samo ako ste sami promenili jezik. Rok — 12 meseci.",
           until: "do", none: "nije sačuvano",
@@ -47,8 +46,7 @@
           st: "Privacy settings", sp: "Without your consent this site uses no cookies, ads or social media pixels. This device stores:",
           ads: "Meta ads (Facebook, Instagram)", adsD: "The Meta pixel sets cookies and tells Meta you visited the site — so Spički ads can be shown and measured.",
           adsOn: "allowed", adsOff: "declined", adsAllow: "Allow Meta ads", adsStop: "Turn off Meta ads",
-          bh: "Spički ads on Instagram and Facebook", bp: "May we switch on the Meta pixel? It sets cookies and tells Meta you visited the site, so you can see Spički ads. Nothing loads without your consent.",
-          accept: "Accept", decline: "Decline", custom: "Details",
+          adsNote: "By tapping “Yes” you also allow Meta advertising cookies (Facebook, Instagram).", adsSkip: "Yes, but without ad cookies",
           age: "18+ confirmation", ageD: "So we don't ask your age on every page. Kept for 30 days.",
           lang: "Chosen language", langD: "Saved only if you switched the language yourself. Kept for 12 months.",
           until: "until", none: "not saved",
@@ -69,7 +67,7 @@
   function fmtDate(ts) { try { return new Date(ts).toLocaleDateString(lang() === "sr" ? "sr-Latn-RS" : lang() === "en" ? "en-GB" : "ru-RU", { day: "numeric", month: "long", year: "numeric" }); } catch (e) { return ""; } }
 
   var s = document.currentScript, root = (s && s.dataset.root) || "", privacy = root + "privacy.html";
-  var gate, panel, banner;
+  var gate, panel;
 
   /* ---------- Реклама Meta: пиксель только с согласия ---------- */
   function adsChoice() { var a = read(ADS_KEY); return a ? a.v : null; }   // 1 — согласие, 0 — отказ, null — не спрашивали
@@ -96,26 +94,9 @@
   }
   function setAds(yes) {
     write(ADS_KEY, yes ? 1 : 0, yes ? ADS_YES_DAYS : ADS_NO_DAYS);
-    closeBanner();
     if (yes) loadPixel();
     else { dropFbCookies(); if (window.fbq) location.reload(); }   // уже загруженный пиксель выгружается только перезагрузкой
   }
-  function openBanner() {
-    if (banner || adsChoice() !== null) return;
-    banner = document.createElement("section");
-    banner.className = "cb";
-    banner.setAttribute("role", "region");
-    banner.setAttribute("aria-labelledby", "cb-h");
-    banner.innerHTML = '<div class="cb-box"><p class="cb-h" id="cb-h" data-k="bh"></p><p class="cb-p" data-k="bp"></p>' +
-      '<div class="cb-actions"><button type="button" class="cb-yes" data-k="accept"></button><button type="button" class="cb-no" data-k="decline"></button>' +
-      '<a class="cb-more" href="' + privacy + '#s13" data-k="custom"></a></div></div>';
-    document.body.appendChild(banner);
-    banner.querySelector(".cb-yes").onclick = function () { setAds(true); };
-    banner.querySelector(".cb-no").onclick = function () { setAds(false); };
-    banner.querySelector(".cb-more").onclick = function (e) { e.preventDefault(); openPanel(); };
-    fill();
-  }
-  function closeBanner() { if (banner) { banner.remove(); banner = null; } }
 
   /* ---------- 18+ ---------- */
   function openGate() {
@@ -126,6 +107,7 @@
       '<svg class="ag-flame" viewBox="0 0 24 34" aria-hidden="true"><defs><linearGradient id="agf" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#9e140c"/><stop offset=".5" stop-color="#e0301c"/><stop offset="1" stop-color="#ff8a4a"/></linearGradient></defs><path fill="url(#agf)" d="M13.5 1c1.2 5.6 9.5 9.6 9.5 18.6C23 27.4 18 33 12 33S1 27.4 1 20.6c0-5 2.8-8.5 5.6-10.7-.2 3.6 1 6.2 3.3 7.4C9.6 10.6 11.4 5.3 13.5 1Z"/></svg>' +
       '<p class="ag-k" data-k="k"></p><h2 class="ag-h" id="ag-h" data-k="h"></h2><p class="ag-p"></p>' +
       '<div class="ag-actions"><button type="button" class="ag-yes" data-k="yes"></button><button type="button" class="ag-no" data-k="no"></button></div>' +
+      '<p class="ag-ads"><span data-k="adsNote"></span> <button type="button" class="ag-skip" data-k="adsSkip"></button></p>' +
       '<p class="ag-note" data-k="remember"></p><a class="ag-more" href="' + privacy + '" data-k="more"></a></div>';
     document.body.appendChild(gate);
     document.documentElement.classList.add("ag-lock");
@@ -133,14 +115,16 @@
     gate.addEventListener("cancel", function (e) { e.preventDefault(); });
     // Chrome закрывает диалог по Esc даже при preventDefault — закрытие не считается подтверждением
     gate.addEventListener("close", function () { if (!ok && gate) { try { gate.showModal(); } catch (e) { gate.setAttribute("open", ""); } } });
-    gate.querySelector(".ag-yes").onclick = function () {
+    function pass(ads) {
       ok = true;
       write(AGE_KEY, 1, AGE_DAYS);
+      setAds(ads);
       document.documentElement.classList.remove("ag-lock");
       try { gate.close(); } catch (e) {}
       gate.remove(); gate = null;
-      openBanner();
-    };
+    }
+    gate.querySelector(".ag-yes").onclick = function () { pass(true); };
+    gate.querySelector(".ag-skip").onclick = function () { pass(false); };
     gate.querySelector(".ag-no").onclick = function () { gate.classList.add("denied"); fill(); };
     fill();
     try { gate.showModal(); } catch (e) { gate.setAttribute("open", ""); }
@@ -189,7 +173,7 @@
   /* ---------- тексты ---------- */
   function fill() {
     var t = x();
-    [gate, panel, banner].forEach(function (el) {
+    [gate, panel].forEach(function (el) {
       if (!el) return;
       el.querySelectorAll("[data-k]").forEach(function (n) { n.textContent = t[n.dataset.k]; });
     });
@@ -209,7 +193,6 @@
     var isPrivacy = /privacy\.html$/.test(location.pathname);
     if (adsChoice() === 1) loadPixel();
     if (!read(AGE_KEY) && !isPrivacy) openGate();
-    else openBanner();
     fill();
     new MutationObserver(fill).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
   }

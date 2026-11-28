@@ -43,20 +43,13 @@ html.ag-lock, html.ag-lock body { overflow: hidden; }
 .pv-clear:hover { border-color: #ff5fa2; color: #ff5fa2; }
 .ag-actions button:focus-visible, .ag-more:focus-visible, .pv-x:focus-visible, .pv-clear:focus-visible, .pv-more:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .ag-flame { animation: none; } }
-/* Баннер согласия на рекламу Meta: снизу, не мешает читать; «Принять» и «Отклонить» одинаково заметны */
-.cb { position: fixed; z-index: 90; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; pointer-events: none;
-  padding: 0 max(12px, env(safe-area-inset-right, 0px)) max(12px, env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px)); }
-.cb-box { pointer-events: auto; width: min(100%, 720px); box-sizing: border-box; display: grid; gap: 8px; padding: 18px 20px;
-  background: #1a1016; color: #fff0f5; border: 1px solid #3a2430; border-radius: 18px; box-shadow: 0 20px 60px -20px rgba(0,0,0,.8);
-  font: 400 .92rem/1.5 "Montserrat", system-ui, sans-serif; }
-.cb-h { margin: 0; font-weight: 600; font-size: 1rem; }
-.cb-p { margin: 0; color: #bfa2ae; }
-.cb-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 4px; }
-.cb-actions button, .pv-ads { all: unset; box-sizing: border-box; cursor: pointer; min-height: 46px; padding: 0 1.4em; border-radius: 999px;
-  font: 600 .95rem/1 "Montserrat", system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center;
-  border: 1px solid rgba(255,240,245,.45); color: #fff0f5; }
-.cb-actions button { flex: 1 1 140px; }
-.cb-actions button:hover, .pv-ads:hover { border-color: #ff5fa2; color: #ff5fa2; }
-.cb-more { color: #bfa2ae; font-size: .85rem; }
-.cb-actions button:focus-visible, .cb-more:focus-visible, .pv-ads:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 3px; }
-@media (max-width: 480px) { .cb-box { padding: 16px; } .cb-p { font-size: .86rem; } }
+/* Согласие на рекламу Meta — строкой в окне 18+ */
+.ag-ads { margin: 0; font: 400 .8rem/1.5 "Montserrat", system-ui, sans-serif; color: #9a7f8b; max-width: 30em; }
+.ag-skip { all: unset; cursor: pointer; color: #bfa2ae; text-decoration: underline; text-underline-offset: 3px; }
+.ag-skip:hover { color: #ff5fa2; }
+.ag.denied .ag-ads { display: none; }
+.pv-ads { all: unset; box-sizing: border-box; cursor: pointer; min-height: 46px; padding: 0 1.4em; border-radius: 999px;
+  font: 600 .92rem/1 "Montserrat", system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,240,245,.35); color: #fff0f5; }
+.pv-ads:hover { border-color: #ff5fa2; color: #ff5fa2; }
+.ag-skip:focus-visible, .pv-ads:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 3px; }
