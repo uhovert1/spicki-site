@@ -43,3 +43,13 @@ html.ag-lock, html.ag-lock body { overflow: hidden; }
 .pv-clear:hover { border-color: #ff5fa2; color: #ff5fa2; }
 .ag-actions button:focus-visible, .ag-more:focus-visible, .pv-x:focus-visible, .pv-clear:focus-visible, .pv-more:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .ag-flame { animation: none; } }
+/* Согласие на рекламу Meta — строкой в окне 18+ */
+.ag-ads { margin: 0; font: 400 .8rem/1.5 "Montserrat", system-ui, sans-serif; color: #9a7f8b; max-width: 30em; }
+.ag-skip { all: unset; cursor: pointer; color: #bfa2ae; text-decoration: underline; text-underline-offset: 3px; }
+.ag-skip:hover { color: #ff5fa2; }
+.ag.denied .ag-ads { display: none; }
+.pv-ads { all: unset; box-sizing: border-box; cursor: pointer; min-height: 46px; padding: 0 1.4em; border-radius: 999px;
+  font: 600 .92rem/1 "Montserrat", system-ui, sans-serif; display: inline-flex; align-items: center; justify-content: center;
+  border: 1px solid rgba(255,240,245,.35); color: #fff0f5; }
+.pv-ads:hover { border-color: #ff5fa2; color: #ff5fa2; }
+.ag-skip:focus-visible, .pv-ads:focus-visible { outline: 2px solid #ff5fa2; outline-offset: 3px; }
